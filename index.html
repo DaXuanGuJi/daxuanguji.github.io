@@ -1,1 +1,60 @@
-<h1>hello word</h1>
+<!DOCTYPE html>
+<html version="4">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<meta name="render" content="webkit">
+<title>书籍试读本</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="./css/combined.css">
+</head>
+<body>
+<div class="header"> <a class="btn-left" href="javascript:void(0);">主页</a>
+  <input id="keyword" type="text" placeholder="请输入搜索关键词" />
+  <p id="search" class="btn-right">搜索</p>
+</div>
+<div id="booklist" class="bookshelf"></div>
+<script type="text/javascript" src="./js/global.js"></script>
+<script type="text/javascript" charset="utf-8">
+	var html="";
+	for (var k = 0; k < BookArr.length; k++) {
+		if(!BookArr[k])continue;
+		html+='<div class="book-item"><div class="book-dover">';
+		html+='</span><img alt="'+BookArr[k]+'" class="book-img" src="';
+		html+="./book/"+BookArr[k]+".png";
+		html+='"/></div><div class="book-name">';
+		html+=BookArr[k];
+		html+='</div><div class="book-describe">试读本</div></div>'
+		
+	}
+	ByID('booklist').innerHTML=html;		
+	ByCLS(".btn-left").onclick=function(e){re_url(0)}
+	ByCLS(".btn-right").onclick = function (e) {
+		var al =ByACLS(".book-name");
+		var twd=ByID("keyword").value;
+		for(var i=0; i<al.length; i++){
+			var nd=al[i].parentNode;
+			if(al[i].innerHTML.indexOf(twd)>=0){	
+				nd.classList.add('boxs');
+				ByID("booklist").insertBefore(nd,ByID("booklist").firstElementChild);
+			}
+			else{
+				nd.classList.remove('boxs');
+			}
+		}
+	};
+	ByID("booklist").onmousedown = function (e) {
+			if (e.target.tagName == "IMG") {
+				re_url(3,"flip_ph.html?key="+e.target.alt)
+			}
+			if (e.target.className=='book-name') {
+				re_url(3,"flip_ph.html?key="+e.target.innerHTML)
+			}
+	};
+	</script>
+</body>
+</html>
