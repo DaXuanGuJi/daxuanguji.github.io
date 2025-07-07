@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="./css/combined.css">
 </head>
 <body>
-<div class="header"> <a class="btn-left" href="javascript:void(0);">主页</a>
+<div class="header"> <a class="btn-left" href="javascript:void(0);">github</a>
   <input id="keyword" type="text" placeholder="请输入搜索关键词" />
   <p id="search" class="btn-right">搜索</p>
 </div>
@@ -33,7 +33,7 @@
 		
 	}
 	ByID('booklist').innerHTML=html;		
-	ByCLS(".btn-left").onclick=function(e){re_url(0)}
+	ByCLS(".btn-left").onclick=function(e){re_url(2,"https://github.com/DaXuanGuJi/daxuanguji.github.io")}
 	ByCLS(".btn-right").onclick = function (e) {
 		var al =ByACLS(".book-name");
 		var twd=ByID("keyword").value;
