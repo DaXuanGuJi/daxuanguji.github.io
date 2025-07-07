@@ -590,9 +590,11 @@ var getmil=function (tmx){
 	ByID('booklist').innerHTML=html;			
 	ByID("booklist").onmousedown = function (e) {
 			if (e.target.tagName == "IMG") {
+				 bgaudio.pause();wavesurfer.pause();bgaudio=wavesurfer=null;
 				re_url(3,"flip_ph.html?key="+e.target.alt)
 			}
 			if (e.target.className=='book-name') {
+				 bgaudio.pause();wavesurfer.pause();bgaudio=wavesurfer=null;
 				re_url(3,"flip_ph.html?key="+e.target.innerHTML)
 			}
 		};
