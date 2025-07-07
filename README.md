@@ -3,8 +3,10 @@
   
 [WEB预览prewiew](https://daxuanguji.github.io/)  
 https://daxuanguji.github.io/  
-预览图片  
-<img src="https://daxuanguji.github.io/other/preview.png" height=200><img src="https://daxuanguji.github.io/other/preview1.png" height=200><img src="https://daxuanguji.github.io/other/preview2.png" height=200>  
+手机版预览图片  
+<img src="https://daxuanguji.github.io/other/preview.png" height=360> <img src="https://daxuanguji.github.io/other/preview1.png" height=360>
+电脑版预览图片  
+<img src="https://daxuanguji.github.io/other/preview2.png" height=360>  
 文档目录说明  
 ```index.html```为书籍目录列表展示主页  
 ```flip.html```为电脑版每部书籍的翻页朗读页  
