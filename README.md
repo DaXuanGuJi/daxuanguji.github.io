@@ -6,7 +6,8 @@ https://daxuanguji.github.io/
   
 文档目录说明  
 ```index.html```为书籍目录列表展示主页  
-```flip_ph.html```为每部书籍的翻页朗读页  
+```flip.html```为电脑版每部书籍的翻页朗读页  
+```flip_ph.html```为手机版每部书籍的翻页朗读页  
   
 js目录  
 ```global.js```为公共函数库，可在此外指定书籍目录列表，修改BookArr数组值即可  
