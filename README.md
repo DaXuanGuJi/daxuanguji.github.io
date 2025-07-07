@@ -1,9 +1,14 @@
 # 大玄古籍存储仓库  
 ## 此项目是一款书籍翻页展示例，能同步语音朗读，可以方便书籍图片翻书翻页查看，更有古籍制作，古本翻新，古书重制的工具待传。  
   
-[预览prewiew](https://daxuanguji.github.io/)  
+[WEB预览prewiew](https://daxuanguji.github.io/)  
 https://daxuanguji.github.io/  
-  
+index.html预览图片  
+<img src="https://daxuanguji.github.io/other/preview.png" height=200>  
+flip_ph.html预览图片
+<img src="https://daxuanguji.github.io/other/preview1.png" height=200>  
+flip.html预览图片
+<img src="https://daxuanguji.github.io/other/preview2.png" height=200>  
 文档目录说明  
 ```index.html```为书籍目录列表展示主页  
 ```flip.html```为电脑版每部书籍的翻页朗读页  
