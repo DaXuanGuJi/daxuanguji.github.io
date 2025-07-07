@@ -20,6 +20,7 @@
 <div id="booklist" class="bookshelf"></div>
 <script type="text/javascript" src="./js/global.js"></script>
 <script type="text/javascript" charset="utf-8">
+	var surl=screen.availWidth<screen.availHeight?"flip_ph.html":"flip.html";
 	var html="";
 	for (var k = 0; k < BookArr.length; k++) {
 		if(!BookArr[k])continue;
@@ -49,10 +50,10 @@
 	};
 	ByID("booklist").onmousedown = function (e) {
 			if (e.target.tagName == "IMG") {
-				re_url(3,"flip_ph.html?key="+e.target.alt)
+				re_url(3,surl+"?key="+e.target.alt)
 			}
 			if (e.target.className=='book-name') {
-				re_url(3,"flip_ph.html?key="+e.target.innerHTML)
+				re_url(3,surl+"?key="+e.target.innerHTML)
 			}
 	};
 	</script>
