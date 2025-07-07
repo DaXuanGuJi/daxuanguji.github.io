@@ -19,7 +19,7 @@
       <div id="setdiv" style="word-break:break-all;padding: 12px 4px;z-index:1;border: 2px solid blue;position:fixed;overflow-x: hidden;float:left;width:calc(100% - 14px);height: calc(98% - 24px);">
         <input type="checkbox" id="au0">自动翻页播放
         <input type="button" class='btn' id='novol' value='🔇静音'/>
-        <button class='btn' id='full' onclick='full()'>↩后退</button>
+        <button class='btn' id='full' onclick='full()'>🏠首页</button>
         <br/>
         <input type="checkbox" id="bg0" >背景音乐播放
         <input type="button" id='bg1' class="btn" value="▶播放" />
@@ -172,7 +172,7 @@ setdiv.onclick = function (e) {
 }
 function full()
 {
-	re_url(-1);
+	re_url(5,"https://daxuanguji.github.io/");
 }
 function preimg(i)
 {
