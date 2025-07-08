@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html version="4">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1,maximum-scale=8.0, user-scalable=yes"/>
-<meta name="render" content="webkit">
 <title>txt书籍试读</title>
 </head>
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="./css/combined.css">
-<link rel="stylesheet" href="./css/loadmaue.css">
-<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="/css/font.css">
+<link rel="stylesheet" href="../_css/search_book.css">
+<link rel="stylesheet" href="css/loadmaue.css">
+<link rel="stylesheet" href="css/style.css">
 <body>
 <div class="iphone style-5">
   <div class="iphone__screen"> <a href="javascript:void(0)" class="nav__trigger"><span class="nav__icon"></span></a>
@@ -19,18 +18,18 @@
       <div id="setdiv" style="word-break:break-all;padding: 12px 4px;z-index:1;border: 2px solid blue;position:fixed;overflow-x: hidden;float:left;width:calc(100% - 14px);height: calc(98% - 24px);">
         <input type="checkbox" id="au0">自动翻页播放
         <input type="button" class='btn' id='novol' value='🔇静音'/>
-        <button class='btn' id='full' onclick='full()'>🏠首页</button>class='btn' id='full' onclick='full()'>🏠首页</button>
+        <button class='btn' id='full' onclick='full()'>🏠首页</button>
         <br/>
-        <input type="checkbox" id="bg0" >背景音乐播放<input type="checkbox" id="bg0" >背景音乐播放
-        <input type="button" id='bg1' class="btn" value="▶播放" /><input type="button" id='bg1' class="btn" value="▶播放" />
-        <输入 type="范围" id="bg3" 最小="0" 最大="1" 步="0.01" 值="0.08"/><input type="range" id="bg3" min="0" max="1" step="0.01" value="0.08"/>
+        <input type="checkbox" id="bg0" >背景音乐播放
+        <input type="button" id='bg1' class="btn" value="▶播放" />
+        <input type="range" id="bg3" min="0" max="1" step="0.01" value="0.08"/>
         <br/>
         <input type="checkbox" id="qg0">文本朗读播放
-        <input type="button" id='qg1' class="btn" value="▶播放" /><input type="button" id='qg1' class="btn" value="▶播放" />
-        <input type="range" id="qg3" min="0" max="1" step="0.01" value="1"/>         <input type="range" id="qg3" min="0" max="1" step="0.01" value="1"/>         
+        <input type="button" id='qg1' class="btn" value="▶播放" />
+        <input type="range" id="qg3" min="0" max="1" step="0.01" value="1"/>         
         <br/>
-		音频同步延时<input type="number" id="wtmie" min="-300" max="300" step="0.1" value="0.0" style="width:35px" title="音频同步延时"/><input type="number" id="wtmie" min="-300" max="300" step="0.1" value="0.0" style="width:35px" title="音频同步延时"/>
-       </div></div>
+		音频同步延时<input type="number" id="wtmie" min="-300" max="300" step="0.1" value="0.0" style="width:35px" title="音频同步延时"/>
+       </div>
     </nav>
     <div class="iphone__content">
       <div id="bkhet"style="position:fixed;width:100%;height:100%;">
@@ -43,7 +42,7 @@
     </div>
   </div>
 </div>
-<script type="text/javascript" src="./js/global.js"></script> 
+<script type="text/javascript" src="/js/global.js"></script> 
 
 <script type="text/javascript">
 ByCLS(".nav__icon").onclick = function (e) {
@@ -51,7 +50,7 @@ ByCLS(".nav__icon").onclick = function (e) {
 	} 
 var ikey=getUVAL("key")?getUVAL("key")[1]:""; 
 //ikey="桃花源记";
-ipth="./book/file/"+ikey+"/";
+ipth=_host.book+"&p=temp_file/"+ikey+"&t="
 var start=7;
 var Wdf = document.documentElement.clientWidth || document.body.clientWidth|| document.documentElement.offsetWidth || document.body.offsetWidth;	
 var pages = [];  
@@ -171,7 +170,7 @@ setdiv.onclick = function (e) {
 	}	
 }
 function full()
-{	bgaudio.pause();wavesurfer.pause();bgaudio=wavesurfer=null;
+{  bgaudio.pause();wavesurfer.pause();bgaudio=wavesurfer=null;
 	re_url(3,"https://daxuanguji.github.io/");
 }
 function preimg(i)
@@ -358,8 +357,7 @@ var lodwav = function (z) {
 		wavesurfer.on("error",function(){
 					qg1.value="▶播放";
 					wavesurfer.pause();
-					set_tips(1,["音频文件未加载<br>"+wavurl],'0')
-					//alert("wavesurfer url onerror\n"+wavurl);
+					alert("wavesurfer url onerror\n"+wavurl);
 				})
 }
 var pr=null;
@@ -576,30 +574,33 @@ var getmil=function (tmx){
 		return tmd;
 	}
 }
-	var html="";
-	for (var k = 0; k < BookArr.length; k++) {
-		if(!BookArr[k])continue;
-		html+='<div class="book-item"><div class="book-dover">';
-		html+='</span><img alt="'+BookArr[k]+'" class="book-img" src="';
-		html+="./book/"+BookArr[k]+".png";
-		html+='"/></div><div class="book-name">';
-		html+=BookArr[k];
-		html+='</div><div class="book-describe">试读本</div></div>'
-		
+	geturl(_host.book+"dir_type&p=0&t=0",function(txt) {
+		var html="";
+		txt=txt.split("\n");
+		for (var k = 0; k < txt.length-1; k++) {
+		    if(!txt[k])continue;
+			html+='<div class="book-item"><div class="book-dover">';
+			html+='</span><img alt="'+txt[k]+'" class="book-img" src="';
+			html+=_host.book+"&p=temp&t="+txt[k]+".png";
+			html+='"/></div><div class="book-name">';
+			html+=txt[k];
+			html+='</div><div class="book-describe">试读本</div></div>'			
+		}
+		ByID('booklist').innerHTML=html;		
 	}
-	ByID('booklist').innerHTML=html;			
+	,'text')
 	ByID("booklist").onmousedown = function (e) {
 			if (e.target.tagName == "IMG") {
-				 bgaudio.pause();wavesurfer.pause();bgaudio=wavesurfer=null;
+			    bgaudio.pause();wavesurfer.pause();bgaudio=wavesurfer=null;
 				re_url(3,"flip_ph.html?key="+e.target.alt)
 			}
 			if (e.target.className=='book-name') {
-				 bgaudio.pause();wavesurfer.pause();bgaudio=wavesurfer=null;
+			    bgaudio.pause();wavesurfer.pause();bgaudio=wavesurfer=null;
 				re_url(3,"flip_ph.html?key="+e.target.innerHTML)
 			}
 		};
 	</script> 
 <script type="text/javascript" src="other/wavesurfer.min.js" charset="UTF-8"></script>
-<link rel="stylesheet" href="./css/tips.css">
+
 </body>
 </html>
