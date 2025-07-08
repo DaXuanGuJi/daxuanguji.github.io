@@ -19,18 +19,18 @@
       <div id="setdiv" style="word-break:break-all;padding: 12px 4px;z-index:1;border: 2px solid blue;position:fixed;overflow-x: hidden;float:left;width:calc(100% - 14px);height: calc(98% - 24px);">
         <input type="checkbox" id="au0">自动翻页播放
         <input type="button" class='btn' id='novol' value='🔇静音'/>
-        <button class='btn' id='full' onclick='full()'>🏠首页</button>
+        <button class='btn' id='full' onclick='full()'>🏠首页</button>class='btn' id='full' onclick='full()'>🏠首页</button>
         <br/>
-        <input type="checkbox" id="bg0" >背景音乐播放
-        <input type="button" id='bg1' class="btn" value="▶播放" />
-        <input type="range" id="bg3" min="0" max="1" step="0.01" value="0.08"/>
+        <input type="checkbox" id="bg0" >背景音乐播放<input type="checkbox" id="bg0" >背景音乐播放
+        <input type="button" id='bg1' class="btn" value="▶播放" /><input type="button" id='bg1' class="btn" value="▶播放" />
+        <输入 type="范围" id="bg3" 最小="0" 最大="1" 步="0.01" 值="0.08"/><input type="range" id="bg3" min="0" max="1" step="0.01" value="0.08"/>
         <br/>
         <input type="checkbox" id="qg0">文本朗读播放
-        <input type="button" id='qg1' class="btn" value="▶播放" />
-        <input type="range" id="qg3" min="0" max="1" step="0.01" value="1"/>         
+        <input type="button" id='qg1' class="btn" value="▶播放" /><input type="button" id='qg1' class="btn" value="▶播放" />
+        <input type="range" id="qg3" min="0" max="1" step="0.01" value="1"/>         <input type="range" id="qg3" min="0" max="1" step="0.01" value="1"/>         
         <br/>
-		音频同步延时<input type="number" id="wtmie" min="-300" max="300" step="0.1" value="0.0" style="width:35px" title="音频同步延时"/>
-       </div>
+		音频同步延时<input type="number" id="wtmie" min="-300" max="300" step="0.1" value="0.0" style="width:35px" title="音频同步延时"/><input type="number" id="wtmie" min="-300" max="300" step="0.1" value="0.0" style="width:35px" title="音频同步延时"/>
+       </div></div>
     </nav>
     <div class="iphone__content">
       <div id="bkhet"style="position:fixed;width:100%;height:100%;">
@@ -172,7 +172,7 @@ setdiv.onclick = function (e) {
 }
 function full()
 {	bgaudio.pause();wavesurfer.pause();bgaudio=wavesurfer=null;
-	re_url(5,"https://daxuanguji.github.io/");
+	re_url(3,"https://daxuanguji.github.io/");
 }
 function preimg(i)
 {
