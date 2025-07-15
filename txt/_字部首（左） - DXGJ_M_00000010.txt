@@ -5,10 +5,10 @@
 [book_type]未分类
 [book_length]0
 [config]
-nullval@2,1,135,0,4
+nullval@1,2,135,0,4
 mergeval@0,1,1
-fda@true
-tdb@true
+fdb@true
+tda@true
 dpi@300
 ptdate@2024
 qrcode@DXGJ_M_00000010
