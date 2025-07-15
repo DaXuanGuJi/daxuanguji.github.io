@@ -273,7 +273,7 @@
 <script type="text/javascript" src="./js/global.js"></script> 
 <script type="text/javascript" charset="utf-8">
 	var surl=screen.availWidth<screen.availHeight?"flip_ph.html":"flip.html";		
-	ByCLS(".btn-left").onclick=function(e){re_url(2,"https://github.com/DaXuanGuJi/daxuanguji.github.io")}
+	ByCLS(".btn-left").onclick=function(e){re_url(2,"https://bgithub.xyz/DaXuanGuJi/daxuanguji.github.io")}
 	ByCLS(".btn-right").onclick = function (e) {
 		var al =ByACLS(".book-name");
 		var twd=ByID("keyword").value;
@@ -293,56 +293,6 @@
 				re_url(3,surl+"?key="+e.target.alt.replace(/_封面$/,""))
 			}
 	};
-	
-/*var obj = {
-"字佰千":"ZiBaiQian",
-"字百千":"ZiBaiQian1",
-"大九九乘法":"DaJiuJiuChengFa",
-"大品天仙诀":"DaPinTianXianJue",
-"字部首":"ZiBuShou",
-"三字经":"SanZiJing",
-"千字文":"QianZiWen",
-"百家姓":"BaiJiaXing",
-"声律启蒙":"ShengLüQiMeng",
-"笠翁对韵":"LiWengDuiYun",
-"心经":"XinJing",
-"金刚经":"JinGangJing",
-"妙法莲华经":"MiaoFaLianHuaJing",
-"道德经":"DaoDeJing",
-"黄庭经":"HuangTingJing",
-"山海经":"ShanHaiJing",
-"古三坟":"GuSanFen",
-"推背图":"TuiBeiTu",
-"洗冤录":"XiYuanLu",
-"天工开物":"TianGongKaiWu",
-"长枪式图说":"ChangQiangShiTuShuo",
-"麻杈棍谱":"MaChaGunPu",
-"弓弩心法":"GongNuXinFa",
-"单刀法选":"DanDaoFaXuan",
-"三國演義":"SanGuoYanYi",
-"增广贤文":"ZengGuangXianWen",
-"孫子兵法":"SunZiBingFa",
-"寒窑赋":"HanYaoFu",
-"将进酒":"JiangJinJiu",
-"桃花源记":"TaoHuaYuanJi",
-"水滸傳":"ShuiHuChuan",
-"滕王阁序":"TengWangGeXu",
-"百家姓":"BaiJiaXing1",
-"紅樓夢":"GongLouMeng",
-"罗刹海市":"LuoChaHaiShi",
-"西遊記":"XiYouJi",
-};
-var al =ByACLS(".book-describe");
-var ab =ByACLS(".book-name");
-for(var i=0; i<al.length; i++){
-	var slink = document.createElementNS("http://www.w3.org/1999/xhtml", "a");
-	slink.href = "./html/"+obj[ab[i].innerHTML]+".html";
-	slink.className="book-txt";
-	slink.innerHTML="📖";
-	slink.title="【"+ab[i].innerHTML+"】序列图片查看";
-	al[i].parentNode.parentNode.appendChild(slink);
-	
-}*/
 </script>
 </body>
 </html>
