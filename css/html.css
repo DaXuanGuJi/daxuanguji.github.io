@@ -1,0 +1,28 @@
+
+* { padding: 0px; margin: 0px; }
+html, body { font-family: "微软雅黑", Tahoma, Arial, Helvetica, sans-serif, TH-Tshyn-P0, TH-Tshyn-P1, TH-Tshyn-P2,"Microsoft YaHei", Helvitica, Verdana, Tohoma, Arial, san-serif; margin: 0px; padding: 0px; text-decoration: none; }
+img { max-width: 100%; display: block; border: 0px; vertical-align: middle; }
+i, em { font-style: normal; }
+a { text-decoration: none; outline: none; }
+ul, ol, li, dl { list-style-type: none; }
+.content { clear: both; padding: 10px; }
+.content .text_a { width: 100%; }
+.content .text_a a { display: block; width: 23.5%; float: left; background: rgb(255, 117, 107); text-align: center; color: rgb(255, 255, 255); line-height: 35px; font-size: 16px; }
+.content .text_a a:nth-child(2), .content .text_a a:nth-child(3), .content .text_a a:nth-child(4) { margin-left: 2%; }
+.content .text_a a.active { background-color: rgb(249, 73, 60); }
+.content .match_page { width: 100%; overflow: hidden; }
+.content .list_box { position: relative; }
+.content .list_box li { width: 99.8%; float: left; box-sizing: border-box; margin-bottom: 10px; }
+.content .list_box li > div { margin: 0px 5px; position: relative; background-color: rgb(255, 117, 107); }
+.content .list_box li > div .number { display: block; width: 150px; height: 30px; background: rgb(255, 117, 107); position: absolute; color: rgb(255, 255, 255); text-align: center; line-height: 32px; top: 0px; right: 4%; }
+.content .list_box li > div .number::after { content: ""; width: 0px; height: 0px; position: absolute; top: 30px; right: 0px; border-top: 10px solid rgb(255, 117, 107); border-left: 75px solid transparent; border-right: 75px solid transparent; }
+.content .list_box li.mr0 { margin-right: 0px; }
+.content .list_box li img { width: 100%; }
+.content .list_box li a.img { display: block; padding: 3px 3px 0px; }
+.content .list_box li a.vote { float: right; width: 15%; height: 50px; background: rgb(249, 73, 60); line-height: 50px; color: rgb(255, 255, 255); font-size: 16px; text-align: center; }
+.content .list_box li a.votd { float: right; width: 15%; height: 50px; background: rgb(49, 73, 60); line-height: 50px; color: rgb(255, 255, 255); font-size: 16px; text-align: center; }
+.content .list_box li span { display: block; }
+.content .list_box li .piao { position: absolute; z-index: 1000; top: 0px; left: 0px; display: block; background-color: rgb(228, 57, 60); color: rgb(255, 255, 255); padding: 2%; font-size: 14px; }
+.content .list_box li .tou { clear: both; background-color: rgb(255, 117, 107); color: rgb(255, 255, 255); height: 50px; width: 100%; }
+.content .list_box li .tou .divP { overflow-x: hidden; text-overflow: ellipsis;  float: left; width: 70%; text-indent: 0.5em; height: 50px; }
+.clearfix::after { content: " "; clear: both; display: block; height: 0px; visibility: hidden; }
