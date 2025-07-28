@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>文字符号</title>
+<style>
+span{
+	font-family: "Segoe UI Emoji";
+	font-size: 24px;
+	line-height: 30px;
+	padding-top: 4px;
+	cursor: default;
+}
+font{
+	display:inline-block;
+	min-width:30px;
+	text-align:center;
+}
+font:hover {
+  background-color: #ff0000;
+}
+font:active {
+  background-color: #0000f5;
+}
+a{
+	color:#FF0;
+	font-weight:bold;
+}
+a:hover {
+  background-color: #ff0000;
+}
+a:active {
+  background-color: #0000f5;
+}
+hr,body{
+	margin: 0;
+	padding: 0;
+	width:100%;
+	word-break:break-all;
+}
+#em{
+	position: fixed;
+	background-color: #660;
+	width:100%;
+}
+</style>
+</head>
+
+<body>
+<div id="em">选择符号:<input id="txt" placeholder="双击复制" type="text" /><input id="txt1" placeholder="双击复制" type="text" />
+<a href="em.html">EM</a>
+<a href="uni.html">Unicode</a>
+<a href="calc/index.html">计算器</a>
+</div>
+<div id="imgdiv" style="background-color: rgba(255,0,0,0.3);visibility:hidden;position:fixed;border: 2px solid blue;">
+<img id="img" />
+</div>
+<br /><br />
+<br />
+
+<hr/>常用符号  (156)<br/>
+<span>$@ []=()!^ˇ¦，。；？！、’‘”“》《＞＜▁▂▃▄▅▆▇█▉▊▋▌▍▎▏↓→~—…︙┋┉〔〕%·⚫⬛▼◆❖№㊣ΘΞ℉</span>
+<hr/>换行 纵$双纵@横=<br/>
+<span>$@=</span>
+<hr/>空格 单空█ 双空↓→ 纵▉▊▋▌▍▎▏横▁▂▃▄▅▆▇<br/>
+<span>█↓→▁▂▃▄▅▆▇█▉▊▋▌▍▎▏</span>
+<hr/>双行 开始[结束]<br/>
+<span>[]</span>
+<hr/>角标 左(右)<br/>
+<span>()</span>
+<hr/>移位 上^下!半高~<br/>
+<span>^!~</span>
+<hr/>标点 ˇ，。；？！、・为隐藏式朗读断句逗号标点◦为隐藏式朗读断句句号标点<br/>
+<span>ˇ，。；？！、・◦</span>
+<hr/>括号 ”“’‘》《＞＜〔〕<br/>
+<span>”“’‘》《＞＜〔〕</span>
+<hr/>长线 ┉…︙┋ —<br/>
+<span>…┉︙┋¦—</span>
+<hr/>标识· ⚫⬛▼◆❖<br/>
+<span>·⚫⬛▼◆❖</span>
+<hr/>其它 书签№ 著作㊣ 原文Θ 注释Ξ 文本列数【及分列线字列色文字色插图色开关】℉ 高度指定⊕<br/>
+<span>№㊣ΘΞ℉⊕</span>
+<hr/>无图片 翻全页* 翻半页| 空页# 文字颜色% 字体切换&amp;<br/>
+<span>*|#%＆⊕</span>
+<div style="height:300px"></div>
+
+<script>
+	var al= document.getElementsByTagName("span");
+	
+	for (var z=0;z< al.length;z++) {
+		if(!al[z]||!al[z].innerHTML)continue;
+		var html="";
+			console.log(al[z].innerHTML)
+		var htxt=al[z].innerHTML.match(/[\ud000-\udfff]{2}|[\u0000-\uffff]/g);
+		console.log(htxt)
+		if(!htxt||!htxt.length)continue;
+		for (var k=0;k<htxt.length;k++) {
+			html+='<font>'+htxt[k]+'</font>';
+		}
+		al[z].innerHTML=html;
+		
+	}
+document.body.onclick = function (e) {
+	 if (e.target.tagName=="FONT") {
+		 txt1.value=e.target.innerHTML;
+		 txt.value+=e.target.innerHTML;	
+	
+	e.target.ondblclick = function (e) {
+		txt1.value=e.target.innerHTML;
+		txt1.select();
+	document.execCommand("Copy");
+	alert("已经复制到剪切板\nlength:"+txt1.value.length);
+	}
+	 }
+}
+txt.ondblclick =txt1.ondblclick = function (e) {
+	this.select();
+	document.execCommand("Copy");
+	alert("已经复制到剪切板板\nlength:"+txt.value.length);
+}
+function full(){
+	var name = "wjss";
+	var awidth = screen.availWidth;
+	var aheight = screen.availHeight ;
+	var atop =0;
+	var aleft = 0;
+	var param = "directories=no,status=no,location=no,toolbar=no,scrollbars=yes,resizable=no,hotkeys=no";
+	var params = "top=" + atop + ",left=" + aleft + ",width=" + awidth + ",height=" + aheight + "," + param;
+	var wik = window.open("flip.html", name, params);
+	
+}
+document.body.onmousemove = function (e) {
+	if (e.target.tagName=="FONT") {
+		var p=e.target.innerHTML=="＆"?"&":e.target.innerHTML;
+		img.src="../images/info/"+decodeURIComponent(p)+".png";
+		imgdiv.style.visibility="visible";
+		imgdiv.style.left =(10+e.clientX) + "px";
+		imgdiv.style.top =(10+e.clientY)+ "px";
+		return;
+	}
+	imgdiv.style.visibility="hidden";
+}
+
+				
+
+
+</script>
+</body>
+</html>

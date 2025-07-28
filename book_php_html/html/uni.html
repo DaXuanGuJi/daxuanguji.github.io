@@ -1,0 +1,151 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
+<title>中文字符集 Unicode 编码范围</title>
+</head>
+
+<body>
+<div class="wrap">
+  <div class="top">
+    <h1>汉字 Unicode 编码范围<a href="fem.html">FEM</a></h1>
+    选择文本:<input id="txt" placeholder="双击复制" type="text" /><input id="txt1" placeholder="双击复制" type="text" />
+    <div style="clear:both;"></div>
+  </div>
+  <div class="main">
+    <table width="100%" border="1" cellpadding="3" cellspacing="1">
+    <tbody><tr>
+      <td><b>字符集</b></td>
+      <td><b>字数</b></td>
+      <td><b>Unicode 编码</b></td>
+    </tr>
+    <tr>
+      <td>基本汉字</td>
+      <td>20902字</td>
+      <td>4E00-9FA5</td>
+    </tr>
+    <tr>
+      <td>基本汉字补充</td>
+      <td>90字</td>
+      <td>9FA6-9FFF</td>
+    </tr>
+    <tr>
+      <td>扩展A</td>
+      <td>6592字</td>
+      <td>3400-4DBF</td>
+    </tr>
+    <tr>
+      <td>扩展B</td>
+      <td>42720字</td>
+      <td>20000-2A6DF</td>
+    </tr>
+    <tr>
+      <td>扩展C</td>
+      <td>4154字</td>
+      <td>2A700-2B739</td>
+    </tr>
+    <tr>
+      <td>扩展D</td>
+      <td>222字</td>
+      <td>2B740-2B81D</td>
+    </tr>
+    <tr>
+      <td>扩展E</td>
+      <td>5762字</td>
+      <td>2B820-2CEA1</td>
+    </tr>
+    <tr>
+      <td>扩展F</td>
+      <td>7473字</td>
+      <td>2CEB0-2EBE0</td>
+    </tr>
+    <tr>
+      <td>扩展G</td>
+      <td>4939字</td>
+      <td>30000-3134A</td>
+    </tr>
+    <tr>
+      <td>扩展H</td>
+      <td>4192字</td>
+      <td>31350-323AF</td>
+    </tr>
+    <tr>
+      <td>康熙部首</td>
+      <td>214字</td>
+      <td>2F00-2FD5</td>
+    </tr>
+    <tr>
+      <td>部首扩展</td>
+      <td>115字<sup>①</sup></td>
+      <td>2E80-2EF3</td>
+    </tr>
+    <tr>
+      <td>兼容汉字</td>
+      <td>472字<sup>②</sup></td>
+      <td>F900-FAD9</td>
+    </tr>
+    <tr>
+      <td>兼容扩展</td>
+      <td>542字</td>
+      <td>2F800-2FA1D</td>
+    </tr>
+    <tr>
+      <td>汉字笔画</td>
+      <td>36字</td>
+      <td>31C0-31E3</td>
+    </tr>
+    <tr>
+      <td>汉字结构</td>
+      <td>12字</td>
+      <td>2FF0-2FFB</td>
+    </tr>
+    <tr>
+      <td>汉语注音</td>
+      <td>43字</td>
+      <td>3105-312F</td>
+    </tr>
+    <tr>
+      <td>注音扩展</td>
+      <td>32字</td>
+      <td>31A0-31BF</td>
+    </tr>
+    <tr>
+      <td>〇</td>
+      <td>1字</td>
+      <td>3007</td>
+    </tr>
+  </tbody></table>
+  <p>Unicode 版本：15.0</p>
+  <p>字数备注:<br>
+  ① 部首扩展：2E9A 是空码位。<br>
+  ② 兼容汉字：FA6E、FA6F 是空码位。</p>
+  <p>此页面的字数按实际字数标示（排除空码位），编码范围则排除了首尾空码位。另一个页面《世界文字大全》的编码范围标注则与 Unicode 一致（包括空码位）。</p>
+  <p>另，原有 PUA 字符产生于上世纪九十年代，现已全部标准化拥有正式码位，故从表中删除。</p>
+  <hr>
+  <p>Unicode 是全球文字统一编码。它把世界上的各种文字的每一个字符指定唯一编码，实现跨语种、跨平台的应用。</p>
+  <p>中文用户最常接触的是汉字 Unicode 编码。中文字符数量巨大，日常使用的汉字数量有数千个，再加上生僻字，数量达到数万个。这个表格将中文字符集的 Unicode 编码范围列出，点击字库条目可见具体字符。若要查询具体字符的编码请前往：汉字字符集编码查询。</p>
+    </div>
+</div>
+<script>
+document.body.onclick = function (e) {
+	 if (e.target.tagName=="TD") {
+		 txt1.value='"'+e.target.innerHTML+'"';
+		 txt.value+=',"'+e.target.innerHTML+'"';	
+	
+	e.target.ondblclick = function (e) {
+		txt1.value=e.target.innerHTML;
+		txt1.select();
+	document.execCommand("Copy");
+	alert("已经复制到剪切板");
+	}
+	 }
+}
+txt.ondblclick =txt1.ondblclick = function (e) {
+	this.select();
+	document.execCommand("Copy");
+	alert("已经复制到剪切板");
+}
+
+
+
+</script>
+</body></html>

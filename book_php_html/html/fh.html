@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>查询</title>
+<style>
+input[type=text],textarea{
+width:98%;
+}
+div,textarea{
+	font-family: "微软雅黑",Tahoma, Arial, Helvetica, sans-serif, TH-Tshyn-P0, TH-Tshyn-P1, TH-Tshyn-P2;
+}
+</style>
+</head>
+<body>
+<textarea rows="6" id="txt"type="text" /></textarea>
+<input type="button" id="cx" value="查询" />
+<hr/>
+未找到文字图片:<span id="vnpt"></span>
+<div id="npt"></div>
+<hr/>已有文字图片:<span id="vypt"></span>
+<div id="ypt"></div>
+<hr/>共有文字图片:<span id="agy"></span> <br/>
+图片文件夹:<span id="aph"></span><br/>
+<div id="apt"></div>
+<script>
+var href = decodeURI(location.href);
+var harr=href.split("?");
+try{txt.value= localStorage ? localStorage.cxval ? localStorage.cxval : "" : "";
+if(txt.value){
+	setTimeout(function () {
+					var evt = document.createEvent('MouseEvents');
+					evt.initEvent('click', true, true);
+					cx.dispatchEvent(evt);
+				}, 500)
+}
+
+}catch(e){}
+cx.onclick = function (e) {
+	geturl("../data/data.json",
+	function(ret){
+		alert(ret)
+		ret=ret.replace(/\\/g,"\\\\");
+		ret=JSON.parse(ret);
+		apt.innerHTML=ret.txt;
+		agy.innerHTML=ret.num;
+		aph.innerHTML=ret.path;
+		var tx=txt.value.match(/[\ud840-\ud888]*[\u3400-\uFAD9]/g);
+		tx.sort();
+		var res = [tx[0]];
+		for (var i = 0; i < tx.length; i++) {
+			if (tx[i] !== res[res.length - 1])
+				res.push(tx[i]);
+		}
+		var vt=[0,0];
+		var st=["",""];
+		for (var k=0;k< res.length;k++) {
+			if(ret.txt.indexOf(res[k])>=0)
+			{st[0]+=res[k];vt[0]++;}
+			else
+			{st[1]+=res[k];vt[1]++;}
+		}
+		ypt.innerHTML=st[0];
+		npt.innerHTML=st[1];
+		vypt.innerHTML=vt[0];
+		vnpt.innerHTML=vt[1];
+	})
+
+}
+
+var geturl = function (url,fun) {
+		var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+		xhr.onreadystatechange = function () {
+			console.log(xhr.readyState );
+			console.log(xhr.status);
+			if (xhr.readyState === 4) {
+				try {
+					if (xhr.status === 0) {
+						alert("未连接网络:" + xhr.status);
+						return;
+					}
+					else if (xhr.status === 200) {
+						fun(xhr.responseText);
+					} else {
+						if(xhr.status)alert("geturl出错\n网址未连通:" + xhr.status);
+					}
+				} catch (e) {
+					//超时
+				}
+			}
+		}
+		xhr.open('GET',url,true);//true为异步
+		xhr.send();
+}
+
+</script>
+</body>
+</html>

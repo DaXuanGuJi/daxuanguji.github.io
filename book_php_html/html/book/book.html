@@ -1,0 +1,1708 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>txt书籍设置</title>
+</head>
+<style>
+div,textarea {
+	font-family: "微软雅黑", Tahoma, Arial, Helvetica, sans-serif, TH-Tshyn-P0, TH-Tshyn-P1, TH-Tshyn-P2;
+}
+#bkdiv span {
+	color: red;
+}
+.btn {
+	display: inline;
+	padding: 2px 4px;
+	margin-bottom: 0;
+	font-size: 18px;
+	font-weight: 200;
+	line-height: 20px;
+	color: #FFF;
+	text-align: center;
+	white-space: nowrap;
+	box-shadow: 0 0 #74a3b0;
+	background-color: #669;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+.btn:hover {
+	background-color: #699DD1;
+	border-color: #e74c3c
+}
+input[id^='sethtm'] {
+	background-color: #960;
+}
+input[type='button'] {
+	margin-top: 4px;
+	padding: 1px 2px;
+	;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="css/Aimara.css">
+<body>
+<div style="position:fixed;width:100%;height:100%;">
+  <div id="stdiv" style="word-break:break-all;padding: 12px 4px;border: 2px solid blue;position:fixed;overflow-x: hidden;float:left;width:300px;height: calc(98% - 24px);">
+  <strong style="position:fixed;top:12px;left:16px;background-color: #FFF;">
+    <input type="button" id='loadtxt' value="打开文本" />
+    <input type="button" id='savetxt' value="保存文本" />
+    <input type="button" id='undotxt' value="撤消0" />
+    <input type="button" id='reftxt' value="刷新" />  
+    <input type="button" id='mdiv' ref="stck1" value="☰" title="隐藏设置选项内容，增大书签空间" />
+    </strong>
+    <br/>
+    <span id="txtpath" style="font-size:14px;color:#F00;"></span><span id="div_log" style="cursor:default;font-size:14px;color:#00F;"></span>
+    <input name="" id ="openfile" type="file" style="display:none" accept="text/plain"/>
+    <br/>
+    <input type="button" id='setck1' class="btn" value="⚙book" />
+    <input type="button" id='setck2' class="btn" value="⚙config" />
+    <input type="button" id='setck3' class="btn" value="⚑标记" />
+    <input type="button" id='setck4' class="btn" value="➤插入" />
+    <input type="button" id='setck5' class="btn" value="Ⓜ" />
+    <div id="stck1" style="display:block">
+      <hr/>
+      书名：
+      <input id="bkname" type="text" />
+      <input type="button" id='Hname' value="⛝" />
+      <br/>
+      作者：
+      <input id="bkauthor" type="text" />
+      <input type="button" id='Hauthor' value="⛝" />
+      <br/>
+      朝代：
+      <input id="bkdate" type="text" />
+      <input type="button" id='Hdate' value="⛝" />
+      <br/>
+      版权：
+      <input type="text" id="bkcopyright"/>
+      <input type="button" id='Hcopyright' value="⛝" />
+      <br/>
+      分类：
+      <input type="text" id="bktype"/>
+      <input type="button" id='Htype' value="⛝" />
+      <br/>
+      字数：
+      <input id="bknum" type="text" />
+      <input type="button" id='Hlength' value="⛝" />
+      <br/>
+    </div>
+    <div id="stck2" style="display:none">
+      <hr/>
+      二维码：
+      <input id="bkqrcode" type="text" />
+      <input type="button" id='Nqrcode' value="⛝" />
+      <br/>
+      条形码：
+      <input id="bkbrcode" type="text" />
+      <input type="button" id='Nbrcode' value="⛝" />
+      <br/>
+      封面诗：
+      <input id="bkcostxt3" type="text" />
+      <input type="button" id='Ncostxt3' value="⛝" />
+      <input type="button" id='setcostxt3' value="✏" />  
+      <input type="button" id='repcostxt3' value="☑" />
+      <textarea id="cos3list" style="width:294px;height:300px;display:none;" rows="8">
+      
+      </textarea>    
+      <br/>
+      发行年：
+      <input type="text" id="bkptdate"/>
+      <input type="button" id='Nptdate' value="⛝" />
+      <br/>
+      封面3d：
+      <input type="text" id="bkbook3d"/>
+      <input type="button" id='Nbook3d' value="⛝" />
+      <br/>
+      打印dpi：
+      <input id="bkdpi" type="text" />
+      <input type="button" id='Ndpi' value="⛝" />
+      <br/>
+    </div>
+    <div id="stck3" style="display:none">
+    <hr/>
+    <select id="areplist" style="overflow:hidden;width:35%;">
+<option value="\n(第[0-9一二三四五六七八九十百千万亿零壹贰叁肆伍陆柒捌玖拾佰仟萬拾佰仟億拾佰仟垗拾佰仟亰]+[章回][^\n\[]{0,60}\n)" selected="selected">第xx[章回]</option>  
+<option value="\n(第[0-9一二三四五六七八九十百千万亿零壹贰叁肆伍陆柒捌玖拾佰仟萬拾佰仟億拾佰仟垗拾佰仟亰]+[章][^\n\[]{0,60}\n)">第xx[章]</option>  
+<option value="\n(第[0-9一二三四五六七八九十百千万亿零壹贰叁肆伍陆柒捌玖拾佰仟萬拾佰仟億拾佰仟垗拾佰仟亰]+[回][^\n\[]{0,60}\n)">第xx[回]</option>   
+<option value="\n([0-9一二三四五六七八九十百千万亿零壹贰叁肆伍陆柒捌玖拾佰仟萬拾佰仟億拾佰仟垗拾佰仟亰]+[章回][^\n\[]{0,60}\n)">xx[章回]</option> 
+<option value="\n(第[0-9一二三四五六七八九十百千万亿零壹贰叁肆伍陆柒捌玖拾佰仟萬拾佰仟億拾佰仟垗拾佰仟亰]+[卷][^\n\[]{0,60}\n)">第xx[卷]</option> 
+<option value="\n(卷[0-9一二三四五六七八九十百千万亿零壹贰叁肆伍陆柒捌玖拾佰仟萬拾佰仟億拾佰仟垗拾佰仟亰]+[^\n\[]{0,60}\n)">卷xx</option>   
+<option value="\n{4,}([^\n\[]+\n)">3空行及以上</option>
+<option value="\n{3,}([^\n\[]+\n)">2空行及以上</option>
+<option value="\n{2,}([^\n\[]+\n)">1空行及以上</option>    
+<option value="\n{4}([^\n\[]+\n)">3空行</option>
+<option value="\n{3}([^\n\[]+\n)">2空行</option>
+<option value="\n{2}([^\n\[]+\n)">1空行</option> 
+<option value="\n([^\n\[]{1,4}\n)">行字小于4字</option> 
+<option value="\n([^\n\[]{1,8}\n)">行字小于8字</option>   
+<option value="\n([^\n\[]{1,16}\n)">行字小于16字</option> 
+<option value="\n([^\n\[]{1,24}\n)">行字小于24字</option>  
+<option value="\n([^\n\[]{1,32}\n)">行字小于32字</option>
+<option value="\n([^\n\[]{1,48}\n)">行字小于48字</option> 
+<option value="\n([^\n\[]{1,60}\n)">行字小于60字</option> 
+<option value="\n([^\n\[]{24,}\n)">行字大于24字</option>  
+<option value="\n([^\n\[]{32,}\n)">行字大于32字</option>
+<option value="\n([^\n\[]{48,}\n)">行字大于48字</option> 
+<option value="\n([^\n\[]{60,}\n)">行字大于60字</option> 
+<option value="\n([^\n\[]{100,}\n)">行字大于100字</option> 
+       
+    </select>
+    替换为
+    <select size="1" id="breplist" style="overflow:hidden;width:30%;">
+<option value="[book_chapter]">篇[book_chapter]</option>
+<option value="[book_title]" selected="selected">章[book_title]</option>
+<option value="[book_point]">点[book_point]</option><option value="[book_node]">节[book_node]</option>
+
+<option value="[book_explain[]">注释头[book_explain[]</option>
+<option value="[book_explain]]">注释尾[book_explain]]</option>
+
+      
+          
+    </select>
+    <input type="button" id='setreplist' value="替换" /> 
+    
+          <hr/>
+      <input type="button" id='sethtm11' class="btn" value="⚡标记递归向下替换" />
+      <hr/>
+      <input type="button" id='sethtm12' class="btn" value="⚡[book_node]替换[book_point]" />
+      <hr/>
+      <input type="button" id='sethtm13' class="btn" value="⚡标记递归向上替换" />
+      <hr/>
+      <input type="button" id='sethtm5' class="btn" value="❌删除所有标记" />
+      <hr/>
+      <input type="button" id='sethtm6' class="btn" value="❌删除空行" />
+      <hr/>
+      <input type="button" id='sethtm1' class="btn" value="⚡空行替换成➢[book_chapter]" />
+       <hr/>
+      <input type="button" id='sethtm22' class="btn" value="⚡空行替换成➢[book_title]" />
+      <hr/>
+      <input type="button" id='sethtm2' class="btn" value="⚡换行替换成➢[book_title]" />
+      <hr/>
+      <input type="button" id='sethtm21' class="btn" value="⚡换行替换成➢[book_node]" />
+      <hr/>
+      <input type="button" id='sethtm3' class="btn" value="⚡行字小于20替换成➢[book_node]" />
+      <hr/>
+      <input type="button" id='sethtm4' class="btn" value="⚡行字大于20替换成➢[book_point]" />
+
+      <hr/>
+      <input type="button" id='sethtm7' class="btn" value="❌删除标记➢[book_chapter]" />
+      <hr/>
+      <input type="button" id='sethtm8' class="btn" value="❌删除标记➢[book_title]" />
+      <hr/>
+      <input type="button" id='sethtm9' class="btn" value="❌删除标记➢[book_node]" />
+      <hr/>
+      <input type="button" id='sethtm10' class="btn" value="❌删除标记➢[book_point]" />
+    </div>
+    <div id="stck4" style="display:none"></div>
+    <div id="stck5" style="width:300px;display:none">
+<textarea id="tareatxt" style="width:294px;height:300px;" rows="20"> 	   
+</textarea>  <hr/>
+ <select size="1" id="txtreplist" style="overflow:hidden;width:30%;">
+ <option value="0" selected="selected">正则表达式</option> 
+<option value="1">康熙字典</option>
+<option value="2">（换%b ）换%</option>     
+ </select>
+      <input type="button" id='sethtm20' class="btn" value="批量正则替换" /> 
+</div>
+    <hr/>
+    <button onClick="expand_all()">展开</button>
+    <button onClick="collapse_all()">收缩</button>
+    <input type="checkbox" id="gbgs" checked="checked">光标跟随
+    <div id="div_tree"></div>
+  </div>
+  <div id="bkhet"style="position:fixed;border: 2px solid red;left:326px;width: calc(100% - 336px);height: 98%;">
+    <div id="bkdiv" contenteditable="true" style="word-break:break-all;overflow-x: hidden;width:100%;height:100%;color: #00F;background-color: #9F6;font-size: 18px;font-weight: bold;"></div>
+  </div>
+</div>
+<script src="lib/Aimara.js" type="text/javascript"></script> 
+<script type="text/javascript">
+window.onload = function() {
+
+/*bkdiv.addEventListener('paste', function(e){
+	var cd=e.clipboardData||window.clipboardData;
+	var tx=cd.getData('text/plain')
+	cd.setData('text/plain',"888")	
+	console.log(tx)
+	var tx=cd.getData('text/plain')
+	console.log(tx)
+	if(e.clipboardData)e.clipboardData.setData('text/plain',"6666")
+	if(window.clipboardData)window.clipboardData.setData('text/plain',"9999")	
+	console.log(tx)
+}, true);*/
+txtreplist.onchange=function(e) {
+	if(this.value=="1"){
+		tareatxt.value='txt=txt.replace(/\\[book_title\\]/g,"[book_node]");\ntxt=txt.replace(/\\n([^\\n]{1,2}：)/g,"\n[book_point]$1┋");\ntxt=txt.replace(/\\[book_node\\][^\\n]+/g,function (val) {if(val[val.length-1]=="部")return val.replace(/book_node/,"book_title")+"\\n[book_node]一畫"; return val+"畫";'
+	}
+	if(this.value=="2"){
+		tareatxt.value='txt=txt.replace(/（/g,"%o");\ntxt=txt.replace(/）/g,"%");\ntxt=txt.replace(/\\(/g,"%o");\ntxt=txt.replace(/\\)/g,"%");'
+	}
+}	
+	
+	
+var cos3arr=[]
+cos3arr.push("$$难难难$道最玄$莫把金丹作等闲$不遇至人传妙诀$空言口困舌头乾$$");	
+setcostxt3.onclick=function(e) {
+		if(cos3list.style.display=="inline-block"){
+			cos3list.style.display="none";return;
+		}
+		cos3list.style.display="inline-block";
+		cos3list.value=bkcostxt3.value.replace(/\$/g,"\n");;			
+}
+repcostxt3.onclick=function(e) {
+	cos3list.value=cos3list.value.replace(/\n+/g,"$");
+	cos3list.value=cos3list.value.replace(/[\s,，;；、]+/g," ");
+	//bkcostxt3.value=cos3list.value.replace(/\n+/g,"$");
+	bkcostxt3.value=cos3list.value.replace(/[。\.！？\?]+/g,"$");
+	cos3list.value=bkcostxt3.value.replace(/\s*\$\s*/g,"\n");
+	var evt = document.createEvent('HTMLEvents');
+		evt.initEvent('change', true, true);
+		bkcostxt3.dispatchEvent(evt);
+	bkdiv.scrollTop =0;	
+}
+var lock=0;	
+var caps=[];
+var htm = ["🔄刷新修改","🔄查看源文","➤插入book_chapter","➤插入book_name","➤插入book_title","➤插入book_author","➤插入book_node","➤插入book_date","➤插入book_point","➤插入book_copyright","➤插入book_explain[","➤插入book_type","➤插入book_explain]","➤插入book_length"];	
+var mkcaps=function (flg) {
+	if(flg){
+		caps.push(bkdiv.innerHTML);
+		if(caps.length>25)caps.shift();
+		undotxt.value="撤消"+caps.length;
+		
+	}
+	else{			
+		undotxt.value="撤消"+caps.length;
+		if(caps.length==1)return caps[0];
+		return caps.pop();
+	}
+	
+}
+var txtcover=	function () {
+	if("undefined"!==typeof node1 )node1.removeNode();
+		var slit=bkdiv.getElementsByTagName("span");
+		for (var k = slit.length-1;k>=0; k--) {
+			slit[k].outerHTML="";
+		}
+		var tt=bkdiv.innerHTML.replace(/<div>/g,"\n");
+		tt=tt.replace(/<\/div>/g,"");
+		tt=tt.replace(/(<br[\s\/]*>)+/g,"\n");
+		tt=tt.replace(/[\n]+/g,"\n");
+		//alert(tt)
+		txtrep(tt);
+}
+var htmtotxt=	function (html,fun) {
+		if(lock==1)return;
+		var tk=html.replace(/<span[^<]+<\/span>/g,"");
+	 	tk=tk.replace(/<div>([^<])/g,"\n$1");
+		tk=tk.replace(/<[\/]*div>/g,"");
+		tk=tk.replace(/(<br[\s\/]*>)/g,"\n");
+		if(fun)tk=fun(tk);
+		tk=tk.replace(/\n{4,}/g,"\n\n\n\n");
+		//tk=tk.replace(/\n{3,}/g,"\n\n\n");
+		
+		return tk;
+		}
+	undotxt.onclick = function (e) {
+		bkdiv.innerHTML=mkcaps(false);
+	}
+	reftxt.onclick = function (e) {
+		txtcover();
+		bkdiv.scrollTop =0;
+	}
+	setreplist.onclick = function (e) {
+		e.stopPropagation();
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML);
+		var rtx=areplist.value.replace(/[\r|\n|\t]+/g,"\n");
+		rtx=rtx.replace(/[\[]+/g,"\[");
+		var reg=new RegExp(rtx,"g");			
+		tt=tt.replace(reg,"\n"+breplist.value+ "$1");
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(tt);
+	}
+	sethtm20.onclick = function (e) {
+		e.stopPropagation();
+		mkcaps(true);
+		var txt=htmtotxt(bkdiv.innerHTML);
+		var the=tareatxt.value.replace(/[\r|\n|\t]+/g,"")
+		eval(the);
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(txt);
+	}
+	sethtm11.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML);				
+		tt=tt.replace(/\[book_node\]/g,"[book_point]");
+		tt=tt.replace(/\[book_title\]/g,"[book_node]");
+		tt=tt.replace(/\[book_chapter\]/g,"[book_title]");
+		tt=tt.replace(/\n\[book_title\]([^\n]+\n+\[book_title\])/g,"\n[book_chapter]$1");
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(tt);
+	}
+	sethtm12.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML);				
+		tt=tt.replace(/\[book_node\]/g,"[book_point]");
+		tt=tt.replace(/\n\[book_point\][^\n]+\n+\[book_point\]/g,function (val) {
+			if(val.length<50)val=val.replace(/\[book_point\]/,"[book_node]");
+			return val;});				
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(tt);
+	}
+	sethtm13.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML);				
+		tt=tt.replace(/\[book_title\]/g,"[book_chapter]");
+		tt=tt.replace(/\[book_node\]/g,"[book_title]");
+		tt=tt.replace(/\[book_point\]/g,"[book_node]");
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(tt);
+	}
+	sethtm1.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML,
+		function (e){
+			e=e.replace(/\n{2,}([^\n\[]+)\n+/g,"\n[book_chapter]$1\n[book_title]");
+			return e;
+		});					
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(tt);
+	}
+	sethtm2.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML,		
+		function (e){
+			e=e.replace(/\n{1,}([^\n\[]+)\n/g,"\n[book_title]$1\n");
+			return e;
+		});
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(tt);
+	}
+	sethtm22.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML,		
+		function (e){
+			e=e.replace(/\n{2,}([^\n\[]+)\n/g,"\n[book_title]$1\n");
+			return e;
+		});
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(tt);
+	}
+	sethtm21.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML,		
+		function (e){
+			e=e.replace(/\n{1,}([^\n\[]+)\n/g,"\n[book_node]$1\n");
+			return e;
+		});
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(tt);
+	}
+	sethtm3.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML);				
+		tt=tt.replace(/\n([^\n\[]{1,20})\n/g,"\n[book_node]$1\n");
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(tt);
+	}
+	sethtm4.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML);				
+		tt=tt.replace(/\n([^\n\[]{21,})\n/g,"\n[book_point]$1\n");
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(tt);
+	}
+	sethtm5.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML);
+		var sp=tt.split(/\[config\]/g);
+		sp[0]=sp[0].replace(/\n+/g,"\n");
+		sp[1]=sp[1].replace(/\n+/g,"\n");
+		sp[2]=sp[2].replace(/\[book_chapter\]/g,"\n\n");
+		sp[2]=sp[2].replace(/\[book_title\]/g,"\n");					
+		sp[2]=sp[2].replace(/\[book_[^\]]+\]/g,"");	
+		tt=sp.join("[config]");
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(tt);
+	}
+	sethtm6.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML);
+		tt=tt.replace(/\n+/g,"\n");
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(tt);
+	}
+	sethtm7.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML);
+		var sp=tt.split(/\[config\]/g);
+		sp[2]=sp[2].replace(/\[book_chapter\]/g,"\n\n");
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(sp.join("[config]"));
+	}
+	sethtm8.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML);
+		var sp=tt.split(/\[config\]/g);
+		sp[2]=sp[2].replace(/\[book_title\]/g,"\n");
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(sp.join("[config]"));
+	}
+	sethtm9.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML);
+		var sp=tt.split(/\[config\]/g);
+		sp[2]=sp[2].replace(/\[book_node\]/g,"");	
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(sp.join("[config]"));
+	}	
+	sethtm10.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML);
+		var sp=tt.split(/\[config\]/g);
+		sp[2]=sp[2].replace(/\[book_point\]/g,"");	
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(sp.join("[config]"));
+	}
+	mdiv.onclick = function (e) {
+		var obj=document.getElementById(this.getAttribute('ref'));
+		obj.style.display=obj.style.display=="block"?"none":"block";
+		
+	}																													
+	setck1.onclick = function (e) {
+		stck1.style.display="block";
+		stck2.style.display="none";
+		stck3.style.display="none";
+		stck4.style.display="none";
+		stck5.style.display="none";
+		mdiv.setAttribute('ref',"stck1");
+	}
+	setck2.onclick = function (e) {
+		stck2.style.display="block";
+		stck1.style.display="none";
+		stck3.style.display="none";
+		stck4.style.display="none";
+		stck5.style.display="none";
+		mdiv.setAttribute('ref',"stck2");
+	}
+	setck3.onclick = function (e) {
+		stck3.style.display="block";
+		stck1.style.display="none";
+		stck2.style.display="none";
+		stck4.style.display="none";
+		stck5.style.display="none";
+		mdiv.setAttribute('ref',"stck3");
+	}
+	setck4.onclick = function (e) {
+		if(!stck4.innerHTML){
+			var html='';var htmk='';var htmc='';
+			var numtocn = function (val) {	
+				val=val.replace(/[&]*\d+\.?\d*/g, function (vstr){
+					if(vstr[0]=="&"||vstr[0]=="%")return vstr;//字体切换
+					var astr=vstr.toString().split(".");
+					var str=astr[0];
+					var out="";
+					var rt = function (str) {
+						var len=str.length-1;
+						var s1 =['零','壹','贰','叁','肆','伍','陆','柒','捌','玖'];//存储数值部分
+						var s2 =['','拾','佰','仟','萬','拾','佰','仟','億','拾','佰','仟','垗','拾','佰','仟','亰'];//存储单位部分
+						for(var i=0;i<str.length;i++){
+							var idx=parseInt(str[i]);
+							out+=s1[idx]+s2[len];
+							len--;		
+						}
+					}
+					rt(astr[0])
+					if(astr[1]){out+="点";rt(astr[1]);}
+					out=out.replace(/零[仟佰拾]/g,"零");
+					out=out.replace(/零+/g,"零");;
+					out=out.replace(/零([萬億垗亰])/g,"$1");
+					if(out[out.length-1]=="零")out=out.slice(0,-1);
+					out=out.replace(/(.)零点/g,"$1点");
+					if(!/[零壹贰叁肆伍陆柒捌玖]/.test(out))out="零";
+					return out;
+				});
+				return val;
+			}
+			
+			for (var k = 0;k<201; k++) {
+				var b=numtocn(k.toString());
+				b=b.replace("壹拾","拾");
+				htmc+='<option value="[book_chapter]卷'+b+'">[book_chapter]卷'+b+'</option>';
+				
+			}
+			htmc='<select id="Ms" style="overflow:hidden;width:280px;position:fixed;">'+htmc+'</select><br/>';
+			htmc+='<select id="Mt" style="overflow:hidden;width:280px;position:fixed;"><option value="">诗词作者</option><option value="[book_title]原文">原文</option><option value="[book_title]译文">译文</option><option value="3">作者朝代</option></select>'
+			for (var k = 2;k<htm.length; k+=2) {								
+				htmk += '<hr/><input type="button" id="M'+k+'" class="btn" value="'+ htm[k] + '" />';
+				html += '<hr/><input type="button" id="M'+k+'" class="btn" value="'+ htm[k+1] + '" />';
+			}
+			
+			stck4.innerHTML=htmc+htmk+html;
+		}
+		stck3.style.display="none";
+		stck1.style.display="none";
+		stck2.style.display="none";
+		stck4.style.display="block";
+		stck5.style.display="none";
+		mdiv.setAttribute('ref',"stck4");
+	}
+	setck5.onclick = function (e) {
+		stck3.style.display="none";
+		stck1.style.display="none";
+		stck2.style.display="none";
+		stck4.style.display="none";
+		stck5.style.display="block";
+		mdiv.setAttribute('ref',"stck5");
+	}
+	loadtxt.onclick = function (e) {	
+		openfile.value="";
+		openfile.focus();
+		var evt = document.createEvent('MouseEvents');
+		evt.initEvent('click', true, true);
+		openfile.dispatchEvent(evt);
+	}
+	savetxt.onclick = function (e) {
+		var tt=htmtotxt(bkdiv.innerHTML);
+		down(bkname.value+".txt",tt);
+	}
+	stdiv.onclick = function (e) {	
+		if(e.target.id[0]=="H"){
+			e.target.previousElementSibling.value="";
+			var evt = document.createEvent('HTMLEvents');
+			evt.initEvent('change', true, true);
+			e.target.previousElementSibling.dispatchEvent(evt);
+			//var reg=new RegExp("\\[book_"+e.target.id.slice(1)+"\\][^<\\n]*","");
+			//bkdiv.innerHTML=bkdiv.innerHTML.replace(reg,"[book_"+e.target.id.slice(1)+"]"+e.target.previousElementSibling.value);
+		}
+		if(e.target.id[0]=="N"){
+			e.target.previousElementSibling.value="";
+			var evt = document.createEvent('HTMLEvents');
+			evt.initEvent('change', true, true);
+			e.target.previousElementSibling.dispatchEvent(evt);
+			//var reg=new RegExp(e.target.id.slice(1)+"@[^<\\n]*","");
+			//bkdiv.innerHTML=bkdiv.innerHTML.replace(reg,e.target.id.slice(1)+"@"+e.target.previousElementSibling.value);
+		}
+		if(e.target.id[0]=="M"){
+			mkcaps(true);
+			if(e.target.id[1]=="s")
+			{
+			Ms.onchange = function (e) {e.stopPropagation();insdiv("#"+Ms.value);}
+			}
+			else if(e.target.id[1]=="t")
+			{Mt.selectedIndex=0;
+			Mt.onchange = function (e) {e.stopPropagation();
+			if(Mt.value[Mt.value.length-1]=="文")insdivtxt(Mt.value,2);
+			else {
+				var tm='[book_chapter]%E'+bkdate.value+'% ┉ %E'+bkauthor.value.replace("㊣","")+'%¦%著%'
+				insdivtxt(tm,3);
+			}
+			}
+			}
+			else{
+			var itx=e.target.value.replace("➤插入","");
+			insdiv("["+itx+"]");
+			}
+		}			
+	}
+	stdiv.onchange = function (e) {
+		e.stopPropagation();
+		if(e.target.type=="text" ){		
+			if(e.target.nextElementSibling.id[0]=="N"){
+				var reg=new RegExp(e.target.nextElementSibling.id.slice(1)+"@[^<\\n]*","");
+				if(!reg.test(bkdiv.innerHTML)){
+					bkdiv.innerHTML=e.target.nextElementSibling.id.slice(1)+"@"+e.target.value+"\n"+bkdiv.innerHTML;
+					txtcover();
+				}
+				bkdiv.innerHTML=bkdiv.innerHTML.replace(reg,e.target.nextElementSibling.id.slice(1)+"@"+e.target.value);
+			}
+			if(e.target.nextElementSibling.id[0]=="H"){
+				var reg=new RegExp("\\[book_"+e.target.nextElementSibling.id.slice(1)+"\\][^<\\n]*","");
+				if(!reg.test(bkdiv.innerHTML)){
+					bkdiv.innerHTML="[book_"+e.target.nextElementSibling.id.slice(1)+"]"+e.target.value+"\n"+bkdiv.innerHTML;
+					txtcover();
+				}
+				bkdiv.innerHTML=bkdiv.innerHTML.replace(reg,"[book_"+e.target.nextElementSibling.id.slice(1)+"]"+e.target.value);
+			}
+			mkcaps(true);
+		}
+	}
+	
+	var txtconfig=function () {	
+		var con="[config]\n";
+		con+="qrcode@"+bkqrcode.value+"\n";
+		con+="brcode@"+bkbrcode.value+"\n";
+		con+="costxt3@"+bkcostxt3.value+"\n";
+		con+="ptdate@"+bkptdate.value+"\n";
+		con+="book3d@"+bkbook3d.value+"\n";
+		con+="dpi@"+bkdpi.value+"\n";
+		if(bkname.value.replace(/[^\u3400-\uFAD9]+/g,"").length>4){	
+			con+="namebox-y@-5\n";
+			con+="namebox-h@30\n";
+		}
+		con+="[config]\n";
+		return con;
+	}
+	var txtcon=function (txt) {	
+		txt=txt.replace(/\[book_name\][^\n]*\n/,"");
+		txt=txt.replace(/\[book_author\][^\n]*\n/,"");
+		txt=txt.replace(/\[book_date\][^\n]*\n/,"");
+		txt=txt.replace(/\[book_copyright\][^\n]*\n/,"");
+		txt=txt.replace(/\[book_type\][^\n]*\n/,"");
+		txt=txt.replace(/\[book_length\][^\n]*\n/,"");
+		txt=txt.replace(/\[config\]([\W\w]+)\[config\]\n*/,"\n");
+		bknum.value=txt.length;
+		var con="[book_name]"+bkname.value+"\n";
+		con+="[book_author]"+bkauthor.value+"\n";
+		con+="[book_date]"+bkdate.value+"\n";
+		con+="[book_copyright]"+bkcopyright.value+"\n";
+		con+="[book_type]"+bktype.value+"\n";
+		con+="[book_length]"+bknum.value+"\n";
+		txt=con+txtconfig()+txt;
+		return txt;
+	}
+	var sxtcon=function (txt) {	
+		var mat=txt.match(/\[book_name\]([^\n]+)/);
+		bkname.value=mat?mat[1]:"";
+		if(!bkname.value){
+			mat=txt.match(/ptname@([^\n\/]+)/);
+			bkname.value=mat?mat[1]:"无书名";
+		}
+		mat=txt.match(/\[book_author\]([^\n]+)/);
+		bkauthor.value=mat?mat[1]:"";
+		if(!bkauthor.value){
+			mat=txt.match(/ptauthor@([^\n\/]+)/);
+			bkauthor.value=mat?mat[1].split("=").length>1?mat[1].split("=")[1]:"佚名":"佚名";
+		}
+		if(/\d/.test(bkauthor.value))bkauthor.value="佚名";
+		if(bkauthor.value[bkauthor.value.length-1]!=="㊣")bkauthor.value+="㊣";
+		mat=txt.match(/\[book_date\]([^\n]+)/);		
+		bkdate.value=mat?mat[1]:"";
+		if(!bkdate.value){
+			mat=txt.match(/ptauthor@([^\n\/]+)/);
+			bkdate.value=mat?mat[1].split("=")[0]:"未知";		
+		}
+		mat=txt.match(/\[book_copyright\]([^\n]+)/);
+		bkcopyright.value=mat?mat[1]:"";
+		if(!bkcopyright.value){
+			mat=txt.match(/ptcopyright@([^\n\/]+)/);
+			bkcopyright.value=mat?mat[1]:"玄之又玄 謂之大玄=學海無涯君是岸=書山絕頂吾为峰=大玄古籍書店獨家出版";
+		}
+		mat=txt.match(/\[book_type\]([^\n]+)/);
+		bktype.value=mat?mat[1]:"未分类";
+		mat=txt.match(/\[book_length\]([^\n]+)/);
+		bknum.value=mat?mat[1]:"";
+		mat=txt.match(/qrcode@([^\n]+)/);
+		bkqrcode.value=mat?decodeURIComponent(mat[1]):"false";
+		mat=txt.match(/brcode@([^\n\/]+)/);
+		bkbrcode.value=mat?mat[1]:"false";	
+		mat=txt.match(/costxt3@([^\n\/]+)/);
+		bkcostxt3.value=mat?mat[1]:"天行健 君子以自強不息$地勢坤 君子以厚德載物$隨風巽 君子以申命行事$漸雷震 君子以恐懼修省$善如水 君子以作事謀始$火同人 君子以類族辨物$步澤履 君子以辨民安誌$根山謙 君子以裒多益寡";
+		mat=txt.match(/ptdate@([^\n\/]+)/);
+		bkptdate.value=mat?mat[1]:new Date().getFullYear();
+		mat=txt.match(/book3d@([^\n\/]+)/);
+		bkbook3d.value=mat?mat[1]:"6,6,#ffffffff,1,20";
+		mat=txt.match(/dpi@([^\n\/]+)/);
+		bkdpi.value=mat?mat[1]:"0";
+	}
+	var txtrep=function (txt) {	
+		if(lock==1)return;
+		lock=1;
+		txt=txt.replace(/\r/g,"");
+		sxtcon(txt.slice(0,1500));
+		txt=txtcon(txt);			
+		node1 = tree.createNode(bkname.value,false,'images/star.png',null,null,'context1');
+		mat=txt.match(/\[book_title\][^\n]+/g);
+		var i =0;
+/*		var ntxt = txt.replace(/\[book_chapter\][^\n]+/g, function (val) {
+					i++;					
+					node2 = node1.createChildNode(val.replace("[book_chapter]",""), false, 'images/magic_ball.png',"setidx('cbk"+i+"')",'context1');	
+					val='<span id="cbk'+i+'">⚫</span>'+val;
+					return val;
+				});*/
+		var node3=[];
+		ntxt = txt.replace(/\[book_chapter\][^\n]+|\[book_title\][^\n]+/g, function (val) {
+					i++;
+					if(/\[book_chapter\]/.test(val)){
+						node2 = node1.createChildNode(val.replace("[book_chapter]",""), false, 'images/magic_ball.png',"setidx('cbk"+i+"',e)",'context1');	
+						val='<span id="cbk'+i+'">⚫</span>'+val;	
+					}
+					else{					
+						node3.push( node1.createChildNode(val.replace("[book_title]",""), false, 'images/blue_key.png',"setidx('tbk"+i+"',e)",'context1'));	
+						val='<span id="tbk'+i+'">⬛</span>'+val;
+					}
+					return val;
+				});
+		var spt=ntxt.split("⬛");	
+		if(spt.length>1){	
+			for (var k =1; k<spt.length; k++) {//从1开始0为[book_date]
+				var node4=[];
+				if(/\[book_node\][^\n]+/.test(spt[k])){
+					if(!/\[book_title\][^\n]+\n(\[book_node\]|\[book_nodeinfo\])/.test(spt[k]))
+					{	
+						spt[k] = spt[k].replace(/(<\/span>[^\n]+\n)/,"$1[book_nodeinfo]");
+						//if(/\[book_nodeinfo\]\[/.test(spt[k]))spt[k].replace(/\[book_nodeinfo\]/,"");
+					}
+				//console.log(spt[k]);
+				//spt[k] = spt[k].replace(/(\[book_node\]()+/g,"[book_node]");
+				}				
+				spt[k] = spt[k].replace(/(\[book_node\]|\[book_nodeinfo\])[^\n]{1,15}/g, function (val) {	
+					i++;
+					if(!node4.length&&/\[book_nodeinfo\]/.test(spt[k]))	
+					node4.push(node3[k-1].createChildNode(val.replace("[book_nodeinfo]",""), false, 'images/monitor.png',"setidx('sbk"+i+"',e)",'context1'));
+					else									
+					node4.push(node3[k-1].createChildNode(val.replace("[book_node]",""), false, 'images/tree.png',"setidx('sbk"+i+"',e)",'context1'));	
+					val='<span id="sbk'+i+'">◆</span>'+val;
+					return val;
+				});	
+				//console.log(node4);
+				var npt=spt[k].split("◆");
+				for (var m =0; m<npt.length; m++) {							
+						npt[m] = npt[m].replace(/\[book_point\][^\n]{1,15}/g, function (val) {
+								i++;
+								if(m)										
+								node5=node4[m-1].createChildNode(val.replace("[book_point]",""), false, 'images/leaf.png',"setidx('nbk"+i+"',e)",'context1');
+								else
+								node5=node3[k-1].createChildNode(val.replace("[book_point]",""), false, 'images/leaf.png',"setidx('nbk"+i+"',e)",'context1');	
+								val='<span id="nbk'+i+'">❖</span>'+val;
+								return val;
+							});
+					
+				}
+						
+				spt[k]=npt.join("◆");
+			
+			}
+		ntxt=spt.join("⬛");
+		}
+		else{
+			var node4=[];
+			ntxt = txt.replace(/\[book_node\][^\n]+/g, function (val) {
+					i++;				
+					node4.push(node1.createChildNode(val.replace("[book_node]",""), false, 'images/tree.png',"setidx('sbk"+i+"',e)",'context1'));	
+					val='<span id="sbk'+i+'">◆</span>'+val;
+					return val;
+				});
+			//console.log(node4);
+			var npt=ntxt.split("◆");
+			for (var m =0; m<npt.length; m++) {							
+					npt[m] = npt[m].replace(/\[book_point\][^\n]{1,15}/g, function (val) {
+							i++;
+							if(m)										
+							node5=node4[m-1].createChildNode(val.replace("[book_point]",""), false, 'images/leaf.png',"setidx('nbk"+i+"',e)",'context1');
+							else
+							node5=node3[k-1].createChildNode(val.replace("[book_point]",""), false, 'images/leaf.png',"setidx('nbk"+i+"',e)",'context1');	
+							val='<span id="nbk'+i+'">❖</span>'+val;
+							return val;
+						});
+				
+			}
+					
+			ntxt=npt.join("◆");
+		
+			}
+		
+		
+				
+		bkdiv.innerHTML=ntxt.replace(/\n/g,'<br/>');
+		
+		
+
+//		
+//		
+//		var patt = new RegExp("\\[book_title\\]([^\\n]+)","g");
+//		var result;
+//
+//		while ((result = patt.exec(txt)) != null)  {
+//			node2 = node1.createChildNode(result[1], false, 'images/blue_key.png',"setidx("+patt.lastIndex+")",'context1');
+//		  //document.write(result);
+////		  document.write("<br />");
+////		  document.write(patt.lastIndex);
+//		 }
+		
+
+		
+		
+		
+		
+		tree.drawTree();
+		lock=0;
+				
+	}
+	bkdiv.oncontextmenu = function (e) {
+					return false;
+					};
+var lastEditRange;					
+bkdiv.onclick =bkdiv.onkeyup= function () {
+            // 获取选定对象
+            var selection = getSelection();
+            // 设置最后光标对象
+            lastEditRange = selection.getRangeAt(0);
+        }
+var insdivtxt = function (tx,flg) {//flg=1为前�换行2为后换行
+	var selection = getSelection();
+	 if (lastEditRange) {
+			// 清除所有选区
+			selection.removeAllRanges();
+			// 添加最后光标还原之前的状态
+			selection.addRange(lastEditRange);
+		}
+	if(flg&2){
+	var br=document.createElement("br");
+	selection.getRangeAt(0).insertNode(br);
+	}
+
+	var emojiText = document.createTextNode(tx);
+	selection.getRangeAt(0).insertNode(emojiText);
+	if(flg&1){
+	var br=document.createElement("br");
+	selection.getRangeAt(0).insertNode(br);
+	}
+
+	var range = document.createRange();
+	range.setStart(emojiText,range.startOffset);
+	range.collapse(true);
+	selection.removeAllRanges();
+	selection.addRange(range);	
+							
+		}
+var insdiv = function (insval) {
+		var selection = getSelection();
+		 if (lastEditRange) {
+                // 清除所有选区
+                selection.removeAllRanges();
+                // 添加最后光标还原之前的状态
+                selection.addRange(lastEditRange);
+            }
+		//console.log(selection)
+		//console.log(selection.anchorNode.outerHTML)
+		//console.log(/bkdiv/.test(selection.anchorNode.outerHTML.substring(0,30)))	
+		if(!selection.anchorNode){bkdiv.innerHTML+=insval;return;}
+		if("undefined"!==typeof selection.anchorNode.outerHTML){
+			if(!/bkdiv|<div><br/.test(selection.anchorNode.outerHTML.substring(0,30)))return;
+		}
+		//if(selection.anchorOffset.parentNode.nodeName!=="DIV"&&selection.anchorOffset.parentNode.id!=="bkdiv")return;
+		var star=selection.anchorOffset;
+		var end=selection.focusOffset;
+		var nobr=0;
+		if(!/book_explain/.test(insval)){
+			if(selection.anchorNode.nodeValue){
+					if(insval[insval.length-1]=="#"){
+						nobr=1;
+						insval=insval.slice(0,-1);											
+					}
+				var cc=false;	
+				if("⚫⬛◆❖".indexOf(selection.anchorNode.nodeValue)>=0||selection.focusNode.nodeValue[0]=="[")cc=true;
+				if(cc){
+					alert("已经存在标签"+selection.anchorNode.nodeValue);
+					return;
+				}
+				if(insval[0]=="#"){
+						insval=insval.slice(1);
+						if(insval[insval.length-1]=="*"){
+							insval=insval.slice(0,-1);					
+							/*var emojiText = document.createTextNode("*");
+							selection.getRangeAt(0).insertNode(emojiText);*/
+							var br=document.createElement("br");
+							selection.getRangeAt(0).insertNode(br);								
+						
+						}
+						if(insval[insval.length-1]=="#"){
+							nobr=1;
+							insval=insval.slice(0,-1);												
+						}
+					
+					}
+			}
+		}else{
+			if(insval[0]=="#"){
+				insval=insval.slice(1);
+				if(insval[insval.length-1]=="*"){
+					insval=insval.slice(0,-1);					
+					var emojiText = document.createTextNode("*");
+					selection.getRangeAt(0).insertNode(emojiText);
+					var br=document.createElement("br");
+					selection.getRangeAt(0).insertNode(br);								
+				
+				}
+				if(insval[insval.length-1]=="#"){
+					nobr=1;
+					insval=insval.slice(0,-1);												
+				}
+			
+			}
+			else{
+				var emojiText = document.createTextNode("未命名"+insval.split("_")[1].slice(0,-1));
+				selection.getRangeAt(0).insertNode(emojiText);
+			}
+		}
+	
+		var tbr=bkdiv.innerHTML[end-1]?true:false;
+		var emojiText = document.createTextNode(insval);
+		selection.getRangeAt(0).insertNode(emojiText);
+		
+		
+		if(!/book_explain/.test(insval)){	
+			if(tbr&&!nobr){
+				var br=document.createElement("br");
+				selection.getRangeAt(0).insertNode(br);				
+			}
+		}
+		var range = document.createRange();
+		range.setStart(emojiText,range.startOffset);
+		range.collapse(true);
+		selection.removeAllRanges();
+		selection.addRange(range);					
+}					
+
+bkdiv.onmousedown = function (e) {
+		if (e.button == "2") {
+					if(document.getElementById("docr"))document.body.removeChild(document.getElementById("docr"));
+					e.stopPropagation();	
+					var tk = document.createElement('div');
+					tk.style.top = (e.pageY +50)+"px" ;
+					tk.style.left =(e.pageX +100) + "px";
+					tk.style.minWidth = "400px";
+					tk.style.minHeight ="100px";
+					tk.style.padding = '5px';
+					tk.style.color = '#00f';
+					tk.style.backgroundColor = '#0ff';
+					tk.style.position = "fixed";
+					tk.style.fontSize="16px";
+					tk.style.fontWeight="bold";
+					tk.style.fontFamily="Segoe UI Emoji";
+					tk.style.zIndex = 110;
+					tk.id="docr";
+					tk.oncontextmenu = function (e) {if(e.target.id!=="vtxs")return false;};				
+					document.body.appendChild(tk);
+					var Hdf = document.documentElement.clientHeight || document.body.clientHeight||document.documentElement.offsetHeight || document.body.offsetHeight;
+					tk.style.top =Math.min(bkhet.offsetHeight-300, e.clientY+20)+ "px" ;
+					var html='<strong style="background-color:#F00;cursor:default;">❎</strong><input style="width:100px;" id="vtxs" type="text" /><strong style="background-color:#FF0;cursor:default;" title="复制div框中选择的文本到输入框中">📜</strong> <strong style="background-color:#FF0;cursor:default;" title="粘贴前面输入框文本到div框中">📑</strong> <strong style="background-color:#FF0;cursor:default;" title="添加前面输入框文本到div框中成title">✚title</strong> <strong style="background-color:#FF0;cursor:default;" title="添加前面输入框文本到div框中成node">✚node</strong> <strong style="background-color:#FF0;cursor:default;" title="复制div框中选择的文本到剪切板中">复制</strong>  <strong style="background-color:#FF0;cursor:default;" title="粘贴剪切板文本到div框中">粘贴</strong><input type="checkbox" title="粘贴段落前加[book_title]"><input type="checkbox" title="粘贴段落前加[book_node]">  <strong style="background-color:#FF0;cursor:default;float:right;">❎</strong><hr/>';
+					for (var k = 0;k<htm.length; k+=2) {
+						html += "<span>"+ htm[k] + '</span><span style="position: absolute;left:50%;">'+ htm[k+1] + "</span><br/>"
+					}
+					
+					tk.innerHTML = html;
+					vtxs.ondblclick == function () {this.select();}
+					var TM=false;
+					tk.onmousedown = function (e) {
+						TM=true;
+						e.stopPropagation();	
+						if(e.target.innerHTML=="❎"){
+							document.body.removeChild(tk);
+							if(document.getElementById("docg"))document.body.removeChild(document.getElementById("docg"));
+							if(e.target.style.float!=="right")
+								bkdiv.onmousedown =bkdiv.oncontextmenu =null;
+							return false;	
+							}
+						if(e.target.innerHTML=="📑"){
+							TM=false;
+							var tit=vtxs.value;
+							tit="#"+tit+"#"
+							insdiv(tit);
+							return false;	
+							}
+						if(e.target.innerHTML=="📜"){
+							TM=false;
+							var txs=window.getSelection()||document.selection.createRange().text;
+							vtxs.value=txs.anchorNode.nodeValue.substring(txs.anchorOffset,txs.focusOffset);
+							vtxs.select();
+							document.execCommand("Copy");
+							return false;	
+							}
+						if(e.target.innerHTML=="✚title"){
+							TM=false;
+							var tit=vtxs.value[0]=="["?vtxs.value:"[book_title]"+vtxs.value;
+							tit="#"+tit+"*"
+							insdiv(tit);
+							return false;	
+							}
+						if(e.target.innerHTML=="✚node"){
+							TM=false;
+							var tit=vtxs.value[0]=="["?vtxs.value:"[book_node]"+vtxs.value;
+							tit="#"+tit;
+							insdiv(tit);
+							return false;	
+							}
+						if(e.target.innerHTML=="粘贴"){
+							TM=false;
+						/*	navigator.clipboard.read().then(function (tx) {
+								console.log(tx)	
+							for (var i in tx){
+								console.log(tx[i])
+								for (var k in tx[i].types){
+									console.log(tx[i].types[k])
+									if(tx[i].types[k]=="text/plain"){
+										tx[i].getType(tx[i].types[k]).then(function (blob) {
+											var reader = new FileReader();
+											reader.readAsText(blob);
+											reader.onload = function (e) {	
+											getSelection().getRangeAt(0).sertAdjacentHTML(e.target.result.replace(/\n/g,'<br/>'));
+												//insdivtxt(e.target.result.replace(/\n/g,'<br/>'));
+											};
+										})
+									}
+									
+								}
+							}
+							
+							})*/
+							
+						navigator.clipboard.readText().then(function (tx) {
+							
+							
+							var ckd=0;
+							if (tk.getElementsByTagName("input")[1].checked)ckd=1;
+							if (tk.getElementsByTagName("input")[2].checked)ckd=2;
+							//console.log(tx)
+							
+							tx=tx.replace(/\r/g,"");
+							if(ckd==0)tx=tx.replace(/\n+/g,"\n");
+							if(ckd==1)tx=tx.replace(/\n+/g,"\n[book_title]");
+							if(ckd==2)tx=tx.replace(/\n+/g,"\n[book_node]");
+							var tx=tx.split("\n");
+							
+							var selection = getSelection();
+							/*console.log(selection)
+									console.log(selection.focusNode)
+									console.log(selection.focusOffset)
+									console.log(selection.rangeCount)
+									
+									
+									var star=selection.anchorOffset;
+									var end=selection.focusOffset;
+									var ts=selection.focusNode.nodeValue.slice(0,star);
+									var te=selection.focusNode.nodeValue.slice(end);
+									selection.focusNode.nodeValue=ts+te
+									selection.removeAllRanges();
+									return*/
+							 if (lastEditRange) {
+									// 清除所有选区
+									selection.removeAllRanges();
+									// 添加最后光标还原之前的状态
+									selection.addRange(lastEditRange);
+								}
+								
+							for (var k =tx.length-1;k>=0;k--){
+								var emojiText = document.createTextNode(tx[k]);
+								selection.getRangeAt(0).insertNode(emojiText);
+								var br=document.createElement("br");
+								selection.getRangeAt(0).insertNode(br);						
+							}
+							var range = document.createRange();
+							range.setStart(emojiText,range.startOffset);
+							range.collapse(true);
+							selection.removeAllRanges();
+							selection.addRange(range);
+													
+							
+							
+							//insdivtxt(tx);
+						
+						})				
+
+							return false;	
+						}
+						if(e.target.innerHTML=="复制"){
+							TM=false;
+							var txs=window.getSelection()||document.selection.createRange().text;
+							vtxs.value=txs.anchorNode.nodeValue.substring(txs.anchorOffset,txs.focusOffset);
+						navigator.clipboard.writeText(vtxs.value).then(function () {})				
+
+							return false;	
+						}
+								
+						if(e.target.innerHTML[0]=="➤"){
+							mkcaps(true);
+							var itx=e.target.innerHTML.replace("➤插入","");
+							insdiv("["+itx+"]");														
+							return false;
+						}
+						if(e.target.innerHTML==htm[0]){
+							txtcover();							
+						}
+						if(e.target.innerHTML==htm[1]){
+							if(document.getElementById("tocr"))bkdiv.removeChild(document.getElementById("tocr"));
+							else{
+							var tc = document.createElement('textarea');
+							tc.value=bkdiv.innerHTML;
+							tc.style.width="calc(100% - 306px)";
+							tc.style.height="40%";
+							tc.style.position="fixed";
+							tc.style.left="294px";
+							tc.id="tocr";
+							bkdiv.insertBefore(tc,bkdiv.firstChild);
+							}
+						}
+							
+					}
+					tk.onmousemove = function (e) {
+						e.stopPropagation();
+						if(e.target.tagName == "INPUT")return false;
+						if (e.target.tagName == "SPAN") {
+							e.target.style.backgroundColor = '#F00';
+							e.target.style.cursor = "default";
+							e.target.onmouseout = function (e) {
+								this.style.backgroundColor = tk.style.backgroundColor;
+							}
+						}
+						else if (TM) {
+							tk.style.top = (e.clientY-20) + 'px';
+							tk.style.left = (e.clientX-100) + 'px';
+						}
+					}
+					tk.onmouseup = function (e) {
+						TM=false;
+					}
+		}
+}
+
+
+ 
+
+	openfile.onchange = function (e) {
+		e.stopPropagation();
+		var file = this.files[0];
+		if (!file)return;
+		txtpath.innerHTML=file.name;
+		var reader = new FileReader();
+		reader.readAsText(file);
+		reader.onload = function (e) {
+			if("undefined"!==typeof node1 )node1.removeNode();
+			txtrep(e.target.result);
+			mkcaps(true);
+			bkdiv.scrollTop =0;
+			try{localStorage.cxval="";}catch(e){}
+		}
+	}
+	document.onkeydown = function (e) {
+		//console.log(e);
+		 if (e.keyCode == 13||e.keyCode == 221) mkcaps(true);
+	}
+	var contex_menu = {
+		'context1' : {
+			elements : [
+			{
+					text : 'replace_[book_*]',
+					icon: 'images/expand.png',
+					action : function(node) {
+						
+						
+					},
+					submenu: {elements : [
+					
+					{
+					text : '[book_chapter]',
+					icon: 'images/magic_ball.png',
+					action : function(node) {
+						console.log(node)												
+						var txd=node.tag.split("'")[1];
+						document.getElementById(txd).innerHTML="⚫";
+						var txn=document.getElementById(txd).nextSibling;						
+						txn.nodeValue=txn.nodeValue.replace(/\[book_[a-z]+\]/,"[book_chapter]");						
+						//console.log(document.getElementById(txd).innerHTML);
+						//console.log(document.getElementById(txd).nextSibling.nodeValue);
+						var evt = document.createEvent('MouseEvents');
+						evt.initEvent('click', true, true);
+						document.getElementById("ul_"+node.id).previousElementSibling.dispatchEvent(evt);
+						document.getElementById("ul_"+node.id).previousElementSibling.firstElementChild.src="images/magic_ball.png";
+						
+					},
+					submenu: {elements : []}
+				},
+				{
+					text : '[book_title]',
+					icon: 'images/blue_key.png',
+					action : function(node) {						
+						var txd=node.tag.split("'")[1];
+						document.getElementById(txd).innerHTML="⬛";
+						var txn=document.getElementById(txd).nextSibling;						
+						txn.nodeValue=txn.nodeValue.replace(/\[book_[a-z]+\]/,"[book_title]");
+						var evt = document.createEvent('MouseEvents');
+						evt.initEvent('click', true, true);
+						document.getElementById("ul_"+node.id).previousElementSibling.dispatchEvent(evt);
+						document.getElementById("ul_"+node.id).previousElementSibling.firstElementChild.src="images/blue_key.png";
+						
+					},
+					submenu: {elements : []}
+				},
+				{
+					text : '[book_node]',
+					icon: 'images/tree.png',
+					action : function(node) {						
+						var txd=node.tag.split("'")[1];
+						document.getElementById(txd).innerHTML="◆";
+						var txn=document.getElementById(txd).nextSibling;						
+						txn.nodeValue=txn.nodeValue.replace(/\[book_[a-z]+\]/,"[book_node]");
+						var evt = document.createEvent('MouseEvents');
+						evt.initEvent('click', true, true);
+						document.getElementById("ul_"+node.id).previousElementSibling.dispatchEvent(evt);
+						document.getElementById("ul_"+node.id).previousElementSibling.firstElementChild.src="images/tree.png";
+						
+					},
+					submenu: {elements : []}
+				},
+				{
+									text : '[book_nodeinfo]',
+									icon: 'images/monitor.png',
+									action : function(node) {						
+										var txd=node.tag.split("'")[1];
+										document.getElementById(txd).innerHTML="◆";
+										var txn=document.getElementById(txd).nextSibling;						
+										txn.nodeValue=txn.nodeValue.replace(/\[book_[a-z]+\]/,"[book_nodeinfo]");
+										var evt = document.createEvent('MouseEvents');
+										evt.initEvent('click', true, true);
+										document.getElementById("ul_"+node.id).previousElementSibling.dispatchEvent(evt);
+										document.getElementById("ul_"+node.id).previousElementSibling.firstElementChild.src="images/tree.png";
+										
+									},
+									submenu: {elements : []}
+								},
+				{
+					text : '[book_point]',
+					icon: 'images/leaf.png',
+					action : function(node) {						
+						var txd=node.tag.split("'")[1];
+						document.getElementById(txd).innerHTML="❖";
+						var txn=document.getElementById(txd).nextSibling;						
+						txn.nodeValue=txn.nodeValue.replace(/\[book_[a-z]+\]/,"[book_point]");
+						var evt = document.createEvent('MouseEvents');
+						evt.initEvent('click', true, true);
+						document.getElementById("ul_"+node.id).previousElementSibling.dispatchEvent(evt);
+						document.getElementById("ul_"+node.id).previousElementSibling.firstElementChild.src="images/leaf.png";
+						
+					},
+					submenu: {elements : []}
+				},
+				
+					
+					
+					
+					]}
+				},
+			
+			
+			{
+					text : 'add_[book_*]',
+					icon: 'images/expand.png',
+					action : function(node) {
+						
+						
+					},
+
+					submenu: {elements : [
+									{
+									text : '添加复制_[book_]',
+									icon: 'images/key_green.png',
+									action : function(node) {
+										tree.expandTree();
+										var sll=stdiv.scrollTop;						
+										var txd=node.tag.split("'")[1];
+										var hm=document.getElementById(txd);
+										var txn=hm.nextSibling;										
+										var ext = document.createTextNode(txn.nodeValue);
+										var br=document.createElement("br");
+										txn.parentNode.insertBefore(ext,txn);	
+										txn.parentNode.insertBefore(br,txn);						
+										txtcover();									
+										tree.expandTree();
+										stdiv.scrollTop=sll;	
+									},
+									submenu: {elements : []}
+								},
+								{
+									text : '向上添加_[book_]',
+									icon: 'images/key_green.png',
+									action : function(node) {
+										tree.expandTree();
+										var sll=stdiv.scrollTop;
+										var txd=node.tag.split("'")[1];
+										var hm=document.getElementById(txd);
+										var txn=hm.nextSibling;
+										var tm=	txn.nodeValue;
+										tm=tm.replace("book_title","book_chapter");
+										tm=tm.replace("book_node","book_title");
+										tm=tm.replace("book_point","book_node");									
+										var ext = document.createTextNode(tm);
+										var br=document.createElement("br");
+										txn.parentNode.insertBefore(ext,txn);	
+										txn.parentNode.insertBefore(br,txn);						
+										txtcover();											
+										tree.expandTree();
+										stdiv.scrollTop=sll;
+									},
+									submenu: {elements : []}
+								},
+								{
+									text : '向下添加_[book_]',
+									icon: 'images/key_green.png',
+									action : function(node) {
+										tree.expandTree();
+										var sll=stdiv.scrollTop;						
+										var txd=node.tag.split("'")[1];
+										var hm=document.getElementById(txd);
+										var txn=hm.nextSibling;
+										var tm=	txn.nodeValue;
+										tm=tm.replace("book_node","book_point");
+										tm=tm.replace("book_title","book_node");
+										tm=tm.replace("book_chapter","book_title");									
+										var ext = document.createTextNode(txn.nodeValue);
+										txn.nodeValue=tm;
+										var br=document.createElement("br");
+										txn.parentNode.insertBefore(ext,txn);	
+										txn.parentNode.insertBefore(br,txn);						
+										txtcover();
+										tree.expandTree();
+										stdiv.scrollTop=sll;
+									
+									},
+									submenu: {elements : []}
+								},
+									
+									
+					
+					
+					]}
+				},
+			
+				{
+					text : 'delete_[book_*]',
+					icon: 'images/delete.png',
+					action : function(node) {						
+						var txd=node.tag.split("'")[1];
+						var hm=document.getElementById(txd);
+						var txn=hm.nextSibling;						
+						hm.outerHTML="";
+						txn.nodeValue=txn.nodeValue.replace(/\[book_[a-z]+\]/,"");
+						var evt = document.createEvent('MouseEvents');
+						evt.initEvent('click', true, true);
+						document.getElementById("ul_"+node.id).previousElementSibling.dispatchEvent(evt);
+						document.getElementById("ul_"+node.id).previousElementSibling.firstElementChild.src="images/delete.png";
+						
+					},
+					submenu: {elements : [
+					{
+					text : 'delete_all',
+					icon: 'images/delete.png',
+					action : function(node) {						
+						var txd=node.tag.split("'")[1];
+						var hm=document.getElementById(txd);
+						var txn=hm.nextSibling;						
+						txn.nodeValue=hm.outerHTML="";
+						var evt = document.createEvent('MouseEvents');
+						evt.initEvent('click', true, true);
+						document.getElementById("ul_"+node.id).previousElementSibling.dispatchEvent(evt);
+						document.getElementById("ul_"+node.id).previousElementSibling.firstElementChild.src="images/delete.png";
+						
+					},
+					submenu: {elements : []}
+				
+				},
+					
+					
+					
+					]}
+				
+				},
+
+				{
+					text : 'Node Actions',
+					icon: 'images/add1.png',
+					action : function(node) {
+
+					},
+					submenu: {
+						elements : [
+							{
+								text : 'Toggle Node',
+								icon: 'images/leaf.png',
+								action : function(node) {
+									node.toggleNode();
+								}
+							},
+							{
+								text : 'Expand Node',
+								icon: 'images/leaf.png',
+								action : function(node) {
+									node.expandNode();
+								}
+							},
+							{
+								text : 'Collapse Node',
+								icon: 'images/leaf.png',
+								action : function(node) {
+									node.collapseNode();
+								}
+							},
+							{
+								text : 'Expand Subtree',
+								icon: 'images/tree.png',
+								action : function(node) {
+									node.expandSubtree();
+								}
+							},
+							{
+								text : 'Collapse Subtree',
+								icon: 'images/tree.png',
+								action : function(node) {
+									node.collapseSubtree();
+								}
+							},
+							{
+								text : 'Delete Node',
+								icon: 'images/delete.png',
+								action : function(node) {
+									node.removeNode();
+								}
+							},
+						]
+					}
+				},
+				{
+					text : 'Child Actions',
+					icon: 'images/add1.png',
+					action : function(node) {
+
+					},
+					submenu: {
+						elements : [
+							{
+								text : 'Create Child Node',
+								icon: 'images/add1.png',
+								action : function(node) {
+									node.createChildNode('Created',false,'images/folder.png',null,'context1');
+								}
+							},
+							{
+								text : 'Create 1000 Child Nodes',
+								icon: 'images/add1.png',
+								action : function(node) {
+									for (var i=0; i<1000; i++)
+										node.createChildNode('Created -' + i,false,'images/folder.png',null,'context1');
+								}
+							},
+							{
+								text : 'Delete Child Nodes',
+								icon: 'images/delete.png',
+								action : function(node) {
+									node.removeChildNodes();
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	};
+
+	//Creating the tree
+	tree = createTree('div_tree','white',contex_menu);
+
+	//div_log = document.getElementById('div_log');
+
+	//Setting custom events
+	tree.nodeBeforeOpenEvent = function(node) {
+		//div_log.innerHTML += node.text + ': Before expand event<br/>';
+	}
+
+	tree.nodeAfterOpenEvent = function(node) {
+		//div_log.innerHTML += node.text + ': After expand event<br/>';
+	}
+
+	tree.nodeBeforeCloseEvent = function(node) {
+		//div_log.innerHTML += node.text + ': Before collapse event<br/>';
+	}
+
+	//Loop to create test nodes
+//	for (var i=1; i<10; i++) {
+//		node1 = tree.createNode('Level 0 - Node ' + i,false,'images/star.png',null,null,'context1');
+//		for (var j=1; j<5; j++) {
+//			node2 = node1.createChildNode('Level 1 - Node ' + j, false, 'images/blue_key.png',null,'context1');
+//			for (var k=1; k<5; k++) {
+//				node3 = node2.createChildNode('Level 2 - Node ' + k, false, 'images/monitor.png',null,'context1');
+//				/*for (var l=1; l<5; l++) {
+//					node4 = node3.createChildNode('Level 3 - Node ' + l, false, 'images/key_green.png',null,'context1');
+//					for (var m=1; m<5; m++) {
+//						node4.createChildNode('Level 4 - Node ' + m, false, 'images/file.png',null,'context1');
+//					}
+//				}*/
+//			}
+//		}
+//	}
+
+	//Rendering the tree
+	//tree.drawTree();
+
+	//Adding node after tree is already rendered
+	//tree.createNode('<a href="http://www.google.com">Link to Google</a',false,'images/leaf.png',null,null,'context1');
+
+
+try{var ctx= localStorage ? localStorage.cxval ? localStorage.cxval : "" : "";
+	if(ctx){
+	if("undefined"!==typeof node1 )node1.removeNode();
+	txtrep(ctx);}
+
+}catch(e){}
+
+var span=document.createElement("span");
+span.innerHTML='<strong style="position:fixed;top:12px;left:270px;background-color:#FF0;cursor:default;float:right;">✘关闭</strong>';
+mdiv.parentNode.insertBefore(span,mdiv.nextSibling);
+span.onclick = function (e) {
+		if(self !=top){	
+		try{localStorage.cxval =htmtotxt(bkdiv.innerHTML);
+			if(localStorage.cxval&&confirm('是否同步修改原窗口???'))window.parent.postMessage('$otxt=localStorage.cxval;lput.value=conftxt(localStorage.cxval)',"*");
+		}catch(e){}
+				window.parent.postMessage('$document.body.removeChild(ByID("diframe"))',"*");
+		}
+		else{
+		if(window.opener){
+			try{localStorage.cxval =htmtotxt(bkdiv.innerHTML);
+			if(localStorage.cxval&&confirm('是否同步修改原窗口???'))window.opener.postMessage('$otxt=localStorage.cxval;lput.value=conftxt(localStorage.cxval)',"*");
+		}catch(e){}
+		}
+		 window.close();
+		}
+	}
+};
+var spanx=document.createElement("span");
+spanx.innerHTML='<strong style="position:fixed;bottom:12px;left:270px;background-color:#FF0;cursor:default;float:right;">↑上置</strong>';
+mdiv.parentNode.insertBefore(spanx,mdiv.nextSibling);
+spanx.onclick = function (e) {
+	stdiv.scrollTop=0;
+	}
+var spanx=document.createElement("span");
+spanx.innerHTML='<strong class="btn" style="position:fixed;top:40px;left:258px;cursor:default;float:right;">⚠查</strong>';
+mdiv.parentNode.insertBefore(spanx,mdiv.nextSibling);
+spanx.onclick = function (e) {
+	var earr=[];
+	var num=0;
+	var tmp=function (arr) {
+		var p=0;
+		for (var k=0; k<arr.length; k++) {
+			if(al[k].offsetLeft){p++;num++;earr.push(al[k])}			
+		}
+		return p;
+	}
+	var txt="";	
+	var al=document.querySelectorAll('[id^="cbk"]');
+	console.log(al);
+	txt+=' <span data="'+num+'">⚫<span>'+tmp(al);	
+	var al=document.querySelectorAll('[id^="tbk"]');
+	txt+=' <span data="'+num+'">⬛<span>'+tmp(al);
+	var al=document.querySelectorAll('[id^="sbk"]');
+	txt+=' <span data="'+num+'">◆<span>'+tmp(al);
+	var al=document.querySelectorAll('[id^="nbk"]');
+	txt+=' <span data="'+num+'">❖<span>'+tmp(al);
+	div_log.innerHTML = txt;
+	div_log.onclick = function (e) {
+			if(earr.length){
+				var mp=earr.shift();
+				setidx(mp.id,e);
+			}
+	}
+	div_log.onmousemove = function (e) {
+			this.style.backgroundColor = '#0F0';
+			this.onmouseout = function (e) {
+								this.style.backgroundColor = this.previousElementSibling.style.backgroundColor;
+							}			
+	}
+	div_log.getElementsByTagName("input");
+	if(earr.length){
+		setTimeout(function () {
+		if(confirm('出错'+num+"个标记\n是否修复？")){
+			for (c in earr) {
+			var br=document.createElement("br");
+			earr[c].parentNode.insertBefore(br,earr[c]);
+			}
+		}
+		});
+	}
+	}
+
+function expand_all() {
+	tree.expandTree();
+}
+function clear_log() {
+	document.getElementById('div_log').innerHTML = '';
+}
+function setidx(id,e) {
+	if(!e)return;
+	var obj=document.getElementById(id);
+	console.log([bkdiv.offsetHeight,bkdiv.clientHeight,bkdiv.scrollHeight,e.clientY ,e.offsetY]);	
+	var rtop =obj.offsetTop;
+	var rleft =obj.offsetLeft;
+	if(bkdiv.offsetHeight-e.clientY<15)gbgs.checked=false;									
+	bkdiv.scrollTop =gbgs.checked?rtop-(e.clientY):rtop;
+	if(document.getElementById("ndiv"))document.body.removeChild(document.getElementById("ndiv"));
+		var tg = document.createElement('div');
+		tg.style.position = "absolute";
+		tg.style.backgroundColor = "rgba(255,0,0,0.3)";
+		tg.style.left = bkhet.style.left;
+		tg.style.width = bkhet.style.width;
+		tg.style.transition = "all 0.2s";
+		tg.style.pointerEvents = 'none';
+		tg.style.top = !gbgs.checked?10+"px":bkdiv.scrollTop?(e.clientY+10)+"px":(rtop+10)+"px";
+		if(bkdiv.scrollTop==bkdiv.scrollHeight-bkdiv.offsetHeight){
+			tg.style.top =(rtop-bkdiv.scrollTop+10)+"px";
+		}
+		tg.style.height = obj.offsetHeight+"px";
+		tg.style.zIndex = 112;								
+		tg.id="ndiv";			
+		document.body.appendChild(tg);
+
+	
+	//alert(idx);
+	
+	//var range = document.selection.createRange();
+	
+}
+bkdiv.onwheel=function (e) {
+	//alert(bkdiv.scrollTop)
+	console.log(e );if(document.getElementById("ndiv")){
+		document.getElementById("ndiv").style.top =( -e.deltaY+Number(document.getElementById("ndiv").style.top.replace('px', '')))+"px";
+		if(bkdiv.scrollTop==0||bkdiv.scrollTop==bkdiv.scrollHeight-bkdiv.offsetHeight){
+			document.getElementById("ndiv").style.backgroundColor = "rgba(255,0,255,0.6)";
+			setTimeout(function () {
+				if(document.getElementById("ndiv"))document.body.removeChild(document.getElementById("ndiv"));
+			},2000)
+		}
+	}
+}
+/*bkdiv.onscroll=function (e) {
+	console.log(e);
+	var dv=document.getElementById("ndiv");
+	if(dv){
+		var tp=Number(this.getAttribute("dvy"));
+		alert(this.scrollTop)
+		alert(tp)
+		dv.style.top =(Number(dv.style.top.replace('px', ''))+(this.scrollTop-tp))+"px";;
+	}
+}*/
+/*bkdiv.onclick =bkdiv.onkeyup= function () {
+            // 获取选定对象
+            var selection = getSelection();
+            // 设置最后光标对象
+            lastEditRange = selection.getRangeAt(0);
+        }*/
+
+function collapse_all() {
+	tree.collapseTree();
+}
+function down(name, data) {
+	var url = window.URL || window.webkitURL || window;
+	var Data = new Blob([data]);
+	if (window.navigator.msSaveBlob) {
+		window.navigator.msSaveBlob(Data, name);
+		return
+	}
+	var slink = document.createElementNS("http://www.w3.org/1999/xhtml", "a");
+	slink.href = url.createObjectURL(Data);
+	slink.download = name;
+	var ev = document.createEvent("MouseEvents");
+	ev.initMouseEvent(
+		"click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+	slink.dispatchEvent(ev);
+}
+
+</script>
+</body>
+</html>

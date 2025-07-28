@@ -1,0 +1,169 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* 遮罩层 */
+.modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.2);
+	z-index: 1000;
+}
+/* 弹窗 */
+.modal-content {
+	position: fixed;
+	top: 25%;
+	left: 60%;
+	margin-left: -25%;
+	width: 28%;
+	height: 20%;
+	min-width: 500px;
+	min-height: 256px;
+ border-radius: .125rem;
+	background-color: white;
+	z-index: 2;
+}
+.modal-body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.modal-body>.close {
+	float: right;
+	background-color: #F00;
+	border: medium double #00F;
+	cursor:default;
+}
+.mb_revise {
+ padding: 6px;
+}
+.mb_revise>p, .mb_revise>input {
+ 	padding: 2px;
+	font-family: 'FangSong', Times, serif;
+	font-size: 20px;
+	max-width: 98%;
+}
+.mb_revise>textarea {
+	width: 98%;
+ 	padding: 2px;
+	font-family: 'FangSong', Times, serif;
+	font-size: 18px;
+	font-weight: bold;
+	color: #00F;
+}
+.mb_revise>ul {
+	padding: 10px;
+ border: solid .125rem royalblue;
+}
+.mb_revise>ul>li {
+	font-size: 18px;
+	font-weight: bold;
+	color: #00F;
+	margin: 10px;
+}
+/* 确定和取消 */
+.deteadm, .deteok, .detesame, .deteup, .determine, .cancen {
+	position: absolute;
+	width: 60px;
+	height: 26px;
+	color: #fff;
+	border: 0;
+	outline: none;
+ 	box-shadow: 0 .125rem .125rem rgb(107, 96, 96);
+	cursor: pointer;
+	font-family: "黑体";
+	font-weight: bold;
+	font-size: medium;
+}
+.deteadm {
+	right: 290px;
+ 	bottom: 12px;
+	background-color: rgba(0, 0, 0, 0.788);
+}
+.deteok {
+	right: 360px;
+ 	bottom: 12px;
+	background-color: rgba(149, 64, 30, 0.788);
+}
+.detesame {
+	right: 220px;
+ bottom:12px;
+	background-color: rgba(219, 87, 5, 0.788);
+}
+.deteup {
+	right: 150px;
+ bottom:12px;
+	background-color: rgba(222, 52, 82, 0.788);
+}
+.determine {
+	right: 80px;
+ bottom: 12px;
+	background-color: rgba(49, 139, 245, 0.788);
+}
+.cancen {
+	right: 10px;
+ bottom: 12px;
+	background-color: rgba(154, 132, 238, 0.788);
+}
+.deteadm:hover,.deteok:hover, .detesame:hover, .deteup:hover, .determine:hover, .cancen:hover {
+	color: #fff;
+ box-shadow: 0 .134rem .1275rem rgb(58, 57, 57);
+}
+.deteadm:active,.deteok:active,.detesame:active, .deteup:active, .determine:active, .cancen:active {
+ box-shadow: 0 .134rem .1275rem rgba(230, 227, 227, .758);
+}
+.winpop {
+	position: fixed;
+	border: 1px solid #999999;
+	margin: 0;
+	padding: 1px;
+	overflow: hidden;
+	display: block;
+	background: #FFFFFF;
+	word-break:break-all;
+	z-index: 10001;
+	animation-name: mymove;
+	animation-duration: 1s;
+	/* Safari and Chrome */
+	-webkit-animation-name: mymove;
+	-webkit-animation-duration: 1s;
+}
+@keyframes mymove
+{
+	from {height:0px;}
+	to {height:200px;}
+}
+@-webkit-keyframes mymove /* Safari and Chrome */
+{
+	from {height:0px;}
+	to {height:200px;}
+}
+.winpop .title {
+	width: 100%;
+	height: 30px;
+	line-height: 26px;
+	background: #FFCC00;
+	font-weight: bold;
+	text-align: center;
+	font-size: 24px;
+}
+.winpop .con {
+	width: 100%;
+	line-height: 22px;
+	font-weight: bold;
+	font-size: 18px;
+	font-weight:bold;
+	text-decoration: underline;
+	text-align: center
+}
+.winpop .msgclose {
+	position: absolute;
+	right: 4px;
+	top: -1px;
+	color: #F00;
+	font-size: 24px;
+	cursor: pointer
+}

@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>古籍制作程序图片列表</title>
+    <style>
+body {
+	color: #00f;
+	margin: 0;
+	word-break:break-all;	
+}
+
+.content {
+    margin: 0 auto;
+	text-align: center;
+	
+}
+.content  img {
+	width: 150px;
+	height: auto;
+	border: 2px dotted #F00;
+	margin: 2px;
+}
+.grayscale {
+	filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='saturate' values='0'/></filter></svg>#grayscale");
+	-webkit-filter: grayscale(0);
+	filter: grayscale(0);
+	filter: gray
+}
+.grayscale.grayscale-fade {
+	transition: filter .5s
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+.grayscale.grayscale-fade {
+	-webkit-transition: -webkit-filter .5s;
+	transition: -webkit-filter .5s
+}
+}
+.grayscale.grayscale-fade:hover, .grayscale.grayscale-off {
+	-webkit-filter: grayscale(1);
+	filter: grayscale(1)
+}
+.grayscale.grayscale-replaced {
+	-webkit-filter: none;
+	filter: none
+}
+.grayscale.grayscale-replaced>svg {
+	-webkit-transition: opacity .5s ease;
+	transition: opacity .5s ease;
+	opacity: 1
+}
+.grayscale.grayscale-replaced.grayscale-fade:hover>svg, .grayscale.grayscale-replaced.grayscale-off>svg {
+	opacity: 0
+}
+.winpop {
+	position: fixed;
+	border: 1px solid #999999;
+	margin: 0;
+	padding: 1px;
+	overflow: hidden;
+	display: block;
+	background: #FFFFFF;
+	word-break:break-all;
+	z-index: 10001;
+	animation-name: mymove;
+	animation-duration: 1s;
+	/* Safari and Chrome */
+	-webkit-animation-name: mymove;
+	-webkit-animation-duration: 1s;
+}
+@keyframes mymove
+{
+	from {height:0px;}
+	to {height:200px;}
+}
+@-webkit-keyframes mymove /* Safari and Chrome */
+{
+	from {height:0px;}
+	to {height:200px;}
+}
+.winpop .title {
+	width: 100%;
+	height: 30px;
+	line-height: 26px;
+	background: #FFCC00;
+	font-weight: bold;
+	text-align: center;
+	font-size: 24px;
+}
+.winpop .con {
+	width: 100%;
+	line-height: 22px;
+	font-weight: bold;
+	font-size: 18px;
+	font-weight:bold;
+	text-decoration: underline;
+	text-align: center
+}
+.winpop .msgclose {
+	position: absolute;
+	right: 4px;
+	top: -1px;
+	color: #F00;
+	font-size: 24px;
+	cursor: pointer
+}
+
+    </style>
+</head>
+
+<body>
+图片目录：<span id="path"></span><hr/>
+<input name="rd" type="radio" checked="checked" id="ck"/>上图片{
+<input name="rd" type="radio" id="bk"/>下图片}
+<input type="checkbox" id="ck1"/>新建清空
+<input type="checkbox" id="ck2"/>自动替换
+<br/>
+上图片宽高：<input type="text" value="0,h1" size="8" id="spt" /><br/>
+下图片宽高：<input type="text" value="0,h1" size="8" id="spx"  /><br/>
+<div style="color:#F00;font-size:12px">
+<span style="color:#00F;">宽度</span>【图片所占有文字列数】默认0为算剩余半页列数，W全页列数w半页列数如：w-1，W-2，默认0<br/>
+<span style="color:#00F;">高度</span>【图片所占有文字列高度百分比】1为全高，h为宽度等比缩放高度,h1上半居中。h2下半居中，H为剩余高度，默认h<br/>
+<span style="color:#00F;">对齐</span>【当高度中有z左边框对齐有s上边框对齐y右边框对齐Y右半图片右边框对齐x下边框对齐;m页面下边框对齐中心，v页面上边框对齐中心,t字列上对齐。b字列下对齐.
+F在左边的图片取左半边右边的取右半边；两张图片全页面用；因此全边框对齐为zsyx，上半边框对齐为zsym 下半边框对齐为zvyx，全图片zsYx,字列对齐tb】;
+</div>
+<div class="content"></div>
+<script>
+var href = decodeURI(location.href);
+var harr=href.split("?");
+path.innerHTML=harr[2];
+function getUVAL(key,url) {
+	var u=url?url:location.search;
+	var r=decodeURIComponent(u)
+	var reg=new RegExp(key+"=([^&=]+)","im");
+	var v=r.match(reg);
+	return v;
+}
+var geturl = function (url,fun) {
+	var filespath={
+	"./images/body/images/MaJiaChangQiang/":"0001.png,0002.png,0003.png,0004.png,0005.png,0006.png,0007.png,0008.png,0009.png,0010.png,0011.png,0012.png,0013.png,0014.png,0015.png,0016.png,0017.png,0018.png,0019.png,0020.png,0021.png,0022.png,0023.png,0024.png,_00000.png,",
+	"./images/body/images/cesi/":"1.jpg,2.jpg,3.jpg,4.jpg,5.jpg,6.jpg,6.png,7.png,",
+	"./images/body/images/DaPinTianXianJue/":"1.png,2.png,",
+	"./images/body/images/FoJin/":"00000.png,00001.png,00002.png,00003.png,00004.png,0005.png,0006.png,XinJin1_l.png,XinJin1_r.png,XinJin_l.png,XinJin_r.png,",
+	"./images/body/images/GenYuShengJi/":"03_l.png,03_r.png,04_l.png,04_r.png,05_l.png,05_r.png,06_l.png,06_r.png,07_l.png,07_r.png,08_l.png,08_r.png,09_l.png,09_r.png,10_l.png,10_r.png,11_l.png,11_r.png,12_l.png,12_r (1).png,12_r.png,13_l.png,13_r.png,14_l.png,14_r.png,15_l.png,15_r.png,16_l.png,16_r.png,17_l.png,17_r.png,18_l.png,18_r.png,19_l.png,19_r.png,20_l.png,20_r.png,21_l.png,21_r.png,22_l.png,22_r.png,23_l.png,23_r.png,24_l.png,24_r.png,25_l.png,25_r.png,26_l.png,26_r.png,27_l.png,27_r.png,28_l.png,28_r.png,29_l.png,29_r.png,30_l.png,30_r.png,31_l.png,31_r.png,32_l.png,32_r.png,33_l.png,33_r.png,34_l.png,34_r.png,35_l.png,35_r.png,36_l.png,36_r.png,37_l.png,37_r.png,38_l.png,38_r.png,39_l.png,39_r.png,40_r.png,43_l.png,44_l.png,45_l.png,45_r.png,46_l.png,46_r.png,47_l.png,47_r.png,48_l.png,48_r.png,49_l.png,49_r.png,50_l.png,50_r.png,51_l.png,51_r.png,52_l.png,52_r.png,53_l.png,53_r.png,54_l.png,54_r.png,55_l.png,55_r.png,56_l.png,56_r.png,57_l.png,57_r.png,58_l.png,58_r.png,59_l.png,59_r.png,60_l.png,60_r.png,61_l.png,61_r.png,62_l.png,62_r.png,63_l.png,63_r.png,67_l.png,68_l.png,69_l.png,69_r.png,70_l.png,70_r.png,71_l.png,71_r.png,72_l.png,72_r.png,73_l.png,73_r.png,74_l.png,74_r.png,75_l.png,75_r.png,76_l.png,76_r.png,77_l.png,77_r.png,78_l.png,78_r.png,79_l.png,79_r.png,80_l.png,80_r.png,81_l.png,81_r.png,82_l.png,82_r.png,83_l.png,83_r.png,84_l.png,84_r.png,85_l.png,85_r.png,86_l.png,86_r.png,87_l.png,87_r.png,88_l.png,88_r.png,89_l.png,89_r.png,90_r.png,_00000.png,_00001.png,_00002.png,",
+	"./images/body/images/HuangTingJin/":"01.png,02.png,03.png,04.png,05.png,06.png,_0001.png,",
+	"./images/body/images/LiuHeJinQiang/":"0001.png,0002.png,0003.png,0004.png,0005.png,0006.png,0007.png,0008.png,0009.png,0010.png,0011.png,0012.png,0013.png,0014.png,0015.png,0016.png,0017.png,0018.png,0019.png,0020.png,0021.png,0022.png,0023.png,0024.png,_00000.png,",
+	"./images/body/images/LiuHeQiangHua/":"_00000.png,_长枪式图说_19.png,_长枪式图说_20.png,_长枪式图说_21.png,_长枪式图说_22.png,_长枪式图说_23.png,_长枪式图说_24.png,_长枪式图说_25.png,_长枪式图说_26.png,_长枪式图说_27.png,_长枪式图说_28.png,_长枪式图说_29.png,_长枪式图说_30.png,_长枪式图说_31.png,_长枪式图说_32.png,_长枪式图说_33.png,_长枪式图说_34.png,_长枪式图说_35.png,_长枪式图说_36.png,_长枪式图说_37.png,_长枪式图说_38.png,_长枪式图说_39.png,_长枪式图说_40.png,_长枪式图说_41.png,_长枪式图说_42.png,长枪式图说_03.png,长枪式图说_04.png,长枪式图说_05.png,长枪式图说_06.png,长枪式图说_07.png,长枪式图说_08.png,长枪式图说_09.png,长枪式图说_10.png,长枪式图说_11.png,长枪式图说_12.png,长枪式图说_13.png,长枪式图说_14.png,长枪式图说_15.png,长枪式图说_16.png,长枪式图说_17.png,长枪式图说_19.png,长枪式图说_20.png,长枪式图说_21.png,长枪式图说_22.png,长枪式图说_23.png,长枪式图说_24.png,长枪式图说_25.png,长枪式图说_26.png,长枪式图说_27.png,长枪式图说_28.png,长枪式图说_29.png,长枪式图说_30.png,长枪式图说_31.png,长枪式图说_32.png,长枪式图说_33.png,长枪式图说_34.png,长枪式图说_35.png,长枪式图说_36.png,长枪式图说_37.png,长枪式图说_38.png,长枪式图说_39.png,长枪式图说_40.png,长枪式图说_41.png,长枪式图说_42.png,",
+	"./images/body/images/MaChaGunPu/":"008.png,009.png,010.png,011.png,012.png,013.png,014.png,015.png,016.png,017.png,018.png,019.png,020.png,021.png,022.png,023.png,024.png,025.png,026.png,027.png,028.png,029.png,030.png,031.png,032.png,033.png,034.png,035.png,036.png,037.png,038.png,039.png,040.png,041.png,042.png,043.png,044.png,045.png,046.png,047.png,048.png,049.png,050.png,051.png,052.png,053.png,054.png,055.png,056.png,057.png,058.png,059.png,060.png,061.png,062.png,063.png,064.png,065.png,066.png,067.png,068.png,069.png,070.png,079.png,080.png,081.png,082.png,083.png,084.png,085.png,086.png,087.png,088.png,089.png,090.png,091.png,092.png,093.png,094.png,095.png,096.png,097.png,098.png,099.png,100.png,101.png,102.png,103.png,104.png,105.png,106.png,107.png,108.png,109.png,110.png,111.png,112.png,113.png,114.png,115.png,116.png,117.png,118.png,119.png,120.png,121.png,122.png,123.png,124.png,125.png,126.png,127.png,128.png,129.png,130.png,131.png,132.png,133.png,134.png,_00000.png,",
+	"./images/body/images/ShanHaiJin/":"山海经广注_10_l.png,山海经广注_10_r.png,山海经广注_11_l.png,山海经广注_11_r.png,山海经广注_12_r.png,山海经广注_13_l.png,山海经广注_14_l.png,山海经广注_14_r.png,山海经广注_15_l.png,山海经广注_15_r.png,山海经广注_16_l.png,山海经广注_16_r.png,山海经广注_17_l.png,山海经广注_17_r.png,山海经广注_18_l.png,山海经广注_18_r.png,山海经广注_19_l.png,山海经广注_19_r.png,山海经广注_20_l.png,山海经广注_20_r.png,山海经广注_21_l.png,山海经广注_21_r.png,山海经广注_22_l.png,山海经广注_22_r.png,山海经广注_23_l.png,山海经广注_23_r.png,山海经广注_2_l.png,山海经广注_31_l.png,山海经广注_32_l.png,山海经广注_32_r.png,山海经广注_33_l.png,山海经广注_33_r.png,山海经广注_34_l.png,山海经广注_34_r.png,山海经广注_35_l.png,山海经广注_35_r.png,山海经广注_36_l.png,山海经广注_36_r.png,山海经广注_37_l.png,山海经广注_37_r.png,山海经广注_38_l.png,山海经广注_38_r.png,山海经广注_39_l.png,山海经广注_39_r.png,山海经广注_3_l.png,山海经广注_3_r.png,山海经广注_40_l.png,山海经广注_40_r.png,山海经广注_41_l.png,山海经广注_41_r.png,山海经广注_42_l.png,山海经广注_42_r.png,山海经广注_43_l.png,山海经广注_43_r.png,山海经广注_44_l.png,山海经广注_44_r.png,山海经广注_45_l.png,山海经广注_45_r.png,山海经广注_46_l.png,山海经广注_46_r.png,山海经广注_47_l.png,山海经广注_47_r.png,山海经广注_48_l.png,山海经广注_48_r.png,山海经广注_49_l.png,山海经广注_49_r.png,山海经广注_4_l.png,山海经广注_4_r.png,山海经广注_50_l.png,山海经广注_50_r.png,山海经广注_51_l.png,山海经广注_51_r.png,山海经广注_52_l.png,山海经广注_52_r.png,山海经广注_53_l.png,山海经广注_53_r.png,山海经广注_54_l.png,山海经广注_54_r.png,山海经广注_55_l.png,山海经广注_55_r.png,山海经广注_56_l.png,山海经广注_56_r.png,山海经广注_58_l.png,山海经广注_59_l.png,山海经广注_59_r.png,山海经广注_5_l.png,山海经广注_5_r.png,山海经广注_60_l.png,山海经广注_60_r.png,山海经广注_61_l.png,山海经广注_61_r.png,山海经广注_62_l.png,山海经广注_62_r.png,山海经广注_63_l.png,山海经广注_63_r.png,山海经广注_64_l.png,山海经广注_64_r.png,山海经广注_65_l.png,山海经广注_65_r.png,山海经广注_66_l.png,山海经广注_66_r.png,山海经广注_67_l.png,山海经广注_67_r.png,山海经广注_68_l.png,山海经广注_68_r.png,山海经广注_69_r.png,山海经广注_6_l.png,山海经广注_6_r.png,山海经广注_70_l.png,山海经广注_71_l.png,山海经广注_71_r.png,山海经广注_72_l.png,山海经广注_72_r.png,山海经广注_73_l.png,山海经广注_73_r.png,山海经广注_74_l.png,山海经广注_74_r.png,山海经广注_75_l.png,山海经广注_75_r.png,山海经广注_76_l.png,山海经广注_76_r.png,山海经广注_77_l.png,山海经广注_77_r.png,山海经广注_78_l.png,山海经广注_78_r.png,山海经广注_79_l.png,山海经广注_79_r.png,山海经广注_7_l.png,山海经广注_7_r.png,山海经广注_80_l.png,山海经广注_80_r.png,山海经广注_81_l.png,山海经广注_81_r.png,山海经广注_82_l.png,山海经广注_82_r.png,山海经广注_83_l.png,山海经广注_83_r.png,山海经广注_84_l.png,山海经广注_84_r.png,山海经广注_85_r.png,山海经广注_8_l.png,山海经广注_8_r.png,山海经广注_9_l.png,山海经广注_9_r.png,",
+	"./images/body/images/TianGongKaiWu/":"_BOOK_L.png,_BOOK_R.png,天工開物_上123.png,天工開物_上124.png,天工開物_上125.png,天工開物_上126.png,天工開物_上127.png,天工開物_上128.png,天工開物_上129.png,天工開物_上130.png,天工開物_上131.png,天工開物_上132.png,天工開物_上133.png,天工開物_上134.png,天工開物_上135.png,天工開物_上136.png,天工開物_上137.png,天工開物_上146.png,天工開物_上147.png,天工開物_上148.png,天工開物_上149.png,天工開物_上150.png,天工開物_上151.png,天工開物_上159.png,天工開物_上160.png,天工開物_上163.png,天工開物_上21.png,天工開物_上22.png,天工開物_上23.png,天工開物_上24.png,天工開物_上27.png,天工開物_上28.png,天工開物_上29.png,天工開物_上30.png,天工開物_上31.png,天工開物_上32.png,天工開物_上33.png,天工開物_上34.png,天工開物_上39.png,天工開物_上40.png,天工開物_上41.png,天工開物_上42.png,天工開物_上72.png,天工開物_上73.png,天工開物_上74.png,天工開物_上75.png,天工開物_上76.png,天工開物_上77.png,天工開物_上80.png,天工開物_上81.png,天工開物_上82.png,天工開物_上83.png,天工開物_上92.png,天工開物_上93.png,天工開物_上94.png,天工開物_上95.png,天工開物_下101.png,天工開物_下102.png,天工開物_下103.png,天工開物_下110.png,天工開物_下111.png,天工開物_下112.png,天工開物_下113.png,天工開物_下117.png,天工開物_下118.png,天工開物_下124.png,天工開物_下125.png,天工開物_下126.png,天工開物_下127.png,天工開物_下128.png,天工開物_下17.png,天工開物_下18.png,天工開物_下19.png,天工開物_下20.png,天工開物_下21.png,天工開物_下22.png,天工開物_下23.png,天工開物_下24.png,天工開物_下29.png,天工開物_下30.png,天工開物_下31.png,天工開物_下32.png,天工開物_下37.png,天工開物_下38.png,天工開物_下39.png,天工開物_下40.png,天工開物_下43.png,天工開物_下44.png,天工開物_下45.png,天工開物_下61.png,天工開物_下62.png,天工開物_下71.png,天工開物_下72.png,天工開物_下73.png,天工開物_下74.png,天工開物_下75.png,天工開物_下76.png,天工開物_下77.png,天工開物_下78.png,天工開物_下85.png,天工開物_下86.png,天工開物_下87.png,天工開物_下90.png,天工開物_下91.png,天工開物_下92.png,天工開物_中100.png,天工開物_中101.png,天工開物_中104.png,天工開物_中105.png,天工開物_中11.png,天工開物_中112.png,天工開物_中113.png,天工開物_中114.png,天工開物_中119.png,天工開物_中12.png,天工開物_中122.png,天工開物_中125.png,天工開物_中13.png,天工開物_中135.png,天工開物_中136.png,天工開物_中137.png,天工開物_中138.png,天工開物_中139.png,天工開物_中14.png,天工開物_中149.png,天工開物_中15.png,天工開物_中150.png,天工開物_中151.png,天工開物_中152.png,天工開物_中153.png,天工開物_中154.png,天工開物_中19.png,天工開物_中20.png,天工開物_中21.png,天工開物_中22.png,天工開物_中31.png,天工開物_中32.png,天工開物_中33.png,天工開物_中34.png,天工開物_中35.png,天工開物_中45.png,天工開物_中46.png,天工開物_中47.png,天工開物_中48.png,天工開物_中49.png,天工開物_中50.png,天工開物_中55.png,天工開物_中56.png,天工開物_中57.png,天工開物_中58.png,天工開物_中76.png,天工開物_中77.png,天工開物_中78.png,天工開物_中79.png,天工開物_中84.png,天工開物_中85.png,天工開物_中86.png,天工開物_中87.png,天工開物_中98.png,天工開物_中99.png,",
+"./images/body/images/TuiBeiTu/":"0003.png,0004.png,0005.png,0006.png,0007.png,0008.png,0009.png,0010_l.png,0010_r.png,0011_l.png,0011_r.png,0012_l.png,0012_r.png,0013_l.png,0013_r.png,0014_l.png,0014_r.png,0015_l.png,0015_r.png,0016_l.png,0016_r.png,0017_l.png,0017_r.png,0018_l.png,0018_r.png,0019_l.png,0019_r.png,0020_l.png,0020_r.png,0021_l.png,0021_r.png,0022_l.png,0022_r.png,0023_l.png,0023_r.png,0024_l.png,0024_r.png,0025_l.png,0025_r.png,0026_l.png,0026_r.png,0027_l.png,0027_r.png,0028_l.png,0028_r.png,0029_l.png,0029_r.png,0030_l.png,0030_r.png,0031_l.png,0031_r.png,0032_l.png,0032_r.png,0033_l.png,0033_r.png,0034_l.png,0034_r.png,0035_l.png,0035_r.png,0036_l.png,0036_r.png,0037_l.png,0037_r.png,0038_l.png,0038_r.png,0039_l.png,0039_r.png,0040_l.png,0040_r.png,0041_l.png,0041_r.png,0042_l.png,0042_r.png,0043_l.png,0043_r.png,0044_l.png,0044_r.png,0045_l.png,0045_r.png,0046_l.png,0046_r.png,0047_l.png,0047_r.png,0048_l.png,0048_r.png,0049_l.png,0049_r.png,0050_l.png,0050_r.png,0051_l.png,0051_r.png,0052_l.png,0052_r.png,0053_l.png,0053_r.png,0054_l.png,0054_r.png,0055_l.png,0055_r.png,0056_l.png,0056_r.png,0057_l.png,0057_r.png,0058_l.png,0058_r.png,0059_l.png,0059_r.png,0060_l.png,0060_r.png,0061_l.png,0061_r.png,0062_l.png,0062_r.png,0063_l.png,0063_r.png,0064_l.png,0064_r.png,0065_l.png,0065_r.png,0066_l.png,0066_r.png,0067_l.png,0067_r.png,0068_l.png,0068_r.png,0069_l.png,0069_r.png,_00001.png,",
+"./images/body/images/XiYuanLu/":"宋提刑洗冤集录_10_l.png,宋提刑洗冤集录_10_r.png,宋提刑洗冤集录_11_l.png,宋提刑洗冤集录_11_r.png,宋提刑洗冤集录_12_l.png,宋提刑洗冤集录_12_r.png,宋提刑洗冤集录_13_l.png,宋提刑洗冤集录_13_r.png,宋提刑洗冤集录_14_l.png,宋提刑洗冤集录_14_r.png,宋提刑洗冤集录_15_l.png,宋提刑洗冤集录_15_r.png,宋提刑洗冤集录_16_l.png,宋提刑洗冤集录_16_r.png,宋提刑洗冤集录_17_l.png,宋提刑洗冤集录_17_r.png,宋提刑洗冤集录_18_l.png,宋提刑洗冤集录_18_r.png,宋提刑洗冤集录_19_l.png,宋提刑洗冤集录_19_r.png,宋提刑洗冤集录_20_l.png,宋提刑洗冤集录_20_r.png,宋提刑洗冤集录_21_l.png,宋提刑洗冤集录_21_r.png,宋提刑洗冤集录_22_l.png,宋提刑洗冤集录_22_r.png,宋提刑洗冤集录_23_l.png,宋提刑洗冤集录_23_r.png,宋提刑洗冤集录_24_l.png,宋提刑洗冤集录_24_r.png,宋提刑洗冤集录_25_l.png,宋提刑洗冤集录_25_r.png,宋提刑洗冤集录_26_l.png,宋提刑洗冤集录_26_r.png,宋提刑洗冤集录_27_l.png,宋提刑洗冤集录_27_r.png,宋提刑洗冤集录_28_l.png,宋提刑洗冤集录_28_r.png,宋提刑洗冤集录_29_l.png,宋提刑洗冤集录_29_r.png,宋提刑洗冤集录_30_l.png,宋提刑洗冤集录_30_r.png,宋提刑洗冤集录_31_l.png,宋提刑洗冤集录_31_r.png,宋提刑洗冤集录_32_l.png,宋提刑洗冤集录_32_r.png,宋提刑洗冤集录_33_l.png,宋提刑洗冤集录_33_r.png,宋提刑洗冤集录_34_l.png,宋提刑洗冤集录_34_r.png,宋提刑洗冤集录_35_l.png,宋提刑洗冤集录_35_r.png,宋提刑洗冤集录_36_l.png,宋提刑洗冤集录_36_r.png,宋提刑洗冤集录_37_l.png,宋提刑洗冤集录_37_r.png,宋提刑洗冤集录_38_l.png,宋提刑洗冤集录_38_r.png,宋提刑洗冤集录_39_l.png,宋提刑洗冤集录_39_r.png,宋提刑洗冤集录_3_l.png,宋提刑洗冤集录_40_l.png,宋提刑洗冤集录_40_r.png,宋提刑洗冤集录_41_l.png,宋提刑洗冤集录_41_r.png,宋提刑洗冤集录_42_l.png,宋提刑洗冤集录_42_r.png,宋提刑洗冤集录_43_l.png,宋提刑洗冤集录_43_r.png,宋提刑洗冤集录_44_l.png,宋提刑洗冤集录_44_r.png,宋提刑洗冤集录_45_l.png,宋提刑洗冤集录_45_r.png,宋提刑洗冤集录_46_l.png,宋提刑洗冤集录_46_r.png,宋提刑洗冤集录_47_l.png,宋提刑洗冤集录_47_r.png,宋提刑洗冤集录_48_l.png,宋提刑洗冤集录_48_r.png,宋提刑洗冤集录_49_l.png,宋提刑洗冤集录_49_r.png,宋提刑洗冤集录_4_l.png,宋提刑洗冤集录_4_r.png,宋提刑洗冤集录_50_l.png,宋提刑洗冤集录_50_r.png,宋提刑洗冤集录_51_r.png,宋提刑洗冤集录_5_l.png,宋提刑洗冤集录_5_r.png,宋提刑洗冤集录_6_l.png,宋提刑洗冤集录_6_r.png,宋提刑洗冤集录_7_l.png,宋提刑洗冤集录_7_r.png,宋提刑洗冤集录_8_l.png,宋提刑洗冤集录_8_r.png,宋提刑洗冤集录_9_l.png,宋提刑洗冤集录_9_r.png,",
+"./images/body/reptxt/0/":"大.png,玄.png,古.png,籍.png,制.png,作.png,軟.png,件.png,",
+"./images/body/reptxt/red/":"大.png,玄.png,古.png,籍.png,制.png,作.png,軟.png,件.png,",
+"./images/body/reptxt/blue/":"大.png,玄.png,古.png,籍.png,制.png,作.png,軟.png,件.png,",
+"./images/body/reptxt/green/":"大.png,玄.png,古.png,籍.png,制.png,作.png,軟.png,件.png,",
+	}		
+	if(/filespath=/.test(url)){
+		var key=getUVAL("filespath",url);
+		fun(filespath[key[1]]);
+	}
+
+}
+function rm(obj) {
+	document.querySelector(".content").removeChild(obj);
+}
+window.onload = function() {
+	if(/\/font\//.test(harr[2])){message ("提示","预览当前使用文字图<br/>不可作插图插入",8);}
+	try{var zt= localStorage ? localStorage.setimgwindck ? parseInt(localStorage.setimgwindck):0:0;
+		ck1.checked=(zt&1)?true:false;
+		ck2.checked=(zt&2)?true:false;
+		ck.checked=(zt&4)?true:false;
+		bk.checked=!ck.checked
+		}catch(e){}
+	geturl ("filespath="+harr[2],function(ret) {
+		var filelist=ret.split(",");
+		var txt="";
+			if(filelist&&filelist.length){
+				for (var i =0; i<filelist.length; i++) {
+				if(!filelist[i])continue;
+				txt+='<img onerror="rm(this)" class="grayscale grayscale-fade" src="../'+harr[2]+filelist[i]+'" title="'+filelist[i]+'">';
+				}
+				document.querySelector(".content").innerHTML=txt;				
+				document.querySelector(".content").onclick = function (e) {
+					if (e.target.tagName == "IMG") {
+						var src= decodeURI(e.target.src)
+						if(/\/images\/body\/reptxt\//.test(src)){
+							var imd=src.match(/\/images\/body\/reptxt\/([^.]+)/)[1];
+							window.opener.postMessage("#R"+imd,"*");
+							return;
+							
+						}		
+						if(!/\/images\/body\/images\//.test(src)){message ("提示","此为预览图片，<br>非\\body\\images\\<br>插图目录下图片不能插入",8,"#f00",1);return;}
+						var pt=/[\d\.\+\-wW]+,[\d\.\+\-hH]+/.test(spt.value)?spt.value.split(","):["0","h1"];				
+						pt="="+pt.join("=");
+						var px=/[\d\.\+\-wW]+,[\d\.\+\-hH]+/.test(spx.value)?spx.value.split(","):["0","h1"];				
+						px="="+px.join("=");
+						var zt=ck1.checked?1:0;
+						zt=ck2.checked?zt+2:zt;
+						var imd=e.target.getAttribute('title');
+						imd=ck.checked?"{{"+imd+pt+"}":"{}"+imd+px+"}";
+						window.opener.postMessage("#"+zt+imd,"*");
+					}
+				}		
+			}
+	});
+	
+	ck.onchange =bk.onchange =ck1.onchange =ck2.onchange =  function (e) { 
+		var zt=ck1.checked?1:0;
+		zt=ck2.checked?zt+2:zt;
+		zt=ck.checked?zt+4:zt;
+		try{localStorage.setimgwindck=zt;}catch(e){}
+	}
+};
+var messbox=[];	
+function message (title,con,time,color,align,wh) {
+	if(!color)color="#00f";
+	if(!wh)wh=[300,200];
+	con=con.replace(/[\r]*[\n]+/g,'<br/>');
+	var html='<div class="title">'+title+'</div><span class="msgclose">X</span><div  class="con" style="color:'+color+';">'+con+'</div>';
+	var tk = document.createElement('div');
+	tk.style.width=wh[0]+"px";
+	tk.style.height=wh[1]+"px";
+	tk.className ='winpop';
+	tk.style.right=0;
+	tk.style.bottom=0;
+	if(align&1)tk.style.left=0;
+	if(align&2)tk.style.top=0;
+	tk.innerHTML=html;
+	messbox.push(tk);	
+	document.body.appendChild(tk);
+	for (var i =0; i<messbox.length; i++) {
+		var m=messbox.length-1-i
+		if(m>0){
+			if(align&2)
+			messbox[i].style.top =(m*wh[1])+"px";
+			else
+			messbox[i].style.bottom =(m*wh[1])+"px";
+		}
+	}
+	document.querySelector(".msgclose").onclick=function(){this.parentNode.style.visibility="hidden";}
+	if(time){
+		setTimeout(function () {
+			document.body.removeChild(messbox.shift());	
+		}, time*1000);
+	}	
+}
+</script>
+</body>
+</html>

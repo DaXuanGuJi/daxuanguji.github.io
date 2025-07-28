@@ -1,0 +1,248 @@
+﻿var help = {
+	title : "设置参数",
+	bookpath : "指定封面字体图片目录",
+	backpath : "指定封面背景图片目录",
+	bodypath : "指定页面字体图片目录",
+	infopath : "指定页面字体特殊字符图片目录",
+	infoimage : "指定页面特殊字符infopath指定目录下包含的有效图片名称【强制纵向换行符$,强制纵向双行第二行换行符@,空白字符 图片为null.png,单双行开始字符[,单双行结束字符],强制横向换行符=,右下角标字符(,左下角标字符),下移字符!,上移字符^,标点符号，。；？！、”“》＞，空格横纵方向各8个8分▁▂▃▄▅▆▇█▉▊▋▌▍▎▏，横纵方向两个空格↓→，半高位~】",
+	nowhimage : "指定页面字体图片高度为0的字体图片$@=★☆",
+	backcolor : "指定底层默认背景颜色#ff0",
+	setheight : "设置界面缩放高度",
+	imgtype : "导出格式png jpg，压缩比0-1",
+	bookobj : "设置书本封面页面参数",
+	page : "设置封面/页面纸张大小",
+	height : "【设置封面/页面为双页面时的中间厚度,是否开启双页面标记《1为开启|0为关闭》】",
+	dpi : "指定封面/页面dpi大小《0为默认电脑浏览器dpi为96;打印图片应最低300dpi才清晰》",
+	bkpic : "【设置封面/页面背景图片大小位置[原图裁剪x,原图裁剪y,原图裁剪w,原图裁剪h,画布显示x,画布显示y,画布显示w,画布显示],[背景图片样式《默认xy平铺｜n不平铺|x平铺|y平铺｜s缩放》,图片路径],默认背景颜色】",
+	loads : "封面默认加载图形及背景颜色《可自行按样式添加;不影响使用》",
+	box : "向封面添加一个方形box【box在页面上大小位置[x,y,w,h]《相对位置为'X'全页面宽，'x'半页面宽，'H'全页面高，'h'半页面高，'T'全厚度，'t'半厚度，'d[0-3]'当前的x,y,w,h》,box背景颜色,box背景图片】",
+	namebox : "【书名box在页面上大小位置[x,y,w,h]《相对位置为'X'全页面宽，'x'半页面宽，'H'全页面高，'h'半页面高，'T'全厚度，'t'半厚度，'d[0-3]'当前的x,y,w,h》,box背景颜色,box背景图片】",
+	authorbox : "【作者box在页面上大小位置[x,y,w,h]《相对位置为'X'全页面宽，'x'半页面宽，'H'全页面高，'h'半页面高，'T'全厚度，'t'半厚度，'d[0-3]'当前的x,y,w,h》,box背景颜色,box背景图片】",
+	datebox : "【日期box在页面上大小位置[x,y,w,h]《相对位置为'X'全页面宽，'x'半页面宽，'H'全页面高，'h'半页面高，'T'全厚度，'t'半厚度，'d[0-3]'当前的x,y,w,h》,box背景颜色,box背景图片】",
+	copyrightbox : "【版权box在页面上大小位置[x,y,w,h]《相对位置为'X'全页面宽，'x'半页面宽，'H'全页面高，'h'半页面高，'T'全厚度，'t'半厚度，'d[0-3]'当前的x,y,w,h》,box背景颜色,box背景图片】",
+	text : "//向box添加text文字图片【text文字图片在box大小位置[左边距,上边距,右边距,下边距,文字横间距,文字纵间距],文字内容,文字图片路径,[文字背景颜色,是否平分间距《1是0否》],是否横向《1是0否》,[文字前景色,文字背景色]】",
+	name : "【书名文字图片在书名box大小位置[左边距,上边距,右边距,下边距,文字横间距,文字纵间距],文字内容,文字图片路径,[文字背景颜色,是否平分间距《1是0否》],是否横向《1是0否》,[文字前景色,文字背景色]】",
+	author : "【作者文字图片在作者box大小位置[左边距,上边距,右边距,下边距,文字横间距,文字纵间距],文字内容,文字图片路径,[文字背景颜色,是否平分间距《1是0否》],是否横向《1是0否》,[文字前景色,文字背景色]】",
+	date : "【日期文字图片在日期box大小位置[左边距,上边距,右边距,下边距,文字横间距,文字纵间距],文字内容,文字图片路径,[文字背景颜色,是否平分间距《1是0否》],是否横向《1是0否》,[文字前景色,文字背景色]】",
+	copyright : "【版权文字图片在版权box大小位置[左边距,上边距,右边距,下边距,文字横间距,文字纵间距],文字内容,文字图片路径,[文字背景颜色,是否平分间距《1是0否》],是否横向《1是0否》,[文字前景色,文字背景色]】",
+	cealbox : "【印章box在页面上大小位置[x,y,w,h]《相对位置为'X'全页面宽，'x'半页面宽，'H'全页面高，'h'半页面高，'T'全厚度，'t'半厚度，'d[0-3]'当前的x,y,w,h》,box背景颜色,box背景图片】",
+	qrbox : "【二维码box在页面上大小位置[x,y,w,h]《相对位置为'X'全页面宽，'x'半页面宽，'H'全页面高，'h'半页面高，'T'全厚度，'t'半厚度，'d[0-3]'当前的x,y,w,h》,box背景颜色,box背景图片】",
+	brbox : "【条形码box在页面上大小位置[x,y,w,h]《相对位置为'X'全页面宽，'x'半页面宽，'H'全页面高，'h'半页面高，'T'全厚度，'t'半厚度，'d[0-3]'当前的x,y,w,h》,box背景颜色,box背景图片】",
+	imagebox1 : "【自定义图片1box在页面上大小位置[x,y,w,h]《相对位置为'X'全页面宽，'x'半页面宽，'H'全页面高，'h'半页面高，'T'全厚度，'t'半厚度，'d[0-3]'当前的x,y,w,h》,box背景颜色,box背景图片】",
+	imagebox2 : "【自定义图片2box在页面上大小位置[x,y,w,h]《相对位置为'X'全页面宽，'x'半页面宽，'H'全页面高，'h'半页面高，'T'全厚度，'t'半厚度，'d[0-3]'当前的x,y,w,h》,box背景颜色,box背景图片】",
+	imagebox3 : "【自定义图片3box在页面上大小位置[x,y,w,h]《相对位置为'X'全页面宽，'x'半页面宽，'H'全页面高，'h'半页面高，'T'全厚度，'t'半厚度，'d[0-3]'当前的x,y,w,h》,box背景颜色,box背景图片】",
+	wtxt : "【自定义横文1文字图片在封面大小位置[左边距,上边距,右边距,下边距,文字横间距,文字纵间距],文字内容,文字图片路径,[文字背景颜色,是否平分间距《1是0否》],是否横向《1是0否》,[文字前景色,文字背景色]】",
+	wtxt2 : "【自定义横文2文字图片在封面大小位置[左边距,上边距,右边距,下边距,文字横间距,文字纵间距],文字内容,文字图片路径,[文字背景颜色,是否平分间距《1是0否》],是否横向《1是0否》,[文字前景色,文字背景色]】",
+	htxt : "【自定义纵文1文字图片在封面大小位置[左边距,上边距,右边距,下边距,文字横间距,文字纵间距],文字内容,文字图片路径,[文字背景颜色,是否平分间距《1是0否》],是否横向《1是0否》,[文字前景色,文字背景色]】",
+	htxt2 : "【自定义纵文2文字图片在封面大小位置[左边距,上边距,右边距,下边距,文字横间距,文字纵间距],文字内容,文字图片路径,[文字背景颜色,是否平分间距《1是0否》],是否横向《1是0否》,[文字前景色,文字背景色]】",
+	bodyobj : "设置书本内容页面参数",
+	pageindex : "页面初始序号,双数为右面开始，单数为左封面开始",
+	pagemerge : "页面合并标记,1从后往前翻书",
+	nullpage : "翻页字符标记[全页,半页],空页面字符标记(若第一字为#则按样式创建空白页若第一二字都为#则按空白页样式创建当前页文字),空页面样式，1bk,2tbk,4cel,8txtbk,16txtbox,32picbox,64pageidx,128pagewat",
+	zeropage : "第0页面样式，0空白，1显示边框,2显示字列,4显示页码",
+	pagespt : "拆分合并书页多少开8，16，32，64.128自动运算范围0不拆分1只拆分不合并2提示选择开数后拆分后合并3自动选择拆分后合并，4以上为开数拆分后合并",
+	tcn : "提取中文选项设置选择项记录",
+	tbr : "【指定封面/页面字体图片纵向换行分列符,横向换行符分行符=,文字内容强制纵向换行分列第一行标记字符$,文字强制纵向换行分列第二行标记字符@,文字右下角标标记字符★,文字左下角标标记字符☆】",
+	line : "【文字内容双行开始字符[,文字内容双行结束字符]】",
+	flag : "设置开启边框分列线文字颜色标记",
+	bk : "开启边框显示",
+	cel : "开启分列线显示",
+	txtbk : "开启文字列宽背景显示",
+	txtbox : "开启文字前景色背景色显示",
+	path : "【文字图片目录,替换文字图片目录】",
+	subpath : "设置当前使用字体图片子目录，为空使用默认字体图片，各种书籍字体分开使用可方便管理删除，【当前文字图片所在子目录,当前替换文字图片所在子目录.当前页面内图片所在子目录】",
+	txt : "待显示图片输入文本",
+	ret : "【替换图片输入文本《单文字序号替换如:1=0/百｜指定文字替换如:百=0/百》则可将图片替换为替换文字图片目录下的子目录0文件夹下的百.png图片】",
+	retpath : "替换文字图片目录下的子目录0,red,blue,green，设置此值只是方便右键单击输入文字时快速插入替换文本",
+	color : "【文字默认前景色，文字默认背景色】",
+	pcolor : "【插图默认前景色，插图默认背景色,通道(0r，1g，2b，3a，-1平均)，阀值,透明时显示底层还是原图层0底层1原图前景2原图背景3原图前背景】",
+	bk : "设置内容页面边框参数",
+	tbj : "边框外边距左上右下",
+	tbw : "边框宽度左上右下",
+	tbn : "边框内边距左上右下",
+	tbc : "边框颜色左上右下",
+	tbm : "边框虚实线样式左上右下【实线长度,虚线间隔长度】",
+	tbt : "边框图片样式左上右下左上右下【《默认xy平铺｜n不平铺|x平铺|y平铺｜s缩放》,图片路径】",
+	twd : "字符间距左上右下",
+	col : "设置内容页面分列线参数",
+	title : "设置内容页面分列线参数",
+	cls : "单页面列数",
+	clj : "分列线宽度",
+	tjj : "【双列x向中间靠拢间隔字宽多少百分比,宽度占字宽多少百分比】",
+	tjb : "【角标字符向两边移出字宽多少百分比,宽度占字宽多少百分比,字符个数】",
+	clt : "【[分列线颜色,分列线虚实线样式],[分列线图片样式,分列线图片路径],[[分列线颜色上,下边距]，[分列线图片上.下边距]]】",
+	tlt : "【字列背景颜色,[字列图片样式,字列图片路径],[[字列颜色上,下边距]，[字列图片上.下边距]]】",
+	pgx : "设置页码",
+	wat : "设置水印图标",
+	loc : "设置box内文字边距和样式",
+	atxt : "设置水印文字",
+	and : "水印文字内边距，box增量。文字。路径,背景色,[样式snxy,背景图片设置无用为前面文字占用位]",
+	pic : "设置页面插图",
+	imgpage : "上半图片文字从下方显示，若是第一字不会换行，若是字中会换行到顶部，下半图片,【插入图片换行置顶用{,内容中用}】",
+	imgset : "上半图片默认列数宽度【默认0为算剩余半页列数，W全页列数w半页列数如：w-1，W-2】，默认高度【文字列高度百分比，1为全高，h为宽度等比缩放高度,h1上半居中。h2下半居中，H为剩余高度，默认h】,下半图片默认列数宽度，默认高度",
+	imgtxt : "指定页面图片按页面依次加载[页面:图片名=宽度（指定宽多少列数0为默认自动算半页剩余w为对称剩余W为总列剩余）=高度（行高百分比）]",
+	info : "打开界面时默认页面",
+	A0 : "设置A0纸张大小",
+	A1 : "设置A1纸张大小",
+	A2 : "设置A2纸张大小",
+	A3 : "设置A3纸张大小",
+	A4 : "设置A4纸张大小",
+	A5 : "设置A5纸张大小",
+	A6 : "设置A6纸张大小",
+	B0 : "设置B0纸张大小",
+	B1 : "设置B1纸张大小",
+	B2 : "设置B2纸张大小",
+	B3 : "设置B3纸张大小",
+	B4 : "设置B4纸张大小",
+	B5 : "设置B5纸张大小",
+	B6 : "设置B6纸张大小",
+	custom : "设置自定义纸张大小",
+	tbrUD : "重新定义之后的顶边距离[10,0]"
+}
+help["ptceal"] = "设置修改:ptset.backpath的值";
+help["tbookht"] = "设置修改:ptset.bookobj.height[0]的值";
+help["tbodyht"] = "设置修改:ptset.bodyobj.height[0]的值";
+help["tbackpic"] = "设置修改:ptset.backimage[1]的值\n文件名前加?开头图片从书籍页面图片目录找否则从back目录找";
+help["tbookpic"] = "设置修改:ptset.bookobj.bkpic[1][1]的值\n文件名前加?开头图片从书籍页面图片目录找否则从back目录找";
+help["tbodypic"] = "设置修改:ptset.bodyobj.bkpic[1][1]的值\n文件名前加?开头图片从书籍页面图片目录找否则从back目录找";
+help["tbodybk"] = "设置修改:ptset.bodyobj.bk.tbt[0-3][1]的值";
+help["tbodycel"] = "设置修改:ptset.bodyobj.col.clt[1][1]的值";
+help["tbodycelnum"] = "设置修改:ptset.bodyobj.col.cls的值";
+help["ttxtcel"] = "设置修改:ptset.bodyobj.col.tlt[1][1]的值";
+help["txtfc"] = "设置修改:ptset.bodyobj.color[0]的值";
+help["txtbc"] = "设置修改:ptset.bodyobj.color[1]的值";
+help["cosimg1"] = "设置修改:ptset.bookobj.box.imagebox0[1]的值";
+help["cosimg2"] = "设置修改:ptset.bookobj.box.imagebox01[0][2]宽度ptset.bookobj.box.imagebox01[1]颜色的值";
+help["cosimg3"] = "设置修改:ptset.bookobj.box.imagebox2[1]的值";
+help["costxt1"] = "设置修改:ptset.bookobj.text.wtxt[1]的值";
+help["costxt2"] = "设置修改:ptset.bookobj.text.wtxt2[1]的值";
+help["costxt3"] = "设置修改:ptset.bookobj.text.htxt[1]的值";
+help["costxt4"] = "设置修改:ptset.bookobj.text.htxt2[1]的值";
+help["backpic"] = "设置修改:ptset.backcolor的值";
+help["bookpic"] = "设置修改:ptset.bookobj.bkpic[2]的值";
+help["bodypic"] = "设置修改:ptset.bodyobj.bkpic[2]的值";
+help["bodybk"] = "设置修改:ptset.bodyobj.bk.tbc=的值";
+help["bodycel"] = "设置修改:ptset.bodyobj.col.clt[0][0]的值";
+help["txtcel"] = "设置修改:ptset.bodyobj.col.tlt[0]的值";
+help["ptname"] = "设置修改:ptset.bookobj.loads.text.name[1]的值";
+help["ptauthor"] = "设置修改:ptset.bookobj.loads.text.author[1]的值";
+help["ptcopyright"] = "设置修改:ptset.bookobj.loads.text.copyright[1]的值";
+help["ptdate"] = "设置修改:ptset.bookobj.loads.text.date[1]的值";
+help["het"] = "设置修改:页面高度";
+help["wid"] = "设置修改:页面宽度";
+help["dpi"] = "设置修改:ptset.bookobj.dpi/ptset.bodyobj.dpi的值";
+help["brcode"] = "设置修改:ptset.bookobj.box.brbox[2][1]的值";
+help["brsize"] = "设置修改:条形码宽高";
+help["brcolor"] = "设置修改:条形码颜色";
+help["brwh"] = "设置修改:条形码字符大小";
+help["qrcode"] = "设置修改:ptset.bookobj.box.qrbox[2][1]的值";
+help["qrwh"] = "设置修改:二维码宽,高，边框宽度,计算模式【+-7内】";
+help["qrcolor"] = "设置修改:二维码暗，亮颜色，边框颜色";
+help["qrrx"] = "设置修改:二维码容错0-3";
+help["picpath"] = "放置图片文件路径";
+help["rptcel"] = "设置修改:ptset.bodyobj.flag.cel的值";
+help["rptpage"] = "设置修改:ptset.bookobj.height[1]/ptset.bodyobj.height[1]的值";
+help["rptbk"] = "设置修改:ptset.bodyobj.flag.bk的值";
+help["rpttbk"] = "设置修改:ptset.bodyobj.flag.txtbk的值";
+help["rpttxt"] = "设置修改:ptset.bodyobj.flag.txtbox的值";
+help["rptname"] = "文字横纵向\n设置修改:ptset.bookobj.loads.text.name[4]的值";
+help["rptauthor"] = "文字横纵向\n设置修改:ptset.bookobj.loads.text.author[4]的值";
+help["rptcopyright"] = "文字横纵向\n设置修改:ptset.bookobj.loads.text.copyright[4]的值";
+help["rptdate"] = "文字横纵向\n设置修改:ptset.bookobj.loads.text.date[4]的值";
+help["setex"] = "；加载修改:ptset配置";
+help["loadobj"] = "；加载修改:ptset配置文件";
+help["expobj"] = "导出ptset配置为文件";
+help["wpyt"] = "设置web服务器地址";
+help["pytexe"] = "启动web服务器";
+help["cmdexe"] = "置顶web服务器";
+help["rdb"] = "加载页面纸张大小";
+help["rda"] = "加载封面纸张大小";
+help["qpimg"] = "缩放图像至全屏宽度";
+help["qpspan"] = "缩放图像至全屏宽度";
+help["ptbody"] = "根据页面文本及配置生成页面";
+help["ptbook"] = "根据封面配置生成封面";
+help["lput"] = "输入页面文本;ctrl+右键插入替换文本;alt+右键插入替换图片";
+help["rput"] = "输入页面替换文本;ctrl+右键修改替换文本";
+help["rept"] = "选择替换文本的目录";
+help["saveobj"] = "保存配置到localStorage";
+help["reobj"] = "清空localStorage配置";
+help["pgs"] = "选择纸张";
+help["ptwat"] = "设置修改:ptset.bodyobj.wat.atxt.and[2]的值";
+help["kanpng"] = "查看图像全图";
+help["savepng"] = "保存图像为图片";
+help["savepdf"] = "保存图像为pdf";
+help["rebody"] = "重新生成页面";
+help["ptallpng"] = "自动生成封面和所有页面";
+help["ptallpdf"] = "将封面和所有页面导出成pdf";
+help["stup"] = "上移压缩设置界面";
+help["stdw"] = "下移扩张设置界面";
+help["txtpfc"] = "设置修改:ptset.bodyobj.pcolor[0]的值";
+help["txtpbc"] = "设置修改:ptset.bodyobj.pcolor[1]的值";
+help["loadtxt"] = "读取TXT文本";
+help["reloadtxt"] = "重新加载TXT文本";
+help["loadurltxt"] = "读取TXT文本中的一段";
+help["loadurltxtlast"] = "指定每次读取TXT文本中的一段为多少字";
+help["covertxt"] = "根据后面勾选提取TXT文本中需要的字";
+help["kaisu"] = "选择生成书籍的开数";
+help["splitimg"] = "将生成的书页按选择开数拆分合并";
+help["lmerge"] = "生成书籍从左往右阅读";
+help["rmerge"] = "生成书籍从右往左阅读";
+help["cktxtp"] = "全勾选/全不勾选";
+help["txtpath"] = "放置TXT文件路径";
+help["autopng"] = "自动分页保存png标记";
+help["autopdf"] = "自动分页保存pdf标记";
+help["rptpgidx"] = "设置修改:ptset.bodyobj.flag.pageidx的值";
+help["rptbkT"] = "设置修改:ptset.bodyobj.flag.Tbk的值";
+help["rptwat"] = "设置修改:ptset.bodyobj.flag.pagewat的值";
+help["mput"] = "输入图片序列文本;";
+help["tbodyrand"] ="开启字符随机0本地字符图片1联网随机字符图片2本地字体\n设置修改:ptset.bodyobj.trand的值" ;
+help["settop"] ="菜单随屏幕滚动" ;
+help["listpage"] ="先勾选自动保存png后;再多选可自动生成保存png，不要用点击页面按钮生成是根据文本框" ;
+help["loadback"] ="自动加载上次自动保存的同页面备份" ;
+help["autoback"] ="生成页面后自动保存当前页面备份" ;
+help["thisfpage"] ="左翻页;右为空是双倍页码=左右相同为双倍前-页码右0左2右2左4右4左6右6" ;
+help["thisrpage"] ="右翻页;左为空是双倍页码=左右相同为双倍前-页码右1左3右3左5右5左7右7" ;
+help["tbodyimg"] ="双击快速选择当前设置图片目录下插入图片\n设置修改:ptset.bodyobj.subpath[2]的值" ;
+help["tbodytxt"] ="双击预览当前设置的字体目录下的字体图片\n设置修改:ptset.bodyobj.subpath[0]的值" ;
+help["txtp"] ="设置页面文本的字体目录" ;
+help["imgp"] ="设置页面文本图片目录" ;
+help["retp"] = "设置页面替换文本目录";
+help["pvopg"] ="上一页" ;
+help["nextpg"] ="下一页" ;
+help["usize"] ="加载文本每次加载字符数量" ;
+help["rptptxt"] = "设置修改:ptset.bodyobj.flag.picbox的值";
+help["rptag"] = "设置修改:ptset.bodyobj.flag.tag的值";
+help["loadpage"] ="加载导出的json文件" ;
+help["exppage"] ="将当前页面图片地址和图片标记导出为json，方便下次加载修改" ;
+help["fontfm"] ="修改封面所有字体为同一样式" ;
+help["book3dk"] ="勾选是预览查看，不勾选是保存【生成淘宝封面图片时用】" ;
+help["ptfengx"] ="缝线宽度，缝线横线颜色，，缝线竖线颜色" ;
+help["coverpytxtflg"] ="是否开启拼音输出" ;
+help["fda"] ="ptset.bookobj.setmode=1" ;
+help["fdb"] ="ptset.bookobj.setmode=0" ;
+help["tda"] ="ptset.bodyobj.setmode=1" ;
+help["tdb"] ="ptset.bodyobj.setmode=0" ;
+help["mdbkname"] ="输入缝线内显示书名的背景颜色,文字颜色" ;
+help["debugzero"] ="调试0页面" ;
+help["debugtxt"] ="调试记录保存当前txt内容；下次不用重新输入" ;
+help["mergeval"] ="页面合并参数【生成图片的开始页序号[0或1只与奇偶有关]，\n拆分后合并生成图片的开始页序号；[0为正常合并只能半页半页读，因为左右同页面开数后会在纸张的正反面，1为全页面。会将页码错开合并，需要对照页码装订],\n是否弹出对话框确认选择[0否1是]】" ;
+help["nullval"] ="空页面样式[1bk,2Tbk,4cel,8txtbk,16txtbox,32picbox,64pageidx,128pagewat,],\n显示书名字体样式[1右半页面2左半页面3左右两面],\n显示条形码样式[1右半页面2左半页面3左右两面],\n第0页面样式[0空白，1显示边框,2显示字列,4显示页码,8书名标题;需要空页面样式数字先开启],\n第0页面第1页样式[0空白，1显示边框,2显示字列,4显示页码,8书名标题;需要空页面样式数字先开启]" ;
+help["tdb"] ="ptset.bodyobj.setmode=0" ;
+help["tdb"] ="ptset.bodyobj.setmode=0" ;
+help["tdb"] ="ptset.bodyobj.setmode=0" ;
+help["stus"] ="验证本地字体图片是否存在" ;
+help["stureadbtn"] ="生成有声书籍" ;
+help["stuf"] ="特殊字符说明" ;
+help["stuk"] ="txt书籍编辑器" ;
+help["stut"] ="根据ttf字体生成图片字体" ;
+help["stupk"] ="图片字体打包成dt文件和dtx索引文件" ;
+help["stuupk"] ="解包成dt文件和dtx索引文件" ;
+help["stud"] ="删除字体图片文件夹下所有文件" ;
+help["stub"] ="转到维基网站" ;
+help["stuc"] ="安装crx维基插件" ;
+
+help["startIndex"]="ptset.bodyobj.pageindex";
+
+/*help[""] ="" ;
+help[""] ="" ;
+help[""] ="" ;*/

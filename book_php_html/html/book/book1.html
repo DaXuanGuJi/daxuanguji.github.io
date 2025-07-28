@@ -1,0 +1,956 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+<style>
+textarea {
+	font-family: "微软雅黑", Tahoma, Arial, Helvetica, sans-serif, TH-Tshyn-P0, TH-Tshyn-P1, TH-Tshyn-P2;
+}
+#bkdiv span {
+	color: red;
+}
+.btn {
+	display: inline;
+	padding: 2px 4px;
+	margin-bottom: 0;
+	font-size: 18px;
+	font-weight: 200;
+	line-height: 20px;
+	color: #FFF;
+	text-align: center;
+	white-space: nowrap;
+	box-shadow: 0 0 #74a3b0;
+	background-color: #669;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+.btn:hover {
+	background-color: #699DD1;
+	border-color: #e74c3c
+}
+input[id^='sethtm'] {
+	background-color: #960;
+}
+input[type='button'] {
+	margin-top: 4px;
+	padding: 1px 2px;
+	;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="css/Aimara.css">
+<body>
+<div style="position:fixed;width:100%;height:100%;">
+  <div id="stdiv" style="word-break:break-all;padding: 0px 4px;border: 2px solid blue;position:fixed;overflow-x: hidden;float:left;width:300px;height: 98%;">
+    <input type="button" id='loadtxt' value="打开文本" />
+    <input type="button" id='savetxt' value="保存文本" />
+    <input type="button" id='undotxt' value="撤消0" />
+    <input type="button" id='reftxt' value="刷新" />
+    <input type="button" id='mdiv' ref="stck1" value="☰" title="隐藏设置选项内容，增大书签空间" />
+    <br/>
+    <span id="txtpath" style="font-size:14px;color:#F00;"></span>
+    <input name="" id ="openfile" type="file" style="display:none" accept="text/plain"/>
+    <br/>
+    <input type="button" id='setck1' class="btn" value="⚙book" />
+    <input type="button" id='setck2' class="btn" value="⚙config" />
+    <input type="button" id='setck3' class="btn" value="⚑标记" />
+    <input type="button" id='setck4' class="btn" value="➤插入" />
+    <div id="stck1" style="display:block">
+      <hr/>
+      书名：
+      <input id="bkname" type="text" />
+      <input type="button" id='Hname' value="⛝" />
+      <br/>
+      作者：
+      <input id="bkauthor" type="text" />
+      <input type="button" id='Hauthor' value="⛝" />
+      <br/>
+      朝代：
+      <input id="bkdate" type="text" />
+      <input type="button" id='Hdate' value="⛝" />
+      <br/>
+      版权：
+      <input type="text" id="bkcopyright"/>
+      <input type="button" id='Hcopyright' value="⛝" />
+      <br/>
+      分类：
+      <input type="text" id="bktype"/>
+      <input type="button" id='Htype' value="⛝" />
+      <br/>
+      字数：
+      <input id="bknum" type="text" />
+      <input type="button" id='Hlength' value="⛝" />
+      <br/>
+    </div>
+    <div id="stck2" style="display:none">
+      <hr/>
+      二维码：
+      <input id="bkqrcode" type="text" />
+      <input type="button" id='Nqrcode' value="⛝" />
+      <br/>
+      条形码：
+      <input id="bkbrcode" type="text" />
+      <input type="button" id='Nbrcode' value="⛝" />
+      <br/>
+      封面诗：
+      <input id="bkcostxt3" type="text" />
+      <input type="button" id='Ncostxt3' value="⛝" />
+      <input type="button" id='setcostxt3' value="✏" />
+      <select id="cos3list" style="display:none;overflow:hidden;width:100%;"></select>
+      <br/>
+      发行年：
+      <input type="text" id="bkptdate"/>
+      <input type="button" id='Nptdate' value="⛝" />
+      <br/>
+      封面3d：
+      <input type="text" id="bkbook3d"/>
+      <input type="button" id='Nbook3d' value="⛝" />
+      <br/>
+      打印dpi：
+      <input id="bkdpi" type="text" />
+      <input type="button" id='Ndpi' value="⛝" />
+      <br/>
+    </div>
+    <div id="stck3" style="display:none">
+      <hr/>
+      <input type="button" id='sethtm1' class="btn" value="⚡双空行替换成➢[book_chapter]" />
+      <hr/>
+      <input type="button" id='sethtm2' class="btn" value="⚡单空行替换成➢[book_title]" />
+      <hr/>
+      <input type="button" id='sethtm3' class="btn" value="⚡行字小于20替换成➢[book_node]" />
+      <hr/>
+      <input type="button" id='sethtm4' class="btn" value="⚡行字大于20替换成➢[book_point]" />
+      <hr/>
+      <input type="button" id='sethtm5' class="btn" value="❌删除所有标记" />
+      <hr/>
+      <input type="button" id='sethtm6' class="btn" value="❌删除空行" />
+      <hr/>
+      <input type="button" id='sethtm7' class="btn" value="❌删除标记➢[book_chapter]" />
+      <hr/>
+      <input type="button" id='sethtm8' class="btn" value="❌删除标记➢[book_title]" />
+      <hr/>
+      <input type="button" id='sethtm9' class="btn" value="❌删除标记➢[book_node]" />
+      <hr/>
+      <input type="button" id='sethtm10' class="btn" value="❌删除标记➢[book_point]" />
+    </div>
+    <div id="stck4" style="display:none"></div>
+    <hr/>
+    <button onClick="expand_all()">展开</button>
+    <button onClick="collapse_all()">收缩</button>
+    <div id="div_tree"></div>
+  </div>
+  <div id="bkhet"style="position:fixed;border: 2px solid red;left:326px;width: calc(100% - 336px);height: 98%;">
+    <div id="bkdiv" contenteditable="true" style="word-break:break-all;overflow-x: hidden;width:100%;height:100%;color: #00F;background-color: #9F6;font-size: 18px;font-weight: bold;"></div>
+  </div>
+</div>
+<script src="lib/Aimara.js" type="text/javascript"></script> 
+<script type="text/javascript">
+window.onload = function() {
+var cos3arr=[]
+cos3arr.push("$$难难难$道最玄$莫把金丹作等闲$不遇至人传妙诀$空言口困舌头乾$$");	
+setcostxt3.onclick=function(e) {
+		cos3list.style.display="inline-block";
+		cos3list.innerHTML="";			
+		cos3arr.unshift(bkcostxt3.value);
+		cos3arr.sort();
+		var res = [cos3arr[0]];
+		for (var i = 0; i < cos3arr.length; i++) {
+			if (!cos3arr[i])continue;
+			if (cos3arr[i] !== res[res.length - 1])res.push(cos3arr[i]);
+		}
+		cos3arr=res;
+		cos3list.options.add(new Option(bkcostxt3.value, bkcostxt3.value));
+		for (var i in cos3arr) {		
+			cos3list.options.add(new Option(cos3arr[i], cos3arr[i]));
+		}
+}
+cos3list.onchange=function(e) {
+		bkcostxt3.value=this.value;
+		this.style.display="none";
+		var evt = document.createEvent('HTMLEvents');
+		evt.initEvent('change', true, true);
+		bkcostxt3.dispatchEvent(evt);
+
+}
+var lock=0;	
+var caps=[];
+var htm = ["🔄刷新修改","🔄查看源文","➤插入book_chapter","➤插入book_name","➤插入book_title","➤插入book_author","➤插入book_node","➤插入book_date","➤插入book_point","➤插入book_copyright","➤插入book_explain[","➤插入book_type","➤插入book_explain]","➤插入book_length"];	
+var mkcaps=function (flg) {
+	if(flg){
+		caps.push(bkdiv.innerHTML);
+		if(caps.length>25)caps.shift();
+		undotxt.value="撤消"+caps.length;
+		
+	}
+	else{			
+		undotxt.value="撤消"+caps.length;
+		if(caps.length==1)return caps[0];
+		return caps.pop();
+	}
+	
+}
+var txtcover=	function () {
+	if("undefined"!==typeof node1 )node1.removeNode();
+		var slit=bkdiv.getElementsByTagName("span");
+		for (var k = slit.length-1;k>=0; k--) {
+			slit[k].outerHTML="";
+		}
+		var tt=bkdiv.innerHTML.replace(/<div>/g,"\n");
+		tt=tt.replace(/<\/div>/g,"");
+		tt=tt.replace(/(<br[\s\/]*>)+/g,"\n");
+		tt=tt.replace(/[\n]+/g,"\n");
+		//alert(tt)
+		txtrep(tt);
+}
+var htmtotxt=	function (html,fun) {
+		if(lock==1)return;
+		var tk=html.replace(/<span[^<]+<\/span>/g,"");
+	 	tk=tk.replace(/<div>([^<])/g,"\n$1");
+		tk=tk.replace(/<[\/]*div>/g,"");
+		tk=tk.replace(/(<br[\s\/]*>)/g,"\n");
+		if(fun)tk=fun(tk);
+		tk=tk.replace(/\n{3,}/g,"\n\n\n");
+		
+		return tk;
+		}
+	undotxt.onclick = function (e) {
+		bkdiv.innerHTML=mkcaps(false);
+	}
+	reftxt.onclick = function (e) {
+		txtcover();
+	}
+	sethtm1.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML,
+		function (e){
+			e=e.replace(/\n{3,}([^\n\[]+)\n+/g,"\n[book_chapter]$1\n[book_title]");
+			return e;
+		});					
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(tt);
+	}
+	sethtm2.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML,		
+		function (e){
+			e=e.replace(/\n{2,}([^\n\[]+)\n/g,"\n[book_title]$1\n");
+			return e;
+		});
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(tt);
+	}
+	sethtm3.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML);				
+		tt=tt.replace(/\n([^\n\[]{1,20})\n/g,"\n[book_node]$1\n");
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(tt);
+	}
+	sethtm4.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML);				
+		tt=tt.replace(/\n([^\n\[]{21,})\n/g,"\n[book_point]$1\n");
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(tt);
+	}
+	sethtm5.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML);
+		var sp=tt.split(/\[config\]/g);
+		sp[0]=sp[0].replace(/\n+/g,"\n");
+		sp[1]=sp[1].replace(/\n+/g,"\n");
+		sp[2]=sp[2].replace(/\[book_chapter\]/g,"\n\n");
+		sp[2]=sp[2].replace(/\[book_title\]/g,"\n");					
+		sp[2]=sp[2].replace(/\[book_[^\]]+\]/g,"");	
+		tt=sp.join("[config]");
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(tt);
+	}
+	sethtm6.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML);
+		tt=tt.replace(/\n+/g,"\n");
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(tt);
+	}
+	sethtm7.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML);
+		var sp=tt.split(/\[config\]/g);
+		sp[2]=sp[2].replace(/\[book_chapter\]/g,"\n\n");
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(sp.join("[config]"));
+	}
+	sethtm8.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML);
+		var sp=tt.split(/\[config\]/g);
+		sp[2]=sp[2].replace(/\[book_title\]/g,"\n");
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(sp.join("[config]"));
+	}
+	sethtm9.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML);
+		var sp=tt.split(/\[config\]/g);
+		sp[2]=sp[2].replace(/\[book_node\]/g,"");	
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(sp.join("[config]"));
+	}	
+	sethtm10.onclick = function (e) {
+		mkcaps(true);
+		var tt=htmtotxt(bkdiv.innerHTML);
+		var sp=tt.split(/\[config\]/g);
+		sp[2]=sp[2].replace(/\[book_point\]/g,"");	
+		if("undefined"!==typeof node1 )node1.removeNode();
+		txtrep(sp.join("[config]"));
+	}
+	mdiv.onclick = function (e) {
+		var obj=document.getElementById(this.getAttribute('ref'));
+		obj.style.display=obj.style.display=="block"?"none":"block";
+		
+	}																													
+	setck1.onclick = function (e) {
+		stck1.style.display="block";
+		stck2.style.display="none";
+		stck3.style.display="none";
+		stck4.style.display="none";
+		mdiv.setAttribute('ref',"stck1");
+	}
+	setck2.onclick = function (e) {
+		stck2.style.display="block";
+		stck1.style.display="none";
+		stck3.style.display="none";
+		stck4.style.display="none";
+		mdiv.setAttribute('ref',"stck2");
+	}
+	setck3.onclick = function (e) {
+		stck3.style.display="block";
+		stck1.style.display="none";
+		stck2.style.display="none";
+		stck4.style.display="none";
+		mdiv.setAttribute('ref',"stck3");
+	}
+	setck4.onclick = function (e) {
+		if(!stck4.innerHTML){
+			var html='';var htmk='';
+			for (var k = 2;k<htm.length; k+=2) {								
+				htmk += '<hr/><input type="button" id="M'+k+'" class="btn" value="'+ htm[k] + '" />';
+				html += '<hr/><input type="button" id="M'+k+'" class="btn" value="'+ htm[k+1] + '" />';
+			}
+			stck4.innerHTML=htmk+html;
+		}
+		stck3.style.display="none";
+		stck1.style.display="none";
+		stck2.style.display="none";
+		stck4.style.display="block";
+		mdiv.setAttribute('ref',"stck4");
+	}
+	loadtxt.onclick = function (e) {	
+		openfile.value="";
+		openfile.focus();
+		var evt = document.createEvent('MouseEvents');
+		evt.initEvent('click', true, true);
+		openfile.dispatchEvent(evt);
+	}
+	savetxt.onclick = function (e) {
+		var tt=htmtotxt(bkdiv.innerHTML);
+		down(bkname.value+".txt",tt);
+	}
+	stdiv.onclick = function (e) {	
+		if(e.target.id[0]=="H"){
+			e.target.previousElementSibling.value="";
+			//var reg=new RegExp("\\[book_"+e.target.id.slice(1)+"\\][^<\\n]*","");
+			//bkdiv.innerHTML=bkdiv.innerHTML.replace(reg,"[book_"+e.target.id.slice(1)+"]"+e.target.previousElementSibling.value);
+		}
+		if(e.target.id[0]=="N"){
+			e.target.previousElementSibling.value="";
+			//var reg=new RegExp(e.target.id.slice(1)+"@[^<\\n]*","");
+			//bkdiv.innerHTML=bkdiv.innerHTML.replace(reg,e.target.id.slice(1)+"@"+e.target.previousElementSibling.value);
+		}
+		if(e.target.id[0]=="M"){
+			mkcaps(true);
+			var itx=e.target.value.replace("➤插入","");
+			insdiv("["+itx+"]");
+		}			
+	}
+	stdiv.onchange = function (e) {
+		e.stopPropagation();
+		if(e.target.type="text" ){		
+			if(e.target.nextElementSibling.id[0]=="N"){
+				var reg=new RegExp(e.target.nextElementSibling.id.slice(1)+"@[^<\\n]*","");
+				if(!reg.test(bkdiv.innerHTML)){
+					bkdiv.innerHTML=e.target.nextElementSibling.id.slice(1)+"@"+e.target.value+"\n"+bkdiv.innerHTML;
+					txtcover();
+				}
+				bkdiv.innerHTML=bkdiv.innerHTML.replace(reg,e.target.nextElementSibling.id.slice(1)+"@"+e.target.value);
+			}
+			if(e.target.nextElementSibling.id[0]=="H"){
+				var reg=new RegExp("\\[book_"+e.target.nextElementSibling.id.slice(1)+"\\][^<\\n]*","");
+				if(!reg.test(bkdiv.innerHTML)){
+					bkdiv.innerHTML="[book_"+e.target.nextElementSibling.id.slice(1)+"]"+e.target.value+"\n"+bkdiv.innerHTML;
+					txtcover();
+				}
+				bkdiv.innerHTML=bkdiv.innerHTML.replace(reg,"[book_"+e.target.nextElementSibling.id.slice(1)+"]"+e.target.value);
+			}
+			mkcaps(true);
+		}
+	}
+	
+	var txtconfig=function () {	
+		var con="[config]\n";
+		con+="qrcode@"+bkqrcode.value+"\n";
+		con+="brcode@"+bkbrcode.value+"\n";
+		con+="costxt3@"+bkcostxt3.value+"\n";
+		con+="ptdate@"+bkptdate.value+"\n";
+		con+="book3d@"+bkbook3d.value+"\n";
+		con+="dpi@"+bkdpi.value+"\n";
+		if(bkname.value.replace(/[^\u3400-\uFAD9]+/g,"").length>4){	
+			con+="namebox-y@-5\n";
+			con+="namebox-h@30\n";
+		}
+		con+="[config]\n";
+		return con;
+	}
+	var txtcon=function (txt) {	
+		txt=txt.replace(/\[book_name\][^\n]*\n/,"");
+		txt=txt.replace(/\[book_author\][^\n]*\n/,"");
+		txt=txt.replace(/\[book_date\][^\n]*\n/,"");
+		txt=txt.replace(/\[book_copyright\][^\n]*\n/,"");
+		txt=txt.replace(/\[book_type\][^\n]*\n/,"");
+		txt=txt.replace(/\[book_length\][^\n]*\n/,"");
+		txt=txt.replace(/\[config\]([\W\w]+)\[config\]\n*/,"\n");
+		bknum.value=txt.length;
+		var con="[book_name]"+bkname.value+"\n";
+		con+="[book_author]"+bkauthor.value+"\n";
+		con+="[book_date]"+bkdate.value+"\n";
+		con+="[book_copyright]"+bkcopyright.value+"\n";
+		con+="[book_type]"+bktype.value+"\n";
+		con+="[book_length]"+bknum.value+"\n";
+		txt=con+txtconfig()+txt;
+		return txt;
+	}
+	var sxtcon=function (txt) {	
+		var mat=txt.match(/\[book_name\]([^\n]+)/);
+		bkname.value=mat?mat[1]:"";
+		if(!bkname.value){
+			mat=txt.match(/ptname@([^\n\/]+)/);
+			bkname.value=mat?mat[1]:"无书名";
+		}
+		mat=txt.match(/\[book_author\]([^\n]+)/);
+		bkauthor.value=mat?mat[1]:"";
+		if(!bkauthor.value){
+			mat=txt.match(/ptauthor@([^\n\/]+)/);
+			bkauthor.value=mat?mat[1].split("=").length>1?mat[1].split("=")[1]:"佚名":"佚名";
+		}
+		mat=txt.match(/\[book_date\]([^\n]+)/);		
+		bkdate.value=mat?mat[1]:"";
+		if(!bkdate.value){
+			mat=txt.match(/ptauthor@([^\n\/]+)/);
+			bkdate.value=mat?mat[1].split("=")[0]:"未知";
+		}
+		mat=txt.match(/\[book_copyright\]([^\n]+)/);
+		bkcopyright.value=mat?mat[1]:"";
+		if(!bkcopyright.value){
+			mat=txt.match(/ptcopyright@([^\n\/]+)/);
+			bkcopyright.value=mat?mat[1]:"大玄正宗";
+		}
+		mat=txt.match(/\[book_type\]([^\n]+)/);
+		bktype.value=mat?mat[1]:"未分类";
+		mat=txt.match(/\[book_length\]([^\n]+)/);
+		bknum.value=mat?mat[1]:"";
+		mat=txt.match(/qrcode@([^\n\/]+)/);
+		bkqrcode.value=mat?mat[1]:"无二维码";
+		mat=txt.match(/brcode@([^\n\/]+)/);
+		bkbrcode.value=mat?mat[1]:"978019953217";	
+		mat=txt.match(/costxt3@([^\n\/]+)/);
+		bkcostxt3.value=mat?mat[1]:"$$难难难$道最玄$莫把金丹作等闲$不遇至人传妙诀$空言口困舌头乾$$";
+		mat=txt.match(/ptdate@([^\n\/]+)/);
+		bkptdate.value=mat?mat[1]:new Date().getFullYear();
+		mat=txt.match(/book3d@([^\n\/]+)/);
+		bkbook3d.value=mat?mat[1]:"10,18,#ffffffff,3,20";
+		mat=txt.match(/dpi@([^\n\/]+)/);
+		bkdpi.value=mat?mat[1]:"0";
+	}
+	var txtrep=function (txt) {	
+		if(lock==1)return;
+		lock=1;
+		txt=txt.replace(/\r/g,"");
+		sxtcon(txt.slice(0,1500));
+		txt=txtcon(txt);			
+		node1 = tree.createNode(bkname.value,false,'images/star.png',null,null,'context1');
+		mat=txt.match(/\[book_title\][^\n]+/g);
+		var i =0;
+/*		var ntxt = txt.replace(/\[book_chapter\][^\n]+/g, function (val) {
+					i++;					
+					node2 = node1.createChildNode(val.replace("[book_chapter]",""), false, 'images/magic_ball.png',"setidx('cbk"+i+"')",'context1');	
+					val='<span id="cbk'+i+'">⚫</span>'+val;
+					return val;
+				});*/
+		var node3=[];
+		ntxt = txt.replace(/\[book_chapter\][^\n]+|\[book_title\][^\n]+/g, function (val) {
+					i++;
+					if(/\[book_chapter\]/.test(val)){
+						node2 = node1.createChildNode(val.replace("[book_chapter]",""), false, 'images/magic_ball.png',"setidx('cbk"+i+"',e)",'context1');	
+						val='<span id="cbk'+i+'">⚫</span>'+val;	
+					}
+					else{					
+						node3.push( node1.createChildNode(val.replace("[book_title]",""), false, 'images/blue_key.png',"setidx('tbk"+i+"',e)",'context1'));	
+						val='<span id="tbk'+i+'">⬛</span>'+val;
+					}
+					return val;
+				});
+		
+		var spt=ntxt.split("⬛");		
+		for (var k =1; k<spt.length; k++) {//从1开始0为[book_date]
+			var node4=[];
+			if(/\[book_node\][^\n]+/.test(spt[k])){
+				if(!/\[book_title\][^\n]+\n(\[book_node\]|\[book_nodeinfo\])/.test(spt[k]))
+				{	
+					spt[k] = spt[k].replace(/(<\/span>[^\n]+\n)/,"$1[book_nodeinfo]");
+				}
+			//console.log(spt[k]);
+			//spt[k] = spt[k].replace(/(\[book_node\]()+/g,"[book_node]");
+			}				
+			spt[k] = spt[k].replace(/(\[book_node\]|\[book_nodeinfo\])[^\n]{1,15}/g, function (val) {	
+				i++;
+				if(!node4.length&&/\[book_nodeinfo\]/.test(spt[k]))	
+				node4.push(node3[k-1].createChildNode(val.replace("[book_nodeinfo]",""), false, 'images/monitor.png',"setidx('sbk"+i+"',e)",'context1'));
+				else									
+				node4.push(node3[k-1].createChildNode(val.replace("[book_node]",""), false, 'images/tree.png',"setidx('sbk"+i+"',e)",'context1'));	
+				val='<span id="sbk'+i+'">◆</span>'+val;
+				return val;
+			});	
+			console.log(node4);
+			var npt=spt[k].split("◆");
+			for (var m =0; m<npt.length; m++) {							
+					npt[m] = npt[m].replace(/\[book_point\][^\n]{1,15}/g, function (val) {
+							i++;
+							if(m)										
+							node5=node4[m-1].createChildNode(val.replace("[book_point]",""), false, 'images/leaf.png',"setidx('nbk"+i+"',e)",'context1');
+							else
+							node5=node3[k-1].createChildNode(val.replace("[book_point]",""), false, 'images/leaf.png',"setidx('nbk"+i+"',e)",'context1');	
+							val='<span id="nbk'+i+'">❖</span>'+val;
+							return val;
+						});
+				
+			}
+					
+			spt[k]=npt.join("◆");
+		
+		}
+		
+		
+		ntxt=spt.join("⬛");
+				
+		bkdiv.innerHTML=ntxt.replace(/\n/g,'<br/>');
+		
+		
+
+//		
+//		
+//		var patt = new RegExp("\\[book_title\\]([^\\n]+)","g");
+//		var result;
+//
+//		while ((result = patt.exec(txt)) != null)  {
+//			node2 = node1.createChildNode(result[1], false, 'images/blue_key.png',"setidx("+patt.lastIndex+")",'context1');
+//		  //document.write(result);
+////		  document.write("<br />");
+////		  document.write(patt.lastIndex);
+//		 }
+		
+
+		
+		
+		
+		
+		tree.drawTree();
+		lock=0;
+				
+	}
+	bkdiv.oncontextmenu = function (e) {
+					return false;
+					};
+var lastEditRange;					
+bkdiv.onclick =bkdiv.onkeyup= function () {
+            // 获取选定对象
+            var selection = getSelection();
+            // 设置最后光标对象
+            lastEditRange = selection.getRangeAt(0);
+        }
+					
+var insdiv = function (insval) {
+		var selection = getSelection();
+		 if (lastEditRange) {
+                // 清除所有选区
+                selection.removeAllRanges();
+                // 添加最后光标还原之前的状态
+                selection.addRange(lastEditRange);
+            }
+		//console.log(selection)
+		//console.log(selection.anchorNode.outerHTML)
+		//console.log(/bkdiv/.test(selection.anchorNode.outerHTML.substring(0,30)))	
+		if(!selection.anchorNode){bkdiv.innerHTML+=insval;return;}
+		if("undefined"!==typeof selection.anchorNode.outerHTML){
+		if(!/bkdiv|<div><br/.test(selection.anchorNode.outerHTML.substring(0,30)))return;
+		}
+		//if(selection.anchorOffset.parentNode.nodeName!=="DIV"&&selection.anchorOffset.parentNode.id!=="bkdiv")return;
+		var star=selection.anchorOffset;
+		var end=selection.focusOffset;
+		if(selection.anchorNode.nodeValue){
+			var cc=false;	
+			if("⚫⬛◆❖".indexOf(selection.anchorNode.nodeValue)>=0||selection.focusNode.nodeValue[0]=="[")cc=true;
+			if(cc){
+			alert("已经存在标签"+selection.anchorNode.nodeValue);
+			return;
+			}
+		}else{
+			var emojiText = document.createTextNode("未命名"+insval.split("_")[1].slice(0,-1));
+			selection.getRangeAt(0).insertNode(emojiText);
+		}
+		var tbr=bkdiv.innerHTML[end-1]?true:false;
+		var emojiText = document.createTextNode(insval);
+		selection.getRangeAt(0).insertNode(emojiText);	
+		if(tbr){
+			var br=document.createElement("br");
+			selection.getRangeAt(0).insertNode(br);				
+		}
+		var range = document.createRange();
+		range.setStart(emojiText,range.startOffset);
+		range.collapse(true);
+		selection.removeAllRanges();
+		selection.addRange(range);					
+    }					
+					
+bkdiv.onmousedown = function (e) {
+		if (e.button == "2") {
+					if(document.getElementById("docr"))document.body.removeChild(document.getElementById("docr"));
+					e.stopPropagation();	
+					var tk = document.createElement('div');
+					tk.style.top = (e.pageY +50)+"px" ;
+					tk.style.left =(e.pageX +100) + "px";
+					tk.style.minWidth = "400px";
+					tk.style.minHeight ="100px";
+					tk.style.padding = '5px';
+					tk.style.color = '#00f';
+					tk.style.backgroundColor = '#0ff';
+					tk.style.position = "fixed";
+					tk.style.fontSize="16px";
+					tk.style.fontWeight="bold";
+					tk.style.fontFamily="Segoe UI Emoji";
+					tk.style.zIndex = 110;
+					tk.id="docr";
+					tk.oncontextmenu = function (e) {return false;};				
+					document.body.appendChild(tk);
+					var Hdf = document.documentElement.clientHeight || document.body.clientHeight||document.documentElement.offsetHeight || document.body.offsetHeight;
+					tk.style.top =Math.min(bkhet.offsetHeight-300, e.clientY+20)+ "px" ;
+					var html='<strong style="background-color:#F00;cursor:default;">❎</strong><strong style="background-color:#FF0;cursor:default;float:right;">❎</strong><hr/>';
+					for (var k = 0;k<htm.length; k+=2) {
+						html += "<span>"+ htm[k] + '</span><span style="position: absolute;left:50%;">'+ htm[k+1] + "</span><br/>"
+					}
+					
+					tk.innerHTML = html;
+					var TM=false;
+					tk.onmousedown = function (e) {
+						TM=true;
+						e.stopPropagation();	
+						if(e.target.innerHTML=="❎"){
+							document.body.removeChild(tk);
+							if(document.getElementById("docg"))document.body.removeChild(document.getElementById("docg"));
+							if(e.target.style.float!=="right")
+								bkdiv.onmousedown =bkdiv.oncontextmenu =null;
+							return false;	
+							}
+						if(e.target.innerHTML[0]=="➤"){
+							mkcaps(true);
+							var itx=e.target.innerHTML.replace("➤插入","");
+							insdiv("["+itx+"]");														
+							return false;
+						}
+						if(e.target.innerHTML==htm[0]){
+							txtcover();
+						}
+						if(e.target.innerHTML==htm[1]){
+							if(document.getElementById("tocr"))bkdiv.removeChild(document.getElementById("tocr"));
+							else{
+							var tc = document.createElement('textarea');
+							tc.value=bkdiv.innerHTML;
+							tc.style.width="calc(100% - 306px)";
+							tc.style.height="40%";
+							tc.style.position="fixed";
+							tc.style.left="294px";
+							tc.id="tocr";
+							bkdiv.insertBefore(tc,bkdiv.firstChild);
+							}
+						}
+							
+					}
+					tk.onmousemove = function (e) {
+						e.stopPropagation();
+						if (e.target.tagName == "SPAN") {
+							e.target.style.backgroundColor = '#F00';
+							e.target.style.cursor = "default";
+							e.target.onmouseout = function (e) {
+								this.style.backgroundColor = tk.style.backgroundColor;
+							}
+						}
+						if (TM) {
+							tk.style.top = (e.clientY-20) + 'px';
+							tk.style.left = (e.clientX-100) + 'px';
+						}
+					}
+					tk.onmouseup = function (e) {
+						TM=false;
+					}
+		}
+}
+
+
+ 
+
+	openfile.onchange = function (e) {
+		e.stopPropagation();
+		var file = this.files[0];
+		if (!file)return;
+		txtpath.innerHTML=file.name;
+		var reader = new FileReader();
+		reader.readAsText(file);
+		reader.onload = function (e) {
+			if("undefined"!==typeof node1 )node1.removeNode();
+			txtrep(e.target.result);
+			mkcaps(true);
+			try{localStorage.cxval="";}catch(e){}
+		}
+	}
+	document.onkeydown = function (e) {
+		//console.log(e);
+		 if (e.keyCode == 13||e.keyCode == 221) mkcaps(true);
+	}
+	
+	var contex_menu = {
+		'context1' : {
+			elements : [
+				{
+					text : 'Node Actions',
+					icon: 'images/blue_key.png',
+					action : function(node) {
+
+					},
+					submenu: {
+						elements : [
+							{
+								text : 'Toggle Node',
+								icon: 'images/leaf.png',
+								action : function(node) {
+									node.toggleNode();
+								}
+							},
+							{
+								text : 'Expand Node',
+								icon: 'images/leaf.png',
+								action : function(node) {
+									node.expandNode();
+								}
+							},
+							{
+								text : 'Collapse Node',
+								icon: 'images/leaf.png',
+								action : function(node) {
+									node.collapseNode();
+								}
+							},
+							{
+								text : 'Expand Subtree',
+								icon: 'images/tree.png',
+								action : function(node) {
+									node.expandSubtree();
+								}
+							},
+							{
+								text : 'Collapse Subtree',
+								icon: 'images/tree.png',
+								action : function(node) {
+									node.collapseSubtree();
+								}
+							},
+							{
+								text : 'Delete Node',
+								icon: 'images/delete.png',
+								action : function(node) {
+									node.removeNode();
+								}
+							},
+						]
+					}
+				},
+				{
+					text : 'Child Actions',
+					icon: 'images/blue_key.png',
+					action : function(node) {
+
+					},
+					submenu: {
+						elements : [
+							{
+								text : 'Create Child Node',
+								icon: 'images/add1.png',
+								action : function(node) {
+									node.createChildNode('Created',false,'images/folder.png',null,'context1');
+								}
+							},
+							{
+								text : 'Create 1000 Child Nodes',
+								icon: 'images/add1.png',
+								action : function(node) {
+									for (var i=0; i<1000; i++)
+										node.createChildNode('Created -' + i,false,'images/folder.png',null,'context1');
+								}
+							},
+							{
+								text : 'Delete Child Nodes',
+								icon: 'images/delete.png',
+								action : function(node) {
+									node.removeChildNodes();
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	};
+
+	//Creating the tree
+	tree = createTree('div_tree','white',contex_menu);
+
+	//div_log = document.getElementById('div_log');
+
+	//Setting custom events
+	tree.nodeBeforeOpenEvent = function(node) {
+		//div_log.innerHTML += node.text + ': Before expand event<br/>';
+	}
+
+	tree.nodeAfterOpenEvent = function(node) {
+		//div_log.innerHTML += node.text + ': After expand event<br/>';
+	}
+
+	tree.nodeBeforeCloseEvent = function(node) {
+		//div_log.innerHTML += node.text + ': Before collapse event<br/>';
+	}
+
+	//Loop to create test nodes
+//	for (var i=1; i<10; i++) {
+//		node1 = tree.createNode('Level 0 - Node ' + i,false,'images/star.png',null,null,'context1');
+//		for (var j=1; j<5; j++) {
+//			node2 = node1.createChildNode('Level 1 - Node ' + j, false, 'images/blue_key.png',null,'context1');
+//			for (var k=1; k<5; k++) {
+//				node3 = node2.createChildNode('Level 2 - Node ' + k, false, 'images/monitor.png',null,'context1');
+//				/*for (var l=1; l<5; l++) {
+//					node4 = node3.createChildNode('Level 3 - Node ' + l, false, 'images/key_green.png',null,'context1');
+//					for (var m=1; m<5; m++) {
+//						node4.createChildNode('Level 4 - Node ' + m, false, 'images/file.png',null,'context1');
+//					}
+//				}*/
+//			}
+//		}
+//	}
+
+	//Rendering the tree
+	//tree.drawTree();
+
+	//Adding node after tree is already rendered
+	//tree.createNode('<a href="http://www.google.com">Link to Google</a',false,'images/leaf.png',null,null,'context1');
+
+
+try{var ctx= localStorage ? localStorage.cxval ? localStorage.cxval : "" : "";
+	if(ctx){
+	if("undefined"!==typeof node1 )node1.removeNode();
+	txtrep(ctx);}
+
+}catch(e){}
+
+var span=document.createElement("span");
+span.innerHTML='<strong style="background-color:#FF0;cursor:default;float:right;">❎关闭</strong>';
+mdiv.parentNode.insertBefore(span,mdiv.nextSibling);
+span.onclick = function (e) {
+		if(self !=top){	
+		try{localStorage.cxval =htmtotxt(bkdiv.innerHTML);
+			if(localStorage.cxval&&confirm('是否同步修改原窗口???'))window.parent.postMessage('$otxt=localStorage.cxval;lput.value=conftxt(localStorage.cxval)',"*");
+		}catch(e){}
+				window.parent.postMessage('$document.body.removeChild(ByID("diframe"))',"*");
+		}
+		else{
+		if(window.opener){
+			try{localStorage.cxval =htmtotxt(bkdiv.innerHTML);
+			if(localStorage.cxval&&confirm('是否同步修改原窗口???'))window.opener.postMessage('$otxt=localStorage.cxval;lput.value=conftxt(localStorage.cxval)',"*");
+		}catch(e){}
+		}
+		 window.close();
+		}
+	}
+};
+
+
+function expand_all() {
+	tree.expandTree();
+}
+function clear_log() {
+	document.getElementById('div_log').innerHTML = '';
+}
+function setidx(id,e) {
+	if(!e)return;
+	var obj=document.getElementById(id);
+	console.log([bkdiv.offsetHeight,bkdiv.clientHeight,bkdiv.scrollHeight,e.clientY ,e.offsetY]);	
+	var rtop =obj.offsetTop;
+	var rleft =obj.offsetLeft;									
+	bkdiv.scrollTop =rtop-(e.clientY);
+	if(document.getElementById("ndiv"))bkdiv.removeChild(document.getElementById("ndiv"));
+		var tg = document.createElement('div');
+		tg.style.position = "absolute";
+		tg.style.backgroundColor = "rgba(255,0,0,0.3)";
+		tg.style.left = bkhet.style.left;
+		tg.style.width = bkhet.style.width;
+		tg.style.pointerEvents = 'none';
+		tg.style.top =(bkdiv.scrollTop )+"px";
+		tg.style.height = obj.offsetHeight+"px";
+		tg.style.zIndex = 112;								
+		tg.id="ndiv";			
+		bkdiv.appendChild(tg);
+
+	
+	//alert(idx);
+	
+	//var range = document.selection.createRange();
+	
+}
+
+/*bkdiv.onclick =bkdiv.onkeyup= function () {
+            // 获取选定对象
+            var selection = getSelection();
+            // 设置最后光标对象
+            lastEditRange = selection.getRangeAt(0);
+        }*/
+
+function collapse_all() {
+	tree.collapseTree();
+}
+function down(name, data) {
+	var url = window.URL || window.webkitURL || window;
+	var Data = new Blob([data]);
+	if (window.navigator.msSaveBlob) {
+		window.navigator.msSaveBlob(Data, name);
+		return
+	}
+	var slink = document.createElementNS("http://www.w3.org/1999/xhtml", "a");
+	slink.href = url.createObjectURL(Data);
+	slink.download = name;
+	var ev = document.createEvent("MouseEvents");
+	ev.initMouseEvent(
+		"click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+	slink.dispatchEvent(ev);
+}
+
+</script><strong></strong><em></em>
+</body>
+</html>
