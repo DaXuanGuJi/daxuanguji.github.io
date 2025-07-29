@@ -10,14 +10,14 @@ function sendExeStatu() {
 				if (xhr.status === 200) {
 				sendExeUrlStatu=errtxt.innerHTML=xhr.responseText;
 				} else {
-				sendExeUrlStatu=errtxt.innerHTML="⛔⛔⛔⛔⛔服务器连接失败。。。";
+				sendExeUrlStatu=errtxt.innerHTML="⛔⛔⛔⛔⛔服务器连接失败。。。";lock = 0;
 				}
 			} catch (e) {
-				sendExeUrlStatu=errtxt.innerHTML="⛔⛔⛔⛔⛔服务器连接失败。。。";
+				sendExeUrlStatu=errtxt.innerHTML="⛔⛔⛔⛔⛔服务器连接失败。。。";lock = 0;
 			}
 		}
 		else{
-			sendExeUrlStatu=errtxt.innerHTML="⛔⛔⛔⛔⛔服务器连接失败。。。";
+			sendExeUrlStatu=errtxt.innerHTML="⛔⛔⛔⛔⛔服务器连接失败。。。";lock = 0;
 		}
 	}
 	xhr.open('GET',sendExeUrl+ "get.php?statu=code&t=" + new Date().getTime(),true);//true为异步

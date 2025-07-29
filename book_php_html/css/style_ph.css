@@ -69,7 +69,7 @@ input[type='button'] {
 #set {
 	color: #00F;
 	cursor: default;
-	position: fixed;
+	position: absolute;
 	width: 100%;
 	z-index: 100;
 	background-color: #FFF;
@@ -84,7 +84,7 @@ input[type='button'] {
 	right: 0px;
 	border: 1px solid red;
 	background-color: #0F0;
-	padding-right: 104px;
+	padding-right: 6vw;
 	padding-left: 4px;
 	font-size: 2vw;
 	float: right;
