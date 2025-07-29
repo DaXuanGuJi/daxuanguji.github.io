@@ -417,7 +417,7 @@ var selfgimgck=function(ret,flg){
 	}
 	var lod= function () {
 		if(index>=ret.txt.length){return;}
-		var edx=index+10;
+		var edx=index+12;
 		for (var k =index;k<ret.txt.length; k++) {
 			if(k==edx)break;
 			var dv=document.createElement("div");
