@@ -406,9 +406,15 @@ var selfgimgck=function(ret,flg){
 	tg.style.position = "fixed";
 	tg.style.zIndex = 112;
 	tg.style.fontSize="16px";
-	tg.innerHTML = '<p style="width:305px;position: fixed;cursor:default;text-align:right;"><b style="background-color:#FF0;"> 总计: <span>'+ret.txt.length+'</span> 加载: <span id="boxindex">'+index+'</span><strong style="background-color:#FF0;cursor:default;">❎</strong></b></p>';
+	tg.innerHTML = '<p style="width:305px;position: fixed;cursor:default;text-align:right;"><b id="docgpre">⏫</b><b id="docgnext">⏬</b><b style="background-color:#FF0;"> 总计: <span>'+ret.txt.length+'</span> 加载: <span id="boxindex">'+index+'</span><strong style="background-color:#FF0;cursor:default;">❎</strong></b></p>';
 	tg.id="docg";			
 	document.body.appendChild(tg);
+	ByID("docgpre").onclick=ByID("docgnext").onclick=function (e){
+		ByID("docg").scrollTop+=this.id=="docgnext"?900:(-900);
+		var evt = document.createEvent('MouseEvents');
+		evt.initEvent('scroll', true, true);
+		ByID("docg").dispatchEvent(evt);	
+	}
 	var lod= function () {
 		if(index>=ret.txt.length){return;}
 		var edx=index+10;
