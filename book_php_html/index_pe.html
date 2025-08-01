@@ -5,16 +5,16 @@
 <meta name="viewport" content="initial-scale=1, minimum-scale=1,maximum-scale=8.0, user-scalable=yes">
 <meta name="keywords" content="大玄古籍制作工具_在线使用,古本翻新工具_在线使用,古书重制工具_在线使用,古籍古书语音朗读工具_在线使用,书籍翻页工具_在线使用,同步翻页朗读工具_在线使用,txt语音朗读工具_在线使用，文档语音同步朗读工具_在线使用，ai语音朗读">
 <meta name="description" content="大玄古籍制作工具_在线使用,大玄古籍生成器_在线使用,古籍制作工具_在线使用,大玄生成器_在线使用,古籍工具_在线使用,">
-<title>大玄古籍制作工具_在线试用_手机版</title>
+<title>大玄古籍制作工具_在线试用_电脑版</title>
 <link href="css/jsoneditor.css" rel="stylesheet" type="text/css" />
-<link href="css/style_ph.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="jsoneditor"></div>
 <div id="set">
   <table width="100%" border="0" id="tbe">
     <tr>
-      <td width="100%"><div class="wid">
+      <td width="580"><div class="wid">
           <div class="widf"> 封面:
             <input name="pgrd" id="rda" type="radio" value="1">
             页面:
@@ -45,8 +45,7 @@
         <input type="text" id="het" size="4"/>
         <input type="button" id='loadpage' value="加载页面" />
         <input type="button" id='exppage' value="导出页面" />
-        <div style="display:inline-block;font-size:14px;border: 2px solid #003;border-radius:3px;background-color:#FF0;"><span id="listpage">🔲</span>批量 </div>
-        <br/>
+        <div style="display:inline-block;font-size:14px;border: 2px solid #003;border-radius:3px;background-color:#FF0;"><span id="listpage">🔲</span>批量 </div><br/>
         <div class="wid">
           <div class="widf"> 书名:
             <input id="rptname" type="checkbox" title="横向= 纵向$ 用本地图片">
@@ -100,60 +99,69 @@
           <input type="text" id="brsize" value="20" size="2"/>
         </div>
         <hr/>
-        <div id="errtxt" style="max-height:50px;width:100%;white-space:nowrap;overflow:hidden;"></div>
+        <div id="errtxt" style="height:18px;width:100%;white-space:nowrap;overflow:hidden;"></div>
         <div class="wid">
-          <input name="fxrd" type="radio" id="fdb" value="1" checked>
-          封面左排
-          <input name="fxrd" id="fda" type="radio" value="0" >
-          封面右排
-          <select id="fmpl" size="1">
-            <option value="l">左(左)</option>
-            <option value="m">中(左)</option>
-            <option value="r">右(左)</option>
-            <option value="L">左(右)</option>
-            <option value="M">中(右)</option>
-            <option value="R">右(右)</option>
-          </select>
-          <input name="fgrd" type="radio" id="tdb" value="1" checked>
-          文字左排
+       	  <input name="fxrd" type="radio" id="fdb" value="1" checked>
+            封面左排
+            <input name="fxrd" id="fda" type="radio" value="0" >
+            封面右排
+            <select id="fmpl" size="1">
+              <option value="l">左(左)</option>
+              <option value="m">中(左)</option>
+              <option value="r">右(左)</option>
+              <option value="L">左(右)</option>
+              <option value="M">中(右)</option>
+              <option value="R">右(右)</option>
+            </select>
+           <input name="fgrd" type="radio" id="tdb" value="1" checked>
+            文字左排
           <input name="fgrd" id="tda" type="radio" value="0" >
-          文字右排
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input type="checkbox" id="mrrorbk" />
-          背景图镜像
-          页数定位:
-          <input type="text" id='gotopng' style="font-size:14px;border: 2px solid #003;border-radius:3px;background-color:#FF0;" value=""  size="1"/>
-          <input type="text" id='gotopngtimer' title='延时跳转【秒】' style="font-size:14px;border: 2px solid #003;border-radius:3px;background-color:#FF0;" value="0"  size="1"/>
-          <br>
-          页面条码标题【左右显示】
-          <input type="text" value="2,1,128,0,0" id="nullval" size="10" />
-          png拆分合并:
-          <input type="text" value="0,1,1" id="mergeval" size="4" />
-          <input type="button" id='oneotb' style="font-size:14px;border: 2px solid #003;border-radius:3px;background-color:#FF0;" value="🔲单页面锁定" />
-          <input type="button" id='dpiotb' style="font-size:14px;border: 2px solid #003;border-radius:3px;background-color:#FF0;" value="🔲dpi调试锁定" />
-          <br>
-          页面书名水印:
+            文字右排
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="checkbox" id="mrrorbk" />背景图镜像
+         页数定位:<input type="text" id='gotopng' style="font-size:14px;border: 2px solid #003;border-radius:3px;background-color:#FF0;" value=""  size="1"/>
+         <input type="text" id='gotopngtimer' title='延时跳转【秒】' style="font-size:14px;border: 2px solid #003;border-radius:3px;background-color:#FF0;" value="0"  size="1"/>
+
+            <br>
+           页面条码标题【左右显示】
+           <input type="text" value="2,1,128,0,0" id="nullval" size="10" />
+			png拆分合并:
+           <input type="text" value="0,1,1" id="mergeval" size="4" />
+
+          	<input type="button" id='oneotb' style="font-size:14px;border: 2px solid #003;border-radius:3px;background-color:#FF0;" value="🔲单页面锁定" />
+          	<input type="button" id='dpiotb' style="font-size:14px;border: 2px solid #003;border-radius:3px;background-color:#FF0;" value="🔲dpi调试锁定" />
+
+            <br>
+
+         页面书名水印:
           <input type="checkbox">
-          <input type="text" id="ptwat" value="" size="6" />
-          <select id="fontwm">
-          </select>
-          <input type="button" id='kanpng' value="预览" />
-          <span id="studf">⇱</span> <span id="studr">⇲</span> <br/>
-          封面版本设置:
-          <input type="checkbox">
-          <input type="text" id="version" value="传世,cealcopy.png" size="26"/>
-          <br/>
-          <div class="widf" style="width:65%;"> 3D 封面设置:
+            <input type="text" id="ptwat" value="" size="6" />
+            <select id="fontwm">
+            </select>
+            <input type="button" id='kanpng' value="预览" />
+             <span id="studf">⇱</span> <span id="studr">⇲</span> 
+            
+            <br/>   
+                    封面版本设置:
+            <input type="checkbox">
+            <input type="text" id="version" value="传世,cealcopy.png" size="26"/>
+ 			<br/>
+           <div class="widf" style="width:65%;">
+                     3D 封面设置:
             <input type="checkbox">
             <input type="text" id="book3d" value="20" size="27"/>
-            <span id="book3dk">☑️</span> <br/>
-            印章:
+            <span id="book3dk">☑️</span>
+             <br/>
+           印章:
             <input type="checkbox">
-            <input type="text" id="ptceal" value="" size="8" />
-            缝线:
+            <input type="text" id="ptceal" value="" size="8" /> 缝线:
             <input type="checkbox">
             <input type="text" id="ptfengx" value="" size="16" />
-            <span id="mdbkname">☑️</span> </div>
+            <span id="mdbkname">☑️</span>
+           
+           
+           
+            </div>
           <div class="widf" style="width:35%;vertical-align:top;text-align:center;">
             <select id="fontfm">
             </select>
@@ -168,7 +176,7 @@
         <div class="wid">
           <div class="widf" style="width:65%;"> 缝线填充色:
             <input type="checkbox">
-            <input type="text" id="cosimg1" value="" size="32" />
+            <input type="text" id="cosimg1" value="" size="32" />            
             <br/>
             缝线中竖线:
             <input type="checkbox">
@@ -178,6 +186,7 @@
             <input type="checkbox">
             <input type="text" id="cosimg3" value="" size="32" />
             <br/>
+           
             自定义横文1:
             <input type="checkbox">
             <input type="text" id="costxt1" value="" size="22" />
@@ -204,7 +213,7 @@
             <br/>
             <input type="button" class="btn" id='bookIndexbtn' value="🔢目录索引"/>
             <textarea rows="2" id="bookIndex" placeholder="在源文本中插入一个№字符记录一个目录索引项，手动生成格式【纸张页面序号:左|右:这是标题+换行】如第1页在第1张纸的左半边:1:左:这是标题;第2页在第1张纸的右半边:1:右:这是标题" style="float:left;height:40px;"></textarea>
-            <br/>
+        <br/>
           </div>
           <div class="widf" style="width:35%;vertical-align:top;text-align:center;">
             <input type="button" class="btn" id="ptbook" value="生成封面" />
@@ -218,14 +227,14 @@
             <input type="button"  id="ptallpng" value="生成png书籍" />
             <input type="button"  id="ptallpdf" value="生成pdf书籍" />
             <br/>
-            <span id="stup">⬆</span><span id="stdw">⬇</span> <span id="stureadbtn">🔊</span> <span id="stuf">☣</span><span id="stus">☯</span> <span id="stuk">⇶</span> <br/>
+            <span id="stup">⬆</span><span id="stdw">⬇</span>
+            <span id="stureadbtn">🔊</span> <span id="stuf">☣</span><span id="stus">☯</span> <span id="stuk">⇶</span> <br/>
             <span id="stut" class="btny">字体</span> <span id="stupk" class="btny">打包</span> <span id="stuupk" class="btny">解包</span> <span id="stud" class="btny">删除</span> <br/>
             <span id="stub" class="btnb">维基书籍</span> <span id="stuc" class="btnb">维基插件</span> </div>
         </div></td>
-    <tr></tr>
-    
       <td id="ffid"><div class="wid">
-          <div class="widf"> 字图随机:
+          <div class="widf">
+            字图随机:
             <input type="checkbox">
             <input type="text" value="0" id="tbodyrand" size="1" />
             单页面列数:
@@ -233,7 +242,10 @@
             <input type="text" value="" id="tbodycelnum" size="1" />
             初始页:
             <input type="text" value="0" id="startIndex" size="1" />
-            <span id="debugzero">🔲</span> <span id="debugtxt">🔲</span> <span id="bkleg"></span> <br/>
+            <span id="debugzero">🔲</span>
+            <span id="debugtxt">🔲</span>
+            <span id="bkleg"></span> 
+            <br/>
             双封面厚度:
             <input type="checkbox">
             <input type="text" value="" id="tbookht" size="1" />
@@ -299,11 +311,15 @@
             <br/>
           </div>
           <div class="widf">
-            <div id="code" class="wid"><img id="cealimg"/> <img id="qrcodeimg"/> <img id="brcodeimg"/> <br>
-              <input type="button" class="btn" id='coverpytxt' value="🔠提取拼音"/>
-              <input type="button" class="btn" id='coverpytxtflg' value="🔲"/>
-              <textarea rows="2" id="pyput" placeholder="输入文本同步拼音数组如jiǎng,shěn,hán,yáng" style="float:right;height:40px;"></textarea>
+            <div id="code" class="wid"><img id="cealimg"/> <img id="qrcodeimg"/> <img id="brcodeimg"/>
+            <br> 
+            <input type="button" class="btn" id='coverpytxt' value="🔠提取拼音"/><input type="button" class="btn" id='coverpytxtflg' value="🔲"/>
+
+            <textarea rows="2" id="pyput" placeholder="输入文本同步拼音数组如jiǎng,shěn,hán,yáng" style="float:right;height:40px;"></textarea>
             </div>
+            
+
+            
           </div>
           <hr/>
         </div>
@@ -360,28 +376,30 @@
         <span>页码序号</span>: <span id="povpg">⏮</span>
         <input type="text" value="" id="thisfpage" size="1" />
         <input type="text" value="1" id="thisrpage" size="1" />
-        <span id="nextpg">⏭</span>
-        <select size="1" id="zeroOne">
-          <option value="131">空白页</option>
-          <option value="256">第0空白</option>
-          <option value="0-">第0左边标题空白</option>
-          <option value="0+">第0右边标题空白</option>
-          <option value="0*">第0左边右边标题空白</option>
-          <option value="257">第0显示边框</option>
-          <option value="258">第0显示字列</option>
-          <option value="259">第0显示边框字列</option>
-          <option value="260">第0页显示页码</option>
-          <option value="261">第0页显示边框页码</option>
-          <option value="262">第0页显示字列页码</option>
-          <option value="263">第0页显示边框字列页码</option>
-          <option value="0=">null页空白</option>
-          <option value="0">null页同步页面flag</option>
+        <span id="nextpg">⏭</span> 
+         <select size="1" id="zeroOne">
+        <option value="131">空白页</option>
+        	<option value="256">第0空白</option>
+  			<option value="0-">第0左边标题空白</option>
+  			<option value="0+">第0右边标题空白</option>
+            <option value="0*">第0左边右边标题空白</option>
+
+            <option value="257">第0显示边框</option>
+            <option value="258">第0显示字列</option>
+            <option value="259">第0显示边框字列</option>
+            <option value="260">第0页显示页码</option>            
+            <option value="261">第0页显示边框页码</option>
+            <option value="262">第0页显示字列页码</option>
+            <option value="263">第0页显示边框字列页码</option>
+            
+            <option value="0=">null页空白</option>
+        	<option value="0">null页同步页面flag</option>
           <option value="131">null页默认【水印双边框】131</option>
           <option value="195">null页水印双边框页码195</option>
           <option value="199">null页水印双边框页码分列线199</option>
           <option value="255">null页全开255</option>
-        </select>
-        自动分割合并页面开数:
+          
+        </select>自动分割合并页面开数:
         <select id="kaisu">
         </select>
         <input type="button" id='splitimg' value="分割合并png" />
@@ -449,7 +467,7 @@
 <script type="text/javascript" src="js/jspdf.min.js" charset="UTF-8"></script> 
 <script type="text/javascript" src="js/bookinf.js" charset="UTF-8"></script> 
 <script type="text/javascript" src="js/taobao.js" charset="UTF-8"></script> 
-<script type="text/javascript" src="js/autoset.js" charset="UTF-8"></script> 
+<script type="text/javascript" src="js/autoset.js" charset="UTF-8"></script>
 <script type="text/javascript" src="js/pingying.js" charset="UTF-8"></script>
 </body>
 </html>
