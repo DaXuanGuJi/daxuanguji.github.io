@@ -26,16 +26,15 @@
 
 <a href="index_pe.html"> <input type="button" style="font-size:5vw;border: 2px solid #003;border-radius:3px;background-color:#0F0;" value="电脑版" /></a>
 <a href="index_ph.html"> <input type="button" style="font-size:5vw;border: 2px solid #003;border-radius:3px;background-color:#0F0;" value="手机版" /></a><br>
-GUID:<input type="text" style="font-size:1.5vw;border: 2px solid #003;border-radius:3px;width:24vw" value="" />
-<input type="button" id='guid' style="font-size:1.5vw;" value="确定" />
-
+<div id="errtxt" style="max-height:50px;width:100%;white-space:nowrap;overflow:hidden;"></div>
+GUID:<input type="text" id='guid' style="font-size:1.5vw;border: 2px solid #003;border-radius:3px;width:24vw" value="" />
+<input type="button" id="sedguid" style="font-size:1.5vw;" value="确定" />
 </div>
-
 <br><br>
 <span style="font-weight: bold;color: #F00;">注：手机版只是重排了电脑版在手机上运行宽度不够被挡住的布局；仍需要在手机版电脑模式下运行</span>
 <hr>
 <a href=""><input type="button" style="width:100%;font-size:3vw;border: 2px solid #003;border-radius:3px;background-color:#FF0;" value="大玄古籍制作软件_图文教程" /></a>
-
-
+<script type="text/javascript" src="js/sendUrl.js" charset="UTF-8"></script> 
+<script type="text/javascript" >sedguid.onclick = function (a) {sendGuid(guid.value);}</script>
 </body>
 </html>
