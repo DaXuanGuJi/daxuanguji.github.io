@@ -396,7 +396,7 @@ var selfgimgck=function(ret,flg){
 	if(ByID("docg"))document.body.removeChild(ByID("docg"));
 	var tg = document.createElement('div');
 	tg.style.width = "340px";
-	tg.style.maxHeight ="100%";
+	tg.style.maxHeight ="1000px";
 	tg.style.overflowY="auto";
 	tg.style.top =0;
 	tg.style.left = "calc(100vw - 340px)";
@@ -417,7 +417,7 @@ var selfgimgck=function(ret,flg){
 	}
 	var lod= function () {
 		if(index>=ret.txt.length){return;}
-		var edx=index+12;
+		var edx=index+10;
 		for (var k =index;k<ret.txt.length; k++) {
 			if(k==edx)break;
 			var dv=document.createElement("div");
