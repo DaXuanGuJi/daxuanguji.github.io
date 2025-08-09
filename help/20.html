@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大玄古籍制作软件【详细教程20：txt文档config自动化配置】，排版软件，自动排版，排版设计，个人出书，一键排版</title>
+  <link rel="stylesheet" href="./image/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1><a id="_20txtconfig_0"></a>标题 <mark>大玄古籍制作软件【详细教程20：txt文档config自动化配置】</mark></h1>
+<p><code>#标签 微软技术》window,开发工具》github,编辑器。非IT技术》学习，软件工程》个人开发</code><br>
+<mark>总有人私下问我【大玄古籍制作工具】怎么用，可不可以试用。可这又不是一两句话说得清楚。所以出个教程吧</mark></p>
+<p><a href="https://daxuanguji.github.io/book_php_html/index.html">大玄古籍制作软件在线工具</a></p>
+<h2><a id="_5"></a>首先.打开大玄古籍制作软件</h2>
+<p>https://daxuanguji.github.io/book_php_html/index.html<br>
+<mark>以下以实例说明使用</mark></p>
+<h2><a id="_9"></a>一.编辑文本</h2>
+<p>大玄古籍制作软件支持全部汉字 Unicode 编码范围，</p>
+<p>基本汉字	20902字	4E00-9FA5<br>
+基本汉字补充	90字	9FA6-9FFF<br>
+扩展A	6592字	3400-4DBF<br>
+扩展B	42720字	20000-2A6DF<br>
+扩展C	4154字	2A700-2B739<br>
+扩展D	222字	2B740-2B81D<br>
+扩展E	5762字	2B820-2CEA1<br>
+扩展F	7473字	2CEB0-2EBE0<br>
+扩展G	4939字	30000-3134A<br>
+扩展H	4192字	31350-323AF</p>
+<p><mark>示例文本</mark><br>
+来自<a href="https://www.bilibili.com/video/BV1f64y1S7Gz/">祝师词 _送给老师的歌</a></p>
+<p>祝师词</p>
+<p>一支粉笔抬手间早已经流逝了岁岁年年<br>
+两块黑板回首间任尘埃书写了千孔百穿<br>
+三尺讲台游走间看时光留下了脚印千万<br>
+四季晴雨变幻间随清风带走了欢语笑言</p>
+<p>五更深夜恍惚间寒灯下照映着谁影改卷<br>
+六暑伏天日常间阳光下闪烁着汗水迷眼<br>
+七夕佳节醉花间月色下等待着相约浪漫<br>
+八月中秋闲谈间夜空下陪伴着远方团圆</p>
+<p>九年教育转眼间岁月中苍老了青春容颜<br>
+十分感谢长久间前路中迷茫了明灯指点<br>
+百行状元烦恼间困难中多亏了伸手相援<br>
+千万桃李满园间春风中别忘了良师遇见</p>
+<p>燻烟燎燋烽熄烬煇煌澜涟漪洗江湖源涧池潭<br>
+炽焰炫熠煜燃烧灿烂浪波涛清海洋沙滩港湾<br>
+假伪傍佞佯偏伥作傀儡道述进退通迷途运达连返<br>
+仁信倚侠儀俭传伴伉俪逢迎远近邀适遇遨遊遥边</p>
+<p>寒窗守穷宅窝察寰宇雷霆霰雾霾霞雲霭霓霏<br>
+窄室赛宝宫寓容穹宙霹雳霁雪霜露雹霖霶霈<br>
+讲论语说读诗词评诠白烛白茶映白霜何惧白头<br>
+谈计试认证谬误诡诈青灯青笔写青夜无愧青天</p>
+<p>九年教育转眼间岁月中苍老了青春容颜<br>
+十分感谢长久间前路中迷茫了明灯指点<br>
+百行状元烦恼间困难中多亏了伸手相援<br>
+千万桃李满园间春风中别忘了衷心祝愿<br>
+祝老师如意身康体健平安幸福寿比南山</p>
+<p><mark>输入文本》调出编辑器》编辑详细信息</mark><br>
+【20.01】<br>
+<img src="./image/6dfc8bb056a0441c951d772ed19c5fad.png#pic_center" alt="在这里插入图片描述"></p>
+<p>【20.02】<br>
+<img src="./image/426bc86eea6f447b9af18c65ec92b18e.png#pic_center" alt="在这里插入图片描述"></p>
+<p>[config]配置的本质是修改软件的控件状态<br>
+控件状态的修改的本质是修改ptset的值；</p>
+<p>这相当于一个自动化的配置处理</p>
+<p>[config]配置有两种方法<br>
+1.修改控件状态让控件修改ptset的值；【这种方法好处是可以即时显示修改的地方；一个控件状态改变可修改多个ptset的值】<br>
+2.直接修改ptset的值；【这种方法用来修改控件无法修改的值的不足；实现自定义配置】<br>
+注：方法2虽然能修改ptset全部值甚至重写ptset但是建议少用；因为这种写法在程序界面看不懂具体意思；你得去看源代码慢慢找才能弄明白；而方法1只要界面查下ID就懂了</p>
+<p>控件状态示例修改列数为12和文字左排<br>
+在单页面列数输入12后按住Alt键单击文本框会弹出config配置信息框<br>
+双击复制粘贴进文档里的[config]配置内即可<br>
+【20.03】<br>
+<img src="./image/8e9e3186792b47e1a7d2cb5a3dde3f7a.png#pic_center" alt="在这里插入图片描述"></p>
+<p>单击文字左排单选按钮后Alt键单选按钮会弹出config配置信息框<br>
+双击复制粘贴进文档里的[config]配置内即可<br>
+【20.04】<br>
+<img src="./image/8c01138d5da941448646e0b2b7fb3e62.png#pic_center" alt="在这里插入图片描述"></p>
+<p>ptset示例修改列数为12和文字左排<br>
+在页面单击设置图标弹出ptset设置界面<br>
+找到修改列数的设置项bodyobj.col.cls<br>
+双击cls会弹出config配置信息框<br>
+右键全选复制粘贴进文档里的[config]配置内即可<br>
+【20.05】<br>
+<img src="./image/474bc6df535d41d7b4d7cde040181e91.png#pic_center" alt="在这里插入图片描述"></p>
+<p>【20.06】<br>
+<img src="./image/8209dc4c58a64aa49443c48d3c2bb709.png#pic_center" alt="在这里插入图片描述"></p>
+<p>点击保存文本即可浏览器下载</p>
+<p>【20.07】<br>
+<img src="./image/c4352ea4647b4e0f9b56876119209f48.png#pic_center" alt="在这里插入图片描述"></p>
+<p>让程序刷新恢复默认测试下<br>
+【20.08】<br>
+<img src="./image/e89d1f6917d740679217696a030b414a.png#pic_center" alt="在这里插入图片描述"></p>
+<p>tbodycelnum@12设置界面有变化<br>
+ptset.bodyobj.setmode@1设置界面无变化<br>
+【20.09】<br>
+<img src="./image/e5fa4522b7f3498d8384a171e34ece1c.png#pic_center" alt="在这里插入图片描述"></p>
+<p>运行效果<br>
+列数为12和文字左排全文档有效<br>
+【20.10】<br>
+<img src="./image/e499c6cb379a4507b15fca4da3eecb2a.png#pic_center" alt="在这里插入图片描述"></p>
+<p>【20.11】</p>
+<p><img src="./image/bf75873751474d4eb01ef9600e861095.png#pic_center" alt="在这里插入图片描述"></p>
+<h2><a id="_122"></a>二.配置示例</h2>
+<p>当一本txt文档config配置好自己喜欢的风格后；后面txt文档config配置可以直接复制该txt文档config配置保持同样风格<br>
+<mark>也可从下面下载一些提供的风格</mark><br>
+更多txt文档config配置示例：https://daxuanguji.github.io/downTxt.html<br>
+<a href="https://daxuanguji.github.io/downTxt.html">更多txt文档config配置示例</a><br>
+更多txt文档config配置书箱效果：https://daxuanguji.github.io<br>
+<a href="https://daxuanguji.github.io">更多txt文档config配置书箱效果</a></p>
+<h2><a id="_130"></a>三.相关教程</h2>
+<p><a href="20.html">大玄古籍制作软件【详细教程20：txt文档config自动化配置】</a><br>
+<a href="19.html">大玄古籍制作软件【详细教程19：设置文字色插图色】</a><br>
+<a href="18.html">大玄古籍制作软件【详细教程18：插图背景透明化】</a><br>
+<a href="17.html">大玄古籍制作软件【详细教程17：设置字符使用方法】</a><br>
+<a href="16.html">大玄古籍制作软件【详细教程16：目录字符使用方法】</a><br>
+<a href="15.html">大玄古籍制作软件【详细教程15：插图字符使用方法】</a><br>
+<a href="14.html">大玄古籍制作软件【详细教程14：字体字符使用方法】</a><br>
+<a href="13.html">大玄古籍制作软件【详细教程13：间距字符使用方法】</a><br>
+<a href="12.html">大玄古籍制作软件【详细教程12：双列字符使用方法】</a><br>
+<a href="11.html">大玄古籍制作软件【详细教程11：角标字符使用方法】</a><br>
+<a href="10.html">大玄古籍制作软件【详细教程10：标注字符使用方法】</a><br>
+<a href="9.html">大玄古籍制作软件【详细教程9：连线字符使用方法】</a><br>
+<a href="8.html">大玄古籍制作软件【详细教程8：分页字符使用方法】</a><br>
+<a href="7.html">大玄古籍制作软件【详细教程7：括号字符使用方法】</a><br>
+<a href="6.html">大玄古籍制作软件【详细教程6：注释字符使用方法】</a><br>
+<a href="5.html">大玄古籍制作软件【详细教程5：标点字符使用方法】</a><br>
+<a href="4.html">大玄古籍制作软件【详细教程4：位移字符使用方法】</a><br>
+<a href="3.html">大玄古籍制作软件【详细教程3：空格字符使用方法】</a><br>
+<a href="2.html">大玄古籍制作软件【详细教程2：换行字符使用方法】</a><br>
+<a href="1.html">大玄古籍制作软件【详细教程1：如何快速制作一本古书】</a><br>
+<a href="21.html">大玄古籍制作软件【视频教程】</a></p>
+</div>
+</body>
+
+</html>

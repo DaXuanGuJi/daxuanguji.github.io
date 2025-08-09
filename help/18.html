@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大玄古籍制作软件【详细教程18：插图背景透明化】</title>
+  <link rel="stylesheet" href="./image/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1><a id="_18_0"></a>标题 <mark>大玄古籍制作软件【详细教程18：插图背景透明化】</mark></h1>
+<p><code>#标签 微软技术》window,开发工具》github,编辑器。非IT技术》学习，软件工程》个人开发</code></p>
+<p><mark>总有人私下问我【大玄古籍制作工具】怎么用，可不可以试用。可这又不是一两句话说得清楚。所以出个教程吧</mark></p>
+<p><a href="https://daxuanguji.github.io/book_php_html/index.html">大玄古籍制作软件在线工具</a></p>
+<h2><a id="_6"></a>首先.打开大玄古籍制作软件</h2>
+<p>https://daxuanguji.github.io/book_php_html/index.html<br>
+<mark>以下以实例说明使用</mark></p>
+<p>程序是支持透明png的<br>
+插图png图片是透明的输出也是透明的<br>
+但是很多时候图片并不是透明的;若插入书籍显得不好看<br>
+下面主要讲透明不透明的jpg和png图片</p>
+<h1><a id="_rgb_15"></a>一 透明rgb值相同的灰度图片</h1>
+<p>透明rgb值相同的灰度图片<br>
+此例透明rgb=255的白底图片<br>
+【天工開物_上21.png】<br>
+【天工開物_上22.png】</p>
+
+<table>
+<thead>
+<tr>
+<th><img src="./image/e1fcc5f842414fe6b4bbb9e15becd1d4.png" alt="在这里插入图片描述" height="280"></th>
+<th><img src="./image/6aae6173412f418cbda2ae85364472ac.png" alt="在这里插入图片描述" height="280"></th>
+</tr>
+</thead>
+</table><p>默认ptset.bodyobj.pcolor[5]=-1时效果<br>
+【04.png】<br>
+<img src="./image/93d34c222aa84158bcbfe1f4e48bbc8c.png#pic_center" alt="在这里插入图片描述"></p>
+<p>设置ptset.bodyobj.pcolor[5]=255<br>
+【03.png】<br>
+<img src="./image/e4cb3ed8e8e545a2bbd48ddcb8700626.png#pic_center" alt="在这里插入图片描述"></p>
+<p>透明背景勾选打开插图色<br>
+设置ptset.bodyobj.pcolor[5]=255时透明白底效果<br>
+【05.png】<br>
+<img src="./image/5eb0436ce5fd4f70a92027ff55612b4b.png#pic_center" alt="在这里插入图片描述"></p>
+<p>【06.png】<br>
+<img src="./image/d209c81085d4407baee17056530bd8ca.png#pic_center" alt="在这里插入图片描述"></p>
+<p>可以看到上图虽然白色透明了；但是效果并不是很好<br>
+这是由于有此颜色看似白色但是并不是纯白。所以无法透明</p>
+<p>那怎么解决此问题，这就用到前面提到的透明度设置了<br>
+将图片先用ps，fw批量生成以灰度通道透明图片<br>
+这里提供-个Fireworks脚本：</p>
+<p>fw.getDocumentDOM().cloneSelection();<br>
+fw.getDocumentDOM().filterSelection({ EffectMoaID:“{d2541291-70d6-11d1-8c8000a024cdc039}”, MB_filter_preview_tile_size:“-1 -1” });<br>
+fw.getDocumentDOM().selectAll();<br>
+fw.getDocumentDOM().group(“mask to image”);</p>
+<p>将上面内容保存为MyBookPicTM.jsf放到Fireworks的Commands文件夹下；<br>
+我这是C:\Users\dell\AppData\Roaming\Adobe\Fireworks CS6\Commands<br>
+然后运行Fireworks》文件》批处理》选择文件夹》添加全部》继续》命令》MyBookPicTM》添加》导出》添加》设置下拉列表》png32》继续》勾选备份》批次》ok等待完成目录里即是通道透明图片了【Original Files目录里是原图片备份】<br>
+批处理生成图片<br>
+【TM天工開物_上21.png】<br>
+【TM天工開物_上22.png】</p>
+
+<table>
+<thead>
+<tr>
+<th><img src="./image/1ecf0f4b65294580b1c6f54c324ad60f.png" alt="在这里插入图片描述" height="280"></th>
+<th><img src="./image/4737ebfe27754e8783f16c4fdb698bb6.png" alt="在这里插入图片描述" height="280"></th>
+</tr>
+</thead>
+</table><p><mark>图片已透明关闭插图色不勾选</mark><br>
+【07.png】<br>
+<img src="./image/16e68fe59ec34dcfa72d1310f5e657cc.png#pic_center" alt="在这里插入图片描述"></p>
+<p>由于上图是白色背景。通道透明后没问题了；</p>
+<h1><a id="__69"></a>二 透明通道透明图片</h1>
+<p>下面@个有问题的：背景不是纯白；通道透明后是半透效果的图片<br>
+此例通道透明图片</p>
+<p>【山海经广注_10_r.png】<br>
+【山海经广注_11_l.png】</p>
+
+<table>
+<thead>
+<tr>
+<th><img src="./image/7f39bb772d224212a9b82c8179f6a6c3.png" alt="在这里插入图片描述" height="280"></th>
+<th><img src="./image/af29e0c8261644a09b317f380520206f.png" alt="在这里插入图片描述" height="280"></th>
+</tr>
+</thead>
+</table><p>操作运行后效果<br>
+【08.png】<br>
+<img src="./image/ba87699e616e432dad08e9c6af779836.png#pic_center" alt="在这里插入图片描述"></p>
+<p>可以看到上图片通道抠图是保留了透明度的因此图片像蒙上一层透明膜;一看就是贴图<br>
+透明背景勾选打开插图色<br>
+设置ptset.bodyobj.pcolor[5]=295时透明透明度&lt;40效果<br>
+【09.png】<br>
+<img src="./image/429aa0db81384107bd6e182b34683952.png#pic_center" alt="在这里插入图片描述"></p>
+<h2><a id="_91"></a>三.相关教程</h2>
+<p><a href="20.html">大玄古籍制作软件【详细教程20：txt文档config自动化配置】</a><br>
+<a href="19.html">大玄古籍制作软件【详细教程19：设置文字色插图色】</a><br>
+<a href="18.html">大玄古籍制作软件【详细教程18：插图背景透明化】</a><br>
+<a href="17.html">大玄古籍制作软件【详细教程17：设置字符使用方法】</a><br>
+<a href="16.html">大玄古籍制作软件【详细教程16：目录字符使用方法】</a><br>
+<a href="15.html">大玄古籍制作软件【详细教程15：插图字符使用方法】</a><br>
+<a href="14.html">大玄古籍制作软件【详细教程14：字体字符使用方法】</a><br>
+<a href="13.html">大玄古籍制作软件【详细教程13：间距字符使用方法】</a><br>
+<a href="12.html">大玄古籍制作软件【详细教程12：双列字符使用方法】</a><br>
+<a href="11.html">大玄古籍制作软件【详细教程11：角标字符使用方法】</a><br>
+<a href="10.html">大玄古籍制作软件【详细教程10：标注字符使用方法】</a><br>
+<a href="9.html">大玄古籍制作软件【详细教程9：连线字符使用方法】</a><br>
+<a href="8.html">大玄古籍制作软件【详细教程8：分页字符使用方法】</a><br>
+<a href="7.html">大玄古籍制作软件【详细教程7：括号字符使用方法】</a><br>
+<a href="6.html">大玄古籍制作软件【详细教程6：注释字符使用方法】</a><br>
+<a href="5.html">大玄古籍制作软件【详细教程5：标点字符使用方法】</a><br>
+<a href="4.html">大玄古籍制作软件【详细教程4：位移字符使用方法】</a><br>
+<a href="3.html">大玄古籍制作软件【详细教程3：空格字符使用方法】</a><br>
+<a href="2.html">大玄古籍制作软件【详细教程2：换行字符使用方法】</a><br>
+<a href="1.html">大玄古籍制作软件【详细教程1：如何快速制作一本古书】</a><br>
+<a href="21.html">大玄古籍制作软件【视频教程】</a></p>
+</div>
+</body>
+
+</html>
