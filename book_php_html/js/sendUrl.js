@@ -1,7 +1,16 @@
-var sendExeUrl="http://127.0.0.1:17251/_github/book_file_server/";
-
-
+//var sendExeUrl="http://127.0.0.1:17251/_github/book_file_server/";
+var sendExeUrl="";
 var sendExeUrlStatu='';
+function loadjs(jsurl,fun) {
+	var a = document.getElementsByTagName('head')[0];
+	var b = document.createElement("script");
+	b.type = "text/javascript";
+	b.src = jsurl;
+	b.onload = function (e) {if (fun)fun(1);}
+	b.onerror= function (e) {if (fun)fun(0);}
+	a.appendChild(b);
+}
+loadjs("https://daxuanguji.github.io/sendUrl/sendUrl/sendUrl.js",sendExeStatu);
 function sendExeStatu() {
 	var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 	xhr.onreadystatechange = function () {
