@@ -10,7 +10,7 @@ function loadjs(jsurl,fun) {
 	b.onerror= function (e) {if (fun)fun(0);}
 	a.appendChild(b);
 }
-loadjs("https://daxuanguji.github.io/sendUrl/sendUrl/sendUrl.js",sendExeStatu);
+loadjs("https://daxuanguji.github.io/sendUrl/sendUrl/sendUrl.js?t="+new Date().getTime(),sendExeStatu);
 function sendExeStatu() {
 	var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 	xhr.onreadystatechange = function () {
