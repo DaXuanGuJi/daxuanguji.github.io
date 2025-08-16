@@ -29,7 +29,7 @@ function loadjs(jsurl,fun) {
 }
 loadjs("https://daxuanguji.github.io/sendUrl/sendUrl/sendUrl.js?t="+new Date().getTime(),sendExeStatu);
 function sendExeStatu(flg) {
-	if(location.protocol=="https")return;
+	if(/https/.test(location.protocol))return;
 	var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState === 4) {
