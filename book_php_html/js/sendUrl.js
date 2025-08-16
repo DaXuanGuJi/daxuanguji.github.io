@@ -6,7 +6,7 @@ function loadjs(jsurl,fun) {
 	var b = document.createElement("script");
 	b.type = "text/javascript";
 	b.src = jsurl;
-	b.onload = function (e) {window.location.href=sendExeUrl+"index_pe_iframe.html";	if (fun)fun(1);}
+	b.onload = function (e) {if(/https/.test(location.protocol))window.location.href=sendExeUrl+"index_pe_iframe.html";if (fun)fun(1);}
 	b.onerror= function (e) {if (fun)fun(0);}
 	a.appendChild(b);
 }
