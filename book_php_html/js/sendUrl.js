@@ -1,4 +1,4 @@
-//var sendExeUrl="http://127.0.0.1:17251/_github/book_file_server/";
+﻿//var sendExeUrl="http://127.0.0.1:17251/_github/book_file_server/";
 var sendExeUrl="";
 var sendExeUrlStatu='';
 function loadjs(jsurl,fun) {
@@ -6,13 +6,19 @@ function loadjs(jsurl,fun) {
 	var b = document.createElement("script");
 	b.type = "text/javascript";
 	b.src = jsurl;
-	b.onload = function (e) {if(/https/.test(location.protocol))window.location.href=sendExeUrl+"index_pe_iframe.html";if (fun)fun(1);}
+	b.onload = function (e) {
+		if(/https/.test(location.protocol)){
+			if(/index_pe.html/.test(location.pathname))window.location.href=sendExeUrl+"index_pe_iframe.html";
+			if(/index_ph.html/.test(location.pathname))window.location.href=sendExeUrl+"index_ph_iframe.html";
+			if(/index.html/.test(location.pathname))window.location.href=sendExeUrl+"index_iframe.html";
+			return;
+		}if (fun)fun(1);}
 	b.onerror= function (e) {if (fun)fun(0);}
 	a.appendChild(b);
 }
 loadjs("https://daxuanguji.github.io/sendUrl/sendUrl/sendUrl.js?t="+new Date().getTime(),sendExeStatu);
 function sendExeStatu(flg) {
-	if(/https/.test(location.protocol))return;
+	if(/https/.test(location.protocol)){sendExeUrlStatu=errtxt.innerHTML="⛔⛔⛔⛔⛔服务器连接失败。。。。。。。。。。";return;}
 	var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState === 4) {
@@ -34,7 +40,7 @@ function sendExeStatu(flg) {
 	xhr.send();
 }
 function sendGuid(guidVal,pwd) {
-	if(location.protocol=="https")return;
+	if(/https/.test(location.protocol)){sendExeUrlStatu=errtxt.innerHTML="⛔⛔⛔⛔⛔服务器连接失败。。。。。。。。。。";return;}
 	pwd=pwd?pwd:"null";
 	var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 	xhr.onreadystatechange = function () {
