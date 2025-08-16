@@ -11,13 +11,29 @@ function loadjs(jsurl,fun) {
 	a.appendChild(b);
 }
 loadjs("https://daxuanguji.github.io/sendUrl/sendUrl/sendUrl.js?t="+new Date().getTime(),sendExeStatu);
-function sendExeStatu() {
+function sendExeStatu(flg) {
 	var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState === 4) {
 			try {
 				if (xhr.status === 200) {
 				sendExeUrlStatu=errtxt.innerHTML=xhr.responseText;
+				if(flg&&!document.getElementById("frame1")){
+					window.stop();
+					var newDoc=document.open("text/html","replace");
+  					var txt="<html><body></body></html>";
+  					newDoc.write(txt);
+  					newDoc.close();
+					var b = document.createElement("iframe");
+					b.src="index_pe_iframe.html";
+					b.scrolling="no";
+					b.seamless="seamless";
+					b.id="frame1";
+					b.allowfullscreen="true";
+					b.width = document.documentElement.clientWidth || document.body.clientWidth || document.documentElement.offsetWidth || document.body.offsetWidth;
+					b.height = document.documentElement.clientHeight || document.body.clientHeight || document.documentElement.offsetHeight || document.body.offsetHeight;
+					document.body.appendChild(b);
+				}
 				} else {
 				sendExeUrlStatu=errtxt.innerHTML="⛔⛔⛔⛔⛔服务器连接失败。。。";lock = 0;
 				}
