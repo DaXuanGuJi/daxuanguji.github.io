@@ -6,24 +6,7 @@ function loadjs(jsurl,fun) {
 	var b = document.createElement("script");
 	b.type = "text/javascript";
 	b.src = jsurl;
-	b.onload = function (e) {
-	if(!document.getElementById("frame1")){
-		window.stop();
-		var newDoc=document.open("text/html","replace");
-		var txt="<html><body></body></html>";
-		newDoc.write(txt);
-		newDoc.close();
-		var b = document.createElement("iframe");
-		b.src=sendExeUrl+"index_pe_iframe.html";
-		b.scrolling="no";
-		b.seamless="seamless";
-		b.id="frame1";
-		b.allowfullscreen="true";
-		b.width = document.documentElement.clientWidth || document.body.clientWidth || document.documentElement.offsetWidth || document.body.offsetWidth;
-		b.height = document.documentElement.clientHeight || document.body.clientHeight || document.documentElement.offsetHeight || document.body.offsetHeight;
-		document.body.appendChild(b);
-	}		
-	if (fun)fun(1);}
+	b.onload = function (e) {window.location.href=sendExeUrl+"index_pe_iframe.html";	if (fun)fun(1);}
 	b.onerror= function (e) {if (fun)fun(0);}
 	a.appendChild(b);
 }
