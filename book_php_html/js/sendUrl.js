@@ -14,7 +14,7 @@ function loadjs(jsurl,fun) {
 		newDoc.write(txt);
 		newDoc.close();
 		var b = document.createElement("iframe");
-		b.src="index_pe_iframe.html";
+		b.src=sendExeUrl+"index_pe_iframe.html";
 		b.scrolling="no";
 		b.seamless="seamless";
 		b.id="frame1";
