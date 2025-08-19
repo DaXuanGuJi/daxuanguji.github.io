@@ -23,6 +23,7 @@
 <hr>
 <div style="text-align: center;"> 
 <span style="font-size:3vw;font-weight: bold;color:#0f0">。。。服务器已开放。。。</span><br>
+<span style="font-size:3vw;font-weight: bold;color:#00f" id="ink" title="0">。。。服务器连接中。。。</span><br>
 <span style="font-size:2vw;font-weight: bold;color:#0f0">若未连接可能是动态IP到期更换；等待几分钟后再试</span><br>
 
 
@@ -47,7 +48,15 @@
 <input type="button" style="width:100%;font-size:3vw;border: 2px solid #003;border-radius:3px;background-color:#FF0;" value="大玄古籍制作软件_常见问题" />
 </a> 
 <script type="text/javascript" src="https://daxuanguji.github.io/book_php_html/js/sendUrl.js" charset="UTF-8"></script> 
-<script type="text/javascript" >sedguid.onclick = function (a) {sendGuid(guid.value);}</script>
+<script type="text/javascript" >
+sedguid.onclick = function (a) {sendGuid(guid.value);}
+setInterval(function(){
+	var t=["🕛","🕐","🕑","🕒","🕓","🕔","🕕","🕖","🕗","🕘","🕙","🕚"];
+	var i=Number(ink.title);
+	ink.innerHTML="。。。"+t[i%t.length]+"务器连接中。。。";
+	ink.title=++i;	
+},1000);
+</script>
 <script src="https://giscus.app/client.js"
         data-repo="DaXuanGuJi/daxuanguji.github.io"
         data-repo-id="R_kgDOPFz8Lw"
