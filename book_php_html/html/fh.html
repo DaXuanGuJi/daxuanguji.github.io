@@ -39,7 +39,7 @@ if(txt.value){
 cx.onclick = function (e) {
 	geturl("../data/data.json",
 	function(ret){
-		alert(ret)
+		//alert(ret)
 		ret=ret.replace(/\\/g,"\\\\");
 		ret=JSON.parse(ret);
 		apt.innerHTML=ret.txt;
