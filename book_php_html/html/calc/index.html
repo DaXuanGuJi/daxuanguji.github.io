@@ -1,7 +1,7 @@
-
+Ôªø
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type=text/css>
  td,body {  font-size: 13px;}body{
 	margin-top:0px;
@@ -10,11 +10,11 @@
 	background-color: #fcfff7;
 } 
 </style>
-<title>ø∆—ßº∆À„∆˜</title>
-<meta name="keywords" content="ø∆—ßº∆À„∆˜">
-<meta name="description" content="ø∆—ßº∆À„∆˜">
-<meta name="author" content="º∆À„∆˜" />
-<meta name="Copyright" content="º∆À„∆˜" />
+<title>ÁßëÂ≠¶ËÆ°ÁÆóÂô®</title>
+<meta name="keywords" content="ÁßëÂ≠¶ËÆ°ÁÆóÂô®">
+<meta name="description" content="ÁßëÂ≠¶ËÆ°ÁÆóÂô®">
+<meta name="author" content="ËÆ°ÁÆóÂô®" />
+<meta name="Copyright" content="ËÆ°ÁÆóÂô®" />
 <SCRIPT language=javascript>
 <!--
 var endNumber=true
@@ -25,7 +25,7 @@ var angle="d"
 var stack=""
 var level="0"
 var layer=0
-// ˝◊÷º¸
+//Êï∞Â≠óÈîÆ
 function inputkey(key)
 {
 	var index=key.charCodeAt(0);
@@ -51,7 +51,7 @@ function changeSign()
     	else
         	document.calc.display.value = "-" + document.calc.display.value
 }
-//∫Ø ˝º¸
+//ÂáΩÊï∞ÈîÆ
 function inputfunction(fun,shiftfun)
 {
 	endNumber=true
@@ -70,7 +70,7 @@ function inputtrig(trig,arctrig,hyp,archyp)
 	else
 		inputfunction(trig,arctrig)
 }
-//‘ÀÀ„∑˚
+//ËøêÁÆóÁ¨¶
 function operation(join,newlevel)
 {
 	endNumber=true
@@ -87,7 +87,7 @@ function operation(join,newlevel)
 	level=level+newlevel
 	
 }
-//¿®∫≈
+//Êã¨Âè∑
 function addbracket()
 {
 	endNumber=true
@@ -119,7 +119,7 @@ function disbracket()
 	else
 		document.calc.bracket.value=""
 }
-//µ»∫≈
+//Á≠âÂè∑
 function result()
 {
 	endNumber=true
@@ -138,7 +138,7 @@ function result()
 	stack=""
 	level="0"
 }
-//–ﬁ∏ƒº¸
+//‰øÆÊîπÈîÆ
 function backspace()
 {
 	if (!endNumber)
@@ -159,7 +159,7 @@ function clearall()
 	document.calc.operator.value=""
 	document.calc.bracket.value=""
 }
-//◊™ªªº¸
+//ËΩ¨Êç¢ÈîÆ
 function inputChangCarry(newcarry)
 {
 	endNumber=true
@@ -205,15 +205,15 @@ function inputshift()
 {
 	if (document.calc.shiftf.checked)
 	{
-		document.calc.bt.value="deg°°"
-		document.calc.ln.value="exp°°"
+		document.calc.bt.value="deg„ÄÄ"
+		document.calc.ln.value="exp„ÄÄ"
 		document.calc.log.value="expd "
 		
 		if (document.calc.hypf.checked)
 		{
-			document.calc.sin.value="ahs°°"
-			document.calc.cos.value="ahc°°"
-			document.calc.tan.value="aht°°"
+			document.calc.sin.value="ahs„ÄÄ"
+			document.calc.cos.value="ahc„ÄÄ"
+			document.calc.tan.value="aht„ÄÄ"
 		}
 		else
 		{
@@ -225,12 +225,12 @@ function inputshift()
 		document.calc.sqr.value="x^.5 "
 		document.calc.cube.value="x^.3 "
 		
-		document.calc.floor.value=" –° ˝ "
+		document.calc.floor.value=" Â∞èÊï∞ "
 	}
 	else
 	{
 		document.calc.bt.value="d.ms "
-		document.calc.ln.value=" ln°°"
+		document.calc.ln.value=" ln„ÄÄ"
 		document.calc.log.value=" log "
 
 		if (document.calc.hypf.checked)
@@ -241,19 +241,19 @@ function inputshift()
 		}
 		else
 		{
-			document.calc.sin.value="sin°°"
-			document.calc.cos.value="cos°°"
-			document.calc.tan.value="tan°°"
+			document.calc.sin.value="sin„ÄÄ"
+			document.calc.cos.value="cos„ÄÄ"
+			document.calc.tan.value="tan„ÄÄ"
 		}
 		
-		document.calc.sqr.value="x^2°°"
-		document.calc.cube.value="x^3°°"
+		document.calc.sqr.value="x^2„ÄÄ"
+		document.calc.cube.value="x^3„ÄÄ"
 		
-		document.calc.floor.value=" »°’˚ "
+		document.calc.floor.value=" ÂèñÊï¥ "
 	}
 
 }
-//¥Ê¥¢∆˜≤ø∑÷
+//Â≠òÂÇ®Âô®ÈÉ®ÂàÜ
 
 function clearmemory()
 {
@@ -299,7 +299,7 @@ function multimemory()
 		document.calc.memory.value=" M "
 }
 
-// ÆΩ¯÷∆◊™ªª
+//ÂçÅËøõÂà∂ËΩ¨Êç¢
 
 function todec(num,oldcarry)
 {
@@ -330,7 +330,7 @@ function decto(num,newcarry)
 	return(newnum)
 }
 
-//±Ì¥Ô ΩΩ‚Œˆ
+//Ë°®ËææÂºèËß£Êûê
 
 function parse(string)
 {
@@ -340,7 +340,7 @@ function parse(string)
 		return(string)
 }
 
-// ˝—ß‘ÀÀ„∫ÕŒª‘ÀÀ„
+//Êï∞Â≠¶ËøêÁÆóÂíå‰ΩçËøêÁÆó
 
 function cypher(left,join,right)
 {
@@ -367,11 +367,11 @@ function cypher(left,join,right)
 		return(decto(left^right,carry))
 	if (join=="<")
 		return(decto(left<<right,carry))
-	alert("≥˝ ˝≤ªƒ‹Œ™¡„")
+	alert("Èô§Êï∞‰∏çËÉΩ‰∏∫Èõ∂")
 	return(left)
 }
 
-//∫Ø ˝º∆À„
+//ÂáΩÊï∞ËÆ°ÁÆó
 
 function funcalc(fun,num)
 {
@@ -470,11 +470,11 @@ function funcalc(fun,num)
 
 		if (fun=="ahypsin" | fun=="hypcos" | fun=="hyptan")
 		{
-			alert("∂‘≤ª∆,π´ Ωªπ√ª”–≤ÈµΩ!")
+			alert("ÂØπ‰∏çËµ∑,ÂÖ¨ÂºèËøòÊ≤°ÊúâÊü•Âà∞!")
 			return(num)
 		}
 		
-		alert("≥¨≥ˆ∫Ø ˝∂®“Â∑∂Œß")
+		alert("Ë∂ÖÂá∫ÂáΩÊï∞ÂÆö‰πâËåÉÂõ¥")
 		return(num)
 	}
 }
@@ -530,7 +530,7 @@ function radiansToDegress(radians)
 	return(radians*180/Math.PI)
 }
 
-//ΩÁ√Ê
+//ÁïåÈù¢
 //-->
 </SCRIPT>
 <body bgcolor="fcfff7" leftmargin="0" topmargin="0" marginwidth="0">
@@ -544,7 +544,7 @@ function radiansToDegress(radians)
     <TD height=50 bgcolor="#E6F2E7">
       <TABLE width=100%>
         <TBODY>       
-<TR><TD align=center><FONT color=#205001>°æø∆—ßº∆À„∆˜°ø </FONT></TD></TR>
+<TR><TD align=center><FONT color=#205001>„ÄêÁßëÂ≠¶ËÆ°ÁÆóÂô®„Äë </FONT></TD></TR>
  <TR><TD height="35" align=center>
            <INPUT name=display readOnly size=50 value=0 style=" font-size:18px;"></TD>
  </TR></TBODY></TABLE></TD>
@@ -555,30 +555,30 @@ function radiansToDegress(radians)
         <TBODY>
         <TR>
           <TD style="color:#205001;"><INPUT name=carry onclick=inputChangCarry(16) 
-            type=radio>  Æ¡˘Ω¯÷∆ <INPUT CHECKED name=carry 
-            onclick=inputChangCarry(10) type=radio>  ÆΩ¯÷∆ <INPUT name=carry 
-            onclick=inputChangCarry(8) type=radio> ∞ÀΩ¯÷∆ <INPUT name=carry 
-            onclick=inputChangCarry(2) type=radio> ∂˛Ω¯÷∆ </TD>
+            type=radio> ÂçÅÂÖ≠ËøõÂà∂ <INPUT CHECKED name=carry 
+            onclick=inputChangCarry(10) type=radio> ÂçÅËøõÂà∂ <INPUT name=carry 
+            onclick=inputChangCarry(8) type=radio> ÂÖ´ËøõÂà∂ <INPUT name=carry 
+            onclick=inputChangCarry(2) type=radio> ‰∫åËøõÂà∂ </TD>
           <TD width="187" style="color:#205001;"><INPUT CHECKED name=angle 
             onclick="inputChangAngle('d')" type=radio value=d> 
-            Ω«∂»÷∆ 
+            ËßíÂ∫¶Âà∂ 
               <INPUT 
             name=angle onClick="inputChangAngle('r')" type=radio value=r> 
-              ª°∂»÷∆        </TD>
+              ÂºßÂ∫¶Âà∂        </TD>
           </TR></TBODY></TABLE>
       <TABLE width=100%>
         <TBODY>
         <TR>
           <TD width=170 style="color:#205001;"><INPUT name=shiftf onclick=inputshift() 
-            type=checkbox>…œµµπ¶ƒ‹ <INPUT name=hypf onclick=inputshift() 
-            type=checkbox>À´«˙∫Ø ˝ </TD>
+            type=checkbox>‰∏äÊ°£ÂäüËÉΩ <INPUT name=hypf onclick=inputshift() 
+            type=checkbox>ÂèåÊõ≤ÂáΩÊï∞ </TD>
           <TD width="154" align="center"><INPUT name=bracket readOnly size=3 
             style="BACKGROUND-COLOR: lightgrey; line-height:24px;"> <INPUT name=memory readOnly 
             size=3 style="BACKGROUND-COLOR: lightgrey; line-height:24px;"> <INPUT name=operator 
             readOnly size=3 style="BACKGROUND-COLOR: lightgrey; "> </TD>
-          <TD align="right"><INPUT onclick=backspace() style="COLOR: B50506; line-height:24px;" type=button value="°°ÕÀ∏Ò°°"> 
-<INPUT onClick="document.calc.display.value = 0 " style="COLOR: #B50506; line-height:24px;" type=button value="°°«Â∆¡°°"> 
-<INPUT onclick=clearall() style="COLOR: #B50506; line-height:24px;" type=button value="°°»´«Â°°">          </TD>
+          <TD align="right"><INPUT onclick=backspace() style="COLOR: B50506; line-height:24px;" type=button value="„ÄÄÈÄÄÊ†º„ÄÄ"> 
+<INPUT onClick="document.calc.display.value = 0 " style="COLOR: #B50506; line-height:24px;" type=button value="„ÄÄÊ∏ÖÂ±è„ÄÄ"> 
+<INPUT onclick=clearall() style="COLOR: #B50506; line-height:24px;" type=button value="„ÄÄÂÖ®Ê∏Ö„ÄÄ">          </TD>
         </TR></TBODY></TABLE>
       <TABLE width=100%>
         <TBODY>
@@ -587,125 +587,125 @@ function radiansToDegress(radians)
             <TABLE>
               <TBODY>
               <TR align=middle>
-                <TD><INPUT name=pi onClick="inputfunction('pi','pi')" style="COLOR: #1919CD; line-height:24px;" type=button value=" PI°°"> 
+                <TD><INPUT name=pi onClick="inputfunction('pi','pi')" style="COLOR: #1919CD; line-height:24px;" type=button value=" PI„ÄÄ"> 
                 </TD>
-                <TD><INPUT name=e onClick="inputfunction('e','e')" style="COLOR: #1919CD; line-height:24px;" type=button value="°°E°°"> 
+                <TD><INPUT name=e onClick="inputfunction('e','e')" style="COLOR: #1919CD; line-height:24px;" type=button value="„ÄÄE„ÄÄ"> 
                 </TD>
                 <TD><INPUT name=bt onClick="inputfunction('dms','deg')" style="COLOR: #D316D3; line-height:24px;" type=button value=" d.ms "> 
                 </TD></TR>
               <TR align=middle>
-                <TD><INPUT onclick=addbracket() style="COLOR: #D316D3; line-height:24px;" type=button value="°°(°°"> 
+                <TD><INPUT onclick=addbracket() style="COLOR: #D316D3; line-height:24px;" type=button value="„ÄÄ(„ÄÄ"> 
                 </TD>
-                <TD><INPUT onclick=disbracket() style="COLOR: #D316D3; line-height:24px;" type=button value="°°)°°"> 
+                <TD><INPUT onclick=disbracket() style="COLOR: #D316D3; line-height:24px;" type=button value="„ÄÄ)„ÄÄ"> 
                 </TD>
-                <TD><INPUT name=ln onClick="inputfunction('ln','exp')" style="COLOR: #D316D3; line-height:24px;" type=button value="°°ln°°"> 
+                <TD><INPUT name=ln onClick="inputfunction('ln','exp')" style="COLOR: #D316D3; line-height:24px;" type=button value="„ÄÄln„ÄÄ"> 
                 </TD></TR>
               <TR align=middle>
-                <TD><INPUT name=sin onClick="inputtrig('sin','arcsin','hypsin','ahypsin')" style="COLOR: #D316D3; line-height:24px;" type=button value="sin°°"> 
+                <TD><INPUT name=sin onClick="inputtrig('sin','arcsin','hypsin','ahypsin')" style="COLOR: #D316D3; line-height:24px;" type=button value="sin„ÄÄ"> 
                 </TD>
-                <TD><INPUT onClick="operation('^',7)" style="COLOR: #D316D3; line-height:24px;" type=button value="x^y°°"> 
+                <TD><INPUT onClick="operation('^',7)" style="COLOR: #D316D3; line-height:24px;" type=button value="x^y„ÄÄ"> 
                 </TD>
-                <TD><INPUT name=log onClick="inputfunction('log','expdec')" style="COLOR: #D316D3; line-height:24px;" type=button value=" log°°"> 
+                <TD><INPUT name=log onClick="inputfunction('log','expdec')" style="COLOR: #D316D3; line-height:24px;" type=button value=" log„ÄÄ"> 
                 </TD></TR>
               <TR align=middle>
-                <TD><INPUT name=cos onClick="inputtrig('cos','arccos','hypcos','ahypcos')" style="COLOR: #D316D3; line-height:24px;" type=button value="cos°°"> 
+                <TD><INPUT name=cos onClick="inputtrig('cos','arccos','hypcos','ahypcos')" style="COLOR: #D316D3; line-height:24px;" type=button value="cos„ÄÄ"> 
                 </TD>
-                <TD><INPUT name=cube onClick="inputfunction('cube','cubt')" style="COLOR: #D316D3; line-height:24px;" type=button value="x^3°°"> 
+                <TD><INPUT name=cube onClick="inputfunction('cube','cubt')" style="COLOR: #D316D3; line-height:24px;" type=button value="x^3„ÄÄ"> 
                 </TD>
-                <TD><INPUT onClick="inputfunction('!','!')" style="COLOR: #D316D3; line-height:24px;" type=button value="°°n!°°"> 
+                <TD><INPUT onClick="inputfunction('!','!')" style="COLOR: #D316D3; line-height:24px;" type=button value="„ÄÄn!„ÄÄ"> 
                 </TD></TR>
               <TR align=middle>
-                <TD><INPUT name=tan onClick="inputtrig('tan','arctan','hyptan','ahyptan')" style="COLOR: #D316D3; line-height:24px;" type=button value="tan°°"> 
+                <TD><INPUT name=tan onClick="inputtrig('tan','arctan','hyptan','ahyptan')" style="COLOR: #D316D3; line-height:24px;" type=button value="tan„ÄÄ"> 
                 </TD>
-                <TD><INPUT name=sqr onClick="inputfunction('sqr','sqrt')" style="COLOR: #D316D3; line-height:24px;" type=button value="x^2°°"> 
+                <TD><INPUT name=sqr onClick="inputfunction('sqr','sqrt')" style="COLOR: #D316D3; line-height:24px;" type=button value="x^2„ÄÄ"> 
                 </TD>
-                <TD><INPUT onClick="inputfunction('recip','recip')" style="COLOR: #D316D3; line-height:24px;" type=button value=" 1/x°°"> 
+                <TD><INPUT onClick="inputfunction('recip','recip')" style="COLOR: #D316D3; line-height:24px;" type=button value=" 1/x„ÄÄ"> 
                 </TD></TR></TBODY></TABLE></TD>
           <TD width=30></TD>
           <TD>
             <TABLE>
               <TBODY>
               <TR>
-                <TD align="center"><INPUT onclick=putmemory() style="COLOR: #B50506; line-height:24px;" type=button value=" ¥¢¥Ê ">                </TD>
+                <TD align="center"><INPUT onclick=putmemory() style="COLOR: #B50506; line-height:24px;" type=button value=" ÂÇ®Â≠ò ">                </TD>
               </TR>
               <TR>
-                <TD><INPUT onclick=getmemory() style="COLOR: #B50506; line-height:24px;" type=button value=" »°¥Ê "> 
+                <TD><INPUT onclick=getmemory() style="COLOR: #B50506; line-height:24px;" type=button value=" ÂèñÂ≠ò "> 
                 </TD></TR>
               <TR>
-                <TD><INPUT onclick=addmemory() style="COLOR: #B50506; line-height:24px;" type=button value=" ¿€¥Ê "> 
+                <TD><INPUT onclick=addmemory() style="COLOR: #B50506; line-height:24px;" type=button value=" Á¥ØÂ≠ò "> 
                 </TD></TR>
               <TR>
-                <TD><INPUT onclick=multimemory() style="COLOR: #B50506; line-height:24px;" type=button value=" ª˝¥Ê "> 
+                <TD><INPUT onclick=multimemory() style="COLOR: #B50506; line-height:24px;" type=button value=" ÁßØÂ≠ò "> 
                 </TD></TR>
               <TR>
-                <TD height=33><INPUT onclick=clearmemory() style="COLOR: #B50506; line-height:24px;" type=button value=" «Â¥Ê "> 
+                <TD height=33><INPUT onclick=clearmemory() style="COLOR: #B50506; line-height:24px;" type=button value=" Ê∏ÖÂ≠ò "> 
                 </TD></TR></TBODY></TABLE></TD>
           <TD width=30></TD>
           <TD>
             <TABLE>
               <TBODY>
               <TR align=middle>
-                <TD><INPUT name=k7 onClick="inputkey('7')" style="COLOR: #1919CD; font-size:16px; line-height:24px; " type=button value="°°7°°"> 
+                <TD><INPUT name=k7 onClick="inputkey('7')" style="COLOR: #1919CD; font-size:16px; line-height:24px; " type=button value="„ÄÄ7„ÄÄ"> 
                 </TD>
-                <TD><INPUT name=k8 onClick="inputkey('8')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="°°8°°"> 
+                <TD><INPUT name=k8 onClick="inputkey('8')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="„ÄÄ8„ÄÄ"> 
                 </TD>
-                <TD><INPUT name=k9 onClick="inputkey('9')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="°°9°°"> 
+                <TD><INPUT name=k9 onClick="inputkey('9')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="„ÄÄ9„ÄÄ"> 
                 </TD>
-                <TD><INPUT onClick="operation('/',6)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="°°/°°"> 
+                <TD><INPUT onClick="operation('/',6)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="„ÄÄ/„ÄÄ"> 
                 </TD>
-                <TD><INPUT onClick="operation('%',6)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value=" »°”‡ "> 
+                <TD><INPUT onClick="operation('%',6)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value=" Âèñ‰Ωô "> 
                 </TD>
-                <TD><INPUT onClick="operation('&amp;',3)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="°°”Î°°"> 
+                <TD><INPUT onClick="operation('&amp;',3)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="„ÄÄ‰∏é„ÄÄ"> 
                 </TD></TR>
               <TR align=middle>
-                <TD><INPUT name=k4 onClick="inputkey('4')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="°°4°°"> 
+                <TD><INPUT name=k4 onClick="inputkey('4')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="„ÄÄ4„ÄÄ"> 
                 </TD>
-                <TD><INPUT name=k5 onClick="inputkey('5')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="°°5°°"> 
+                <TD><INPUT name=k5 onClick="inputkey('5')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="„ÄÄ5„ÄÄ"> 
                 </TD>
-                <TD><INPUT name=k6 onClick="inputkey('6')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="°°6°°"> 
+                <TD><INPUT name=k6 onClick="inputkey('6')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="„ÄÄ6„ÄÄ"> 
                 </TD>
-                <TD><INPUT onClick="operation('*',6)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="°°*°°"> 
+                <TD><INPUT onClick="operation('*',6)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="„ÄÄ*„ÄÄ"> 
                 </TD>
-                <TD><INPUT name=floor onClick="inputfunction('floor','deci')" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value=" »°’˚ "> 
+                <TD><INPUT name=floor onClick="inputfunction('floor','deci')" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value=" ÂèñÊï¥ "> 
                 </TD>
-                <TD><INPUT onClick="operation('|',1)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="°°ªÚ°°"> 
+                <TD><INPUT onClick="operation('|',1)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="„ÄÄÊàñ„ÄÄ"> 
                 </TD></TR>
               <TR align=middle>
-                <TD><INPUT onClick="inputkey('1')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="°°1°°"> 
+                <TD><INPUT onClick="inputkey('1')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="„ÄÄ1„ÄÄ"> 
                 </TD>
-                <TD><INPUT name=k2 onClick="inputkey('2')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="°°2°°"></TD>
-                <TD><INPUT name=k3 onClick="inputkey('3')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="°°3°°"> 
+                <TD><INPUT name=k2 onClick="inputkey('2')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="„ÄÄ2„ÄÄ"></TD>
+                <TD><INPUT name=k3 onClick="inputkey('3')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="„ÄÄ3„ÄÄ"> 
                 </TD>
-                <TD><INPUT onClick="operation('-',5)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="°°-°°"> 
+                <TD><INPUT onClick="operation('-',5)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="„ÄÄ-„ÄÄ"> 
                 </TD>
-                <TD><INPUT onClick="operation('<',4)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value=" ◊Û“∆ "> 
+                <TD><INPUT onClick="operation('<',4)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value=" Â∑¶Áßª "> 
                 </TD>
-                <TD><INPUT onClick="inputfunction('~','~')" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="°°∑«°°"> 
+                <TD><INPUT onClick="inputfunction('~','~')" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="„ÄÄÈùû„ÄÄ"> 
                 </TD></TR>
               <TR align=middle>
-                <TD><INPUT onClick="inputkey('0')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="°°0°°"> 
+                <TD><INPUT onClick="inputkey('0')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="„ÄÄ0„ÄÄ"> 
                 </TD>
                 <TD><INPUT onclick=changeSign() style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value=" +/- "> 
                 </TD>
-                <TD><INPUT name=kp onClick="inputkey('.')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="°°.°°"> 
+                <TD><INPUT name=kp onClick="inputkey('.')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="„ÄÄ.„ÄÄ"> 
                 </TD>
-                <TD><INPUT onClick="operation('+',5)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="°°+°°"> 
+                <TD><INPUT onClick="operation('+',5)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="„ÄÄ+„ÄÄ"> 
                 </TD>
-                <TD><INPUT onclick=result() style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="°°£Ω°°"> 
+                <TD><INPUT onclick=result() style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="„ÄÄÔºù„ÄÄ"> 
                 </TD>
-                <TD><INPUT onClick="operation('x',2)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value=" “ÏªÚ "> 
+                <TD><INPUT onClick="operation('x',2)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value=" ÂºÇÊàñ "> 
                 </TD></TR>
               <TR align=middle>
-                <TD><INPUT disabled name=ka onClick="inputkey('a')" style="COLOR: #1919CD; font-size:14px; line-height:24px;" type=button value="°°A °°"> 
+                <TD><INPUT disabled name=ka onClick="inputkey('a')" style="COLOR: #1919CD; font-size:14px; line-height:24px;" type=button value="„ÄÄA „ÄÄ"> 
                 </TD>
-                <TD><INPUT disabled name=kb onClick="inputkey('b')" style="COLOR: #1919CD; font-size:14px; line-height:24px;" type=button value="°°B °°"> 
+                <TD><INPUT disabled name=kb onClick="inputkey('b')" style="COLOR: #1919CD; font-size:14px; line-height:24px;" type=button value="„ÄÄB „ÄÄ"> 
                 </TD>
-                <TD><INPUT disabled name=kc onClick="inputkey('c')" style="COLOR: #1919CD; font-size:14px; line-height:24px;" type=button value="°°C °°"> 
+                <TD><INPUT disabled name=kc onClick="inputkey('c')" style="COLOR: #1919CD; font-size:14px; line-height:24px;" type=button value="„ÄÄC „ÄÄ"> 
                 </TD>
-                <TD><INPUT disabled name=kd onClick="inputkey('d')" style="COLOR: #1919CD; font-size:14px; line-height:24px;" type=button value="°°D°°"> 
+                <TD><INPUT disabled name=kd onClick="inputkey('d')" style="COLOR: #1919CD; font-size:14px; line-height:24px;" type=button value="„ÄÄD„ÄÄ"> 
                 </TD>
-                <TD align="center"><INPUT disabled name=ke onClick="inputkey('e')" style="COLOR: #1919CD; font-size:14px; line-height:24px;" type=button value="°°E °°">                </TD>
-                <TD align="center"><INPUT disabled name=kf onClick="inputkey('f')" style="COLOR: #1919CD; font-size:14px; line-height:24px;" type=button value="°°F °°">    </TD>
+                <TD align="center"><INPUT disabled name=ke onClick="inputkey('e')" style="COLOR: #1919CD; font-size:14px; line-height:24px;" type=button value="„ÄÄE „ÄÄ">                </TD>
+                <TD align="center"><INPUT disabled name=kf onClick="inputkey('f')" style="COLOR: #1919CD; font-size:14px; line-height:24px;" type=button value="„ÄÄF „ÄÄ">    </TD>
     </TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></FORM></DIV>
 </body>
 </html>
