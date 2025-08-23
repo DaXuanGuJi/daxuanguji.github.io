@@ -396,6 +396,7 @@ var selfgimgck=function(ret,flg){
 	if(ByID("docg"))document.body.removeChild(ByID("docg"));
 	var tg = document.createElement('div');
 	tg.style.width = "340px";
+	tg.style.height ="100%";
 	tg.style.maxHeight ="1000px";
 	tg.style.overflowY="auto";
 	tg.style.top =0;
