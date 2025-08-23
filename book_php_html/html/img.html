@@ -178,7 +178,7 @@ window.onload = function() {
 			if(filelist&&filelist.length){
 				for (var i =0; i<filelist.length; i++) {
 				if(!filelist[i])continue;
-				txt+='<img onerror="rm(this)" class="grayscale grayscale-fade" src="../'+harr[2]+filelist[i]+'" title="'+filelist[i]+'">';
+				txt+='<img onerror="rm(this)" class="grayscale grayscale-fade" src="'+harr[2]+filelist[i]+'" title="'+filelist[i]+'">';
 				}
 				document.querySelector(".content").innerHTML=txt;				
 				document.querySelector(".content").onclick = function (e) {
