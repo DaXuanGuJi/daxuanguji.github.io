@@ -7,7 +7,7 @@ a { text-decoration: none; color: rgb(8, 172, 238); }
 [class^="icon-"], [class*=" icon-"] { font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased; font-family: icomoon !important; }
 .boxs { border: 1px solid blue; background-color: rgba(255, 0, 0, 0.2); color: blue; }
 .header { z-index: 9990; position: fixed; top: 0px; left: 0px; width: 100%; height: 44px; line-height: 44px; text-align: center; border-bottom: 1px solid rgb(238, 238, 238); background-color: white; }
-.header .btn-left { position: absolute; top: 0px; left: 0px; padding: 12px 20px; line-height: 22px; }
+.header .btn-left { position: absolute; top: 0px; left: 0px;font-size:14px; padding: 12px 10px; line-height: 22px; }
 .header input { position: absolute; top: 8px; left: 20%; width: 60%; padding: 6px 0px; border: 1px solid rgb(24, 180, 254); border-radius: 8px; text-align: center; outline: none; appearance: none; }
 .header .btn-right { position: absolute; top: 0px; right: 0px; padding: 0px 20px; color: rgb(24, 180, 254); }
 .bookshelf { width: 100%; height: 100%; padding-top: 48px; }
