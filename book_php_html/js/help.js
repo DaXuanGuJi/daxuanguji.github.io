@@ -238,8 +238,8 @@ help["stut"] ="根据ttf字体生成图片字体" ;
 help["stupk"] ="图片字体打包成dt文件和dtx索引文件" ;
 help["stuupk"] ="解包成dt文件和dtx索引文件" ;
 help["stud"] ="删除字体图片文件夹下所有文件" ;
-help["stub"] ="转到维基网站" ;
-help["stuc"] ="安装crx维基插件" ;
+help["stub"] ="转到大玄书库网站搜索txt文档下载全文配置一键出书" ;
+help["stuc"] ="转到大玄书库网站" ;
 
 help["startIndex"]="ptset.bodyobj.pageindex";
 
